@@ -1,0 +1,18 @@
+.panel.panel-default.panel-authentication
+  .panel-heading
+    %h3.panel-title
+      %strong Restore password
+  .panel-body
+    = render partial: 'shared/flash_notifications'
+    = form_tag reset_password_path do
+      .form-group
+        .input-group
+          %span.input-group-addon
+            %i.glyphicon.glyphicon-user
+          = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
+      = submit_tag 'Restore password', class: 'btn btn-default'
+    %hr
+    .text-center
+      = link_to 'log in', login_path
+      |
+      = link_to 'register', registration_path

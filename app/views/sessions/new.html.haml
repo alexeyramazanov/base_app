@@ -1,0 +1,27 @@
+.panel.panel-default.panel-authentication
+  .panel-heading
+    %h3.panel-title
+      %strong Log in
+  .panel-body
+    = render partial: 'shared/flash_notifications'
+    = form_tag login_path do
+      .form-group
+        .input-group
+          %span.input-group-addon
+            %i.glyphicon.glyphicon-user
+          = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
+      .form-group
+        .input-group
+          %span.input-group-addon
+            %i.glyphicon.glyphicon-lock
+          = password_field_tag :password, '', class: 'form-control', placeholder: 'Password'
+      .checkbox
+        = label_tag :remember_me do
+          = check_box_tag :remember_me
+          Remember me
+      = submit_tag 'Log in', class: 'btn btn-default'
+    %hr
+    .text-center
+      = link_to 'register', registration_path
+      |
+      = link_to 'restore password', reset_password_path

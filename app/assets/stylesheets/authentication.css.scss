@@ -1,0 +1,10 @@
+body#sessions_controller, body#registration_controller, body#password_reset_controller {
+  .panel-authentication {
+    margin: 40px auto 0;
+    width: 400px;
+
+    hr {
+      margin: 10px 0;
+    }
+  }
+}
