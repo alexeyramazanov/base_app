@@ -1,8 +1,0 @@
-== README
-
-You can use foreman/forego if you want.
-
-no support for IE8
-
-if you see `No such file or directory @ unlink_internal - .../pids/server.pid (Errno::ENOENT)`
-thats not a problem, read https://github.com/puma/puma/issues/915 for more info.
