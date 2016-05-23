@@ -86,9 +86,11 @@ Rails.application.configure do
       domain: ENV.fetch('SMTP_DOMAIN'),
       address: ENV.fetch('SMTP_ADDRESS'),
       port: ENV.fetch('SMTP_PORT'),
-      password: ENV.fetch('SMTP_PASSWORD'),
-      user_name: ENV.fetch('SMTP_USERNAME')
+      user_name: ENV.fetch('SMTP_USERNAME'),
+      password: ENV.fetch('SMTP_PASSWORD')
   }
+  config.action_mailer.default_url_options = {host: ENV.fetch('APPLICATION_HOST')}
+  config.action_mailer.default_options = {from: 'no-reply@email.com'}
 end
 
 Rack::Timeout.timeout = (ENV['RACK_TIMEOUT'] || 10).to_i
