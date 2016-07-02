@@ -21,7 +21,7 @@ Stop wasting time on creating basic rails app.
 
 ## Notes
 
-* You can use foreman/forego if you want.
+* You can use foreman/forego (to see app log add [rails_stdout_logging](https://github.com/heroku/rails_stdout_logging) gem to the `Gemfile`).
 * no support for IE8
 
 ## Known Issues
