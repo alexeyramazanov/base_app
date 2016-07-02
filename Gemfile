@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby '2.3.1'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0'
 gem 'pg'
 
 gem 'haml-rails'
@@ -18,7 +18,7 @@ gem 'uglifier'
 gem 'sorcery'
 
 gem 'sidekiq'
-gem 'sinatra', require: nil # sidekiq UI
+gem 'sinatra', github: 'sinatra/sinatra', require: nil # sidekiq UI
 
 gem 'nokogiri', '~> 1.6.8.rc3' # temporary
 
@@ -30,8 +30,9 @@ end
 
 group :development do
   gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'quiet_assets'
+  gem 'spring-watcher-listen'
   gem 'rack-mini-profiler'
   gem 'bullet'
 end
