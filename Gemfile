@@ -15,10 +15,14 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'uglifier'
 
+# TODO: remove when autoprefixer-rails and sassc-rails release new versions
+gem 'sprockets', '~> 3.6.3'
+
 gem 'sorcery'
 
 gem 'sidekiq'
 gem 'sinatra', github: 'sinatra/sinatra', require: nil # sidekiq UI
+gem 'rack-protection', github: 'sinatra/rack-protection', require: nil # sinatra dependency
 
 gem 'nokogiri', '~> 1.6.8.rc3' # temporary
 

@@ -7,8 +7,6 @@
 ---
 :verbose: false
 :concurrency: <%= ENV.fetch('SIDEKIQ_CONCURRENCY', 10) %>
-
 # Set timeout to 8 on Heroku, longer if you manage your own systems.
 :timeout: <%= ENV.fetch('SIDEKIQ_TIMEOUT', 30) %>
-
 :queues: <%= ENV.fetch('SIDEKIQ_QUEUES', 'default,high,mailers').split(',').map(&:strip).to_s %>

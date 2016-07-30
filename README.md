@@ -15,7 +15,7 @@ Stop wasting time on creating basic rails app.
 1. `git clone --depth=1 --branch=master git@github.com:alexeyramazanov/base_app.git my_new_app`
 2. `rm -rf my_new_app/.git`
 2. `rake rename_app['BrandNewName']`
-4. delete `lib/tasks/rename_app.rake`
+4. `rm lib/tasks/rename_app.rake`
 3. update `config/database.yml`
 4. set environment variables (check `.env.example` for a list of available variables)
 
