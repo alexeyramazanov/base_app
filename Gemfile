@@ -18,8 +18,6 @@ gem 'uglifier'
 gem 'sorcery'
 
 gem 'sidekiq'
-gem 'sinatra', github: 'sinatra/sinatra', require: nil # sidekiq UI
-gem 'rack-protection', github: 'sinatra/rack-protection', require: nil # sinatra dependency
 
 gem 'puma'
 
