@@ -8,7 +8,7 @@ end
 ruby '2.4.3'
 
 gem 'rails', '5.1.4'
-gem 'pg'
+gem 'pg', '~> 0.21'
 
 gem 'haml-rails'
 gem 'sassc-rails'
