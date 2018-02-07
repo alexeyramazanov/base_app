@@ -8,8 +8,8 @@ default: &default
 development: &development
   <<: *default
   database: base_app_development
-  username: base_app
-  password:
+  # username:
+  # password:
   # host: localhost
   # port: 5432
 

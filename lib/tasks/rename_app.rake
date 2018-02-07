@@ -8,7 +8,8 @@ class AppRenamer < Thor
     new_name_underscored = new_name.underscore
 
     gsub_file 'config/application.rb', 'module BaseApp', "module #{new_name}"
-    gsub_file 'config/initializers/session_store.rb', '_base_app_session', "_#{new_name_underscored}_session"
+    gsub_file 'config/cable.yml', 'base_app_production', "#{new_name_underscored}_production"
+    gsub_file 'package.json', 'base_app', new_name_underscored
   end
 end
 
