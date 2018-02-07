@@ -14,9 +14,6 @@ gem 'haml-rails'
 gem 'sassc-rails'
 gem 'sprockets-es6'
 
-gem 'jquery-rails'
-gem 'bootstrap-sass'
-
 gem 'autoprefixer-rails'
 gem 'uglifier'
 
