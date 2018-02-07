@@ -13,11 +13,18 @@ Stop wasting time on creating basic rails app.
 
 ## How To Use
 1. `git clone --depth=1 --branch=master git@github.com:alexeyramazanov/base_app.git my_new_app`
-2. `rm -rf my_new_app/.git`
-2. `rake rename_app['BrandNewName']`
-4. `rm lib/tasks/rename_app.rake`
-3. update `config/database.yml`
-4. set environment variables (check `.env.example` for a list of available variables)
+1. `cd my_new_app`
+1. `rm -rf .git`
+1. `rake rename_app['BrandNewName']`
+1. `rm lib/tasks/rename_app.rake`
+1. `cp config/database.example.yml config/database.yml`
+1. update `config/database.yml`
+1. `cp .env.example .env.local`
+1. update `.env.local`
+
+Required `ENVs`:
+* `SECRET_KEY_BASE` (you can get it by running `rake secret`)
+* `DATABASE_URL` (for example `postgres://{user}:{password}@{hostname}:{port}/{database-name}`)
 
 ## Notes
 
