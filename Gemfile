@@ -42,7 +42,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'bundler-audit', require: false
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 end
 
 group :test do
