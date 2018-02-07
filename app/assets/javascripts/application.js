@@ -12,5 +12,6 @@
 //
 //= require rails-ujs
 //= require jquery/dist/jquery
+//= require popper.js/dist/umd/popper
 //= require include_bootstrap
 //= require_tree .

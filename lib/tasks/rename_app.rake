@@ -10,6 +10,7 @@ class AppRenamer < Thor
     gsub_file 'config/application.rb', 'module BaseApp', "module #{new_name}"
     gsub_file 'config/cable.yml', 'base_app_production', "#{new_name_underscored}_production"
     gsub_file 'package.json', 'base_app', new_name_underscored
+    gsub_file 'config/environments/production.rb', "base_app_\#{Rails.env}", "#{new_name_underscored}_\#{Rails.env}"
   end
 end
 

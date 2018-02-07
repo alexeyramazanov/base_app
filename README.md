@@ -21,6 +21,8 @@ Stop wasting time on creating basic rails app.
 1. update `config/database.yml`
 1. `cp .env.example .env.local`
 1. update `.env.local`
+1. `rm README.md`
+1. `yarn install`
 
 Required `ENVs`:
 * `SECRET_KEY_BASE` (you can get it by running `rake secret`)
