@@ -1,13 +1,11 @@
-%nav.navbar.navbar-default.navbar-static-top
+%nav.navbar.navbar-expand-md.navbar-light.bg-light
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed{type: 'button', aria: {controls: 'navbar', expanded: 'false'},
-          data: {target: '#navbar', toggle: 'collapse'}}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
       = link_to 'Base App', root_path, class: 'navbar-brand'
+      %button.navbar-toggler.collapsed{type: 'button', aria: {controls: 'navbar', expanded: 'false'},
+          data: {target: '#navbar', toggle: 'collapse'}}
+        %span.navbar-toggler-icon
+
     #navbar.navbar-collapse.collapse
       - if current_user
         = render partial: 'layouts/navigation/user'

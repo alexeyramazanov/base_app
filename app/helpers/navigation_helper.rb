@@ -1,9 +1,9 @@
 module NavigationHelper
   def navigation_element(name, url, options = {})
-    klass = current_page?(url) ? 'active' : ''
+    klass = current_page?(url) ? 'nav-item active' : 'nav-item'
 
     content_tag :li, class: klass do
-      link_to name, url, options
+      link_to name, url, {class: 'nav-link'}.merge(options)
     end
   end
 end
