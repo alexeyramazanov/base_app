@@ -1,35 +1,37 @@
-= render partial: 'shared/flash_notifications'
+.mt-lg-3.mt-md-2.mt-sm-1
+  = render partial: 'shared/flash_notifications'
 
 %h1 Profile
 
 .row
   .col-md-4
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title
-          %strong General Info
-      .panel-body
-        .form-group
+    .card
+      .card-header
+        General Info
+      .card-body
+        .form-group{style: 'margin-bottom: 0;'}
           .input-group
-            %span.input-group-addon
-              %i.glyphicon.glyphicon-user
+            .input-group-prepend
+              .input-group-text
+                %i.fas.fa-user
             = text_field_tag :email, @user.email, class: 'form-control', disabled: true
   .col-md-4
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title
-          %strong Update password
-      .panel-body
+    .card
+      .card-header
+        Update password
+      .card-body
         = render partial: 'shared/error_messages', locals: {object: @user}
         = form_for @user, url: profile_path do |f|
           .form-group
             .input-group
-              %span.input-group-addon
-                %i.glyphicon.glyphicon-lock
+              .input-group-prepend
+                .input-group-text
+                  %i.fas.fa-key
               = f.password_field :password, class: 'form-control', placeholder: 'Password'
           .form-group
             .input-group
-              %span.input-group-addon
-                %i.glyphicon.glyphicon-lock
+              .input-group-prepend
+                .input-group-text
+                  %i.fas.fa-key
               = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation'
-          = f.submit 'Update password', class: 'btn btn-default'
+          = f.submit 'Update password', class: 'btn btn-primary'

@@ -1,6 +1,6 @@
 class PasswordResetController < ApplicationController
-  skip_before_filter :require_login
-  before_filter :load_user, only: [:edit, :update]
+  skip_before_action :require_login
+  before_action :load_user, only: [:edit, :update]
 
   def new
   end

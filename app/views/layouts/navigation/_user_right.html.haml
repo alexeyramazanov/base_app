@@ -1,11 +1,8 @@
-%ul.nav.navbar-nav.navbar-right
-  %li.dropdown
-    %a.dropdown-toggle{href: '#', role: 'button', aria: {expanded: false, haspopup: 'true'}, data: {toggle: 'dropdown'}}
+%ul.navbar-nav.my-2.my-md-0
+  %li.nav-item.dropdown
+    %a.nav-link.dropdown-toggle{href: '#', role: 'button', aria: {expanded: false, haspopup: 'true'}, data: {toggle: 'dropdown'}}
       = current_user.email
-      %span.caret
-    %ul.dropdown-menu
-      %li
-        = navigation_element 'Profile', edit_profile_path
-      %li.divider{role: 'separator'}
-      %li
-        = navigation_element 'Logout', logout_path, method: :delete
+    .dropdown-menu
+      = dropdown_element 'Profile', edit_profile_path
+      .dropdown-divider
+      = dropdown_element 'Logout', logout_path, method: :delete

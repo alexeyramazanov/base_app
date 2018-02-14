@@ -1,25 +1,25 @@
-.panel.panel-default.panel-authentication
-  .panel-heading
-    %h3.panel-title
-      %strong Log in
-  .panel-body
+.card.card-authentication
+  .card-header
+    Log in
+  .card-body
     = render partial: 'shared/flash_notifications'
     = form_tag login_path do
       .form-group
         .input-group
-          %span.input-group-addon
-            %i.glyphicon.glyphicon-user
+          .input-group-prepend
+            .input-group-text
+              %i.fas.fa-user
           = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
       .form-group
         .input-group
-          %span.input-group-addon
-            %i.glyphicon.glyphicon-lock
+          .input-group-prepend
+            .input-group-text
+              %i.fas.fa-key
           = password_field_tag :password, '', class: 'form-control', placeholder: 'Password'
-      .checkbox
-        = label_tag :remember_me do
-          = check_box_tag :remember_me
-          Remember me
-      = submit_tag 'Log in', class: 'btn btn-default'
+      .form-check
+        = check_box_tag :remember_me, '1', false, class: 'form-check-input'
+        = label_tag :remember_me, 'Remember me', class: 'form-check-label'
+      = submit_tag 'Log in', class: 'btn btn-primary'
     %hr
     .text-center
       = link_to 'register', registration_path

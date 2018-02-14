@@ -6,4 +6,10 @@ module NavigationHelper
       link_to name, url, {class: 'nav-link'}.merge(options)
     end
   end
+
+  def dropdown_element(name, url, options = {})
+    klass = current_page?(url) ? 'dropdown-item active' : 'dropdown-item'
+
+    link_to name, url, {class: klass}.merge(options)
+  end
 end

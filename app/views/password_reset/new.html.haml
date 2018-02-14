@@ -1,16 +1,16 @@
-.panel.panel-default.panel-authentication
-  .panel-heading
-    %h3.panel-title
-      %strong Restore password
-  .panel-body
+.card.card-authentication
+  .card-header
+    Restore password
+  .card-body
     = render partial: 'shared/flash_notifications'
     = form_tag reset_password_path do
       .form-group
         .input-group
-          %span.input-group-addon
-            %i.glyphicon.glyphicon-user
+          .input-group-prepend
+            .input-group-text
+              %i.fas.fa-user
           = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
-      = submit_tag 'Restore password', class: 'btn btn-default'
+      = submit_tag 'Restore password', class: 'btn btn-primary'
     %hr
     .text-center
       = link_to 'log in', login_path
