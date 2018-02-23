@@ -1,14 +1,13 @@
-.panel.panel-default.panel-authentication
-  .panel-heading
-    %h3.panel-title
-      %strong Change Password
-  .panel-body
+.card.card-authentication
+  .card-header
+    Change Password
+  .card-body
     = render partial: 'shared/error_messages', locals: {object: @user}
     = form_for @user, url: reset_password_tokenized_path(@token), html: {method: :patch} do |f|
       .form-group
         .input-group
-          %span.input-group-addon
-            %i.glyphicon.glyphicon-lock
+          .input-group-prepend
+            .input-group-text
+              %i.fas.fa-key
           = f.password_field :password, class: 'form-control', placeholder: 'Password'
-
-      = f.submit 'Change Password', class: 'btn btn-default'
+      = f.submit 'Change Password', class: 'btn btn-primary'
