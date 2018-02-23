@@ -26,6 +26,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :last_activity_at
       t.string :last_login_from_ip_address
 
+      t.string :role, null: false, default: 'user'
+
       t.timestamps
     end
 

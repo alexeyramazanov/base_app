@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem 'uglifier'
 
 gem 'sorcery'
+gem 'enumerize'
 
 gem 'sidekiq'
 

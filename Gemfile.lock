@@ -66,6 +66,8 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
+    enumerize (2.2.1)
+      activesupport (>= 3.2)
     erubi (1.7.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -260,6 +262,7 @@ DEPENDENCIES
   byebug
   database_cleaner
   dotenv-rails
+  enumerize
   factory_bot_rails
   haml-rails
   listen

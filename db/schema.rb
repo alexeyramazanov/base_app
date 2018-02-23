@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160521114434) do
     t.datetime "last_logout_at"
     t.datetime "last_activity_at"
     t.string "last_login_from_ip_address"
+    t.string "role", default: "user", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activation_token"], name: "index_users_on_activation_token"

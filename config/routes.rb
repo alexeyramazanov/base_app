@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get  'reset_password/:id', to: 'password_reset#edit', as: :new_reset_password_tokenized
   match 'reset_password/:id', to: 'password_reset#update', as: :reset_password_tokenized, via: [:put, :patch]
 
+  namespace :admin do
+    resource :dashboard, only: [:show], controller: :dashboard
+  end
+
   resource :home, only: [:show], controller: :home
 
   resource :dashboard, only: [:show], controller: :dashboard

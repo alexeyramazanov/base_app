@@ -1,5 +1,9 @@
 class User < ApplicationRecord
+  extend Enumerize
+
   authenticates_with_sorcery!
+
+  enumerize :role, in: %w[ user admin ], default: 'user', predicates: true
 
   validates :email, presence: true, uniqueness: true
   # length replaces presence validation, update_password is used to prevent empty passwords
