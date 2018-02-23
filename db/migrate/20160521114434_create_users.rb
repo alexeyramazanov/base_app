@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
 
       # user activation
       t.string :activation_state
-      t.string :users, :activation_token
+      t.string :activation_token
       t.datetime :activation_token_expires_at
 
       # reset password

@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20160521114434) do
     t.string "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string "activation_state"
-    t.string "users"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
     t.string "reset_password_token"
