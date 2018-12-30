@@ -34,8 +34,6 @@ group :development do
   gem 'spring-watcher-listen'
   gem 'rack-mini-profiler'
   gem 'bullet'
-  gem 'pry-rails'
-  gem 'pry-byebug'
 end
 
 group :development, :test do
@@ -45,6 +43,8 @@ group :development, :test do
   gem 'bundler-audit', require: false
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do
