@@ -1,21 +1,18 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.3'
+ruby '2.5.3'
 
-gem 'rails', '5.1.5'
+gem 'rails', '~> 5.2.2'
 gem 'pg'
 
-gem 'haml-rails'
-gem 'sassc-rails'
-gem 'sprockets-es6'
+gem 'hamlit-rails'
 
-gem 'autoprefixer-rails'
-gem 'uglifier'
+gem 'webpacker', '>= 4.0.x'
+gem 'react-rails'
+
+gem 'mini_magick'
 
 gem 'sorcery'
 gem 'enumerize'
@@ -24,22 +21,26 @@ gem 'sidekiq'
 
 gem 'puma'
 
+gem 'bootsnap', require: false
+
 group :production do
   gem 'rack-timeout'
 end
 
 group :development do
   gem 'web-console'
-  gem 'listen'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'rack-mini-profiler'
   gem 'bullet'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'byebug'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem 'bundler-audit', require: false
   gem 'rspec-rails'
