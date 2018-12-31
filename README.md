@@ -7,7 +7,14 @@ Stop wasting time on creating basic rails app.
 ## What's inside
 
 * postgres
-* haml, sass, jquery, bootstrap
+* [hamlit](https://github.com/k0kubun/hamlit)
+* yarn:
+  * rails stuff (actioncable, activestorage)
+  * babel 7
+  * react
+  * jquery 3
+  * bootstrap 4
+  * fontawesome 5
 * sorcery authentication
 * sidekiq background processing
 
