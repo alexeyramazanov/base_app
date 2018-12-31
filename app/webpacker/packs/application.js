@@ -25,10 +25,6 @@ window.Cable = ActionCable.createConsumer();
 
 import 'jquery/dist/jquery';
 
-// https://github.com/rails/webpacker/blob/master/docs/css.md
-import 'jquery-ui-dist/jquery-ui';
-import 'jquery-ui-dist/jquery-ui.css';
-
 import 'popper.js/dist/umd/popper';
 import 'bootstrap/dist/js/bootstrap';
 
