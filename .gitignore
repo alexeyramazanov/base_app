@@ -20,6 +20,8 @@
 # Yarn
 /node_modules
 /yarn-error.log
+yarn-debug.log*
+.yarn-integrity
 
 # Config files
 /config/database.yml
@@ -28,6 +30,8 @@
 # Public
 /public/system
 /public/assets
+/public/packs
+/public/packs-test
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -40,9 +44,3 @@
 /.idea
 /.byebug_history
 /.foreman
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity

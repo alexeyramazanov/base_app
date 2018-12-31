@@ -2,11 +2,19 @@
   "name": "base_app",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-free": "^5.5.0",
     "@rails/webpacker": "https://github.com/rails/webpacker",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
     "bootstrap": "^4.2.0",
     "jquery": "^3.3.0",
-    "popper.js": "^1.14.0"
+    "popper.js": "^1.14.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react_ujs": "^2.4.4",
+    "webpack": "^4.17.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.1.14"
