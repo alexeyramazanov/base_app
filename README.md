@@ -9,6 +9,7 @@ Stop wasting time on creating basic rails app.
 * postgres
 * [hamlit](https://github.com/k0kubun/hamlit)
 * yarn:
+  * webpack
   * rails stuff (actioncable, activestorage)
   * babel 7
   * react
@@ -29,7 +30,8 @@ Stop wasting time on creating basic rails app.
 1. `cp .env.example .env.local`
 1. update `.env.local`
 1. `rm README.md`
-1. `yarn install`
+1. `bundle`
+1. `yarn`
 
 Required `ENVs`:
 * `SECRET_KEY_BASE` (you can get it by running `rake secret`)
@@ -45,7 +47,7 @@ Required `ENVs`:
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 ```
-* no support for IE8
+* IE10+
 
 ## Known Issues
 If you see `No such file or directory @ unlink_internal - .../pids/server.pid (Errno::ENOENT)`
