@@ -326,7 +326,7 @@ Rails.application.config.sorcery.configure do |config|
     # options: `:deliver_later`, `:deliver_now`, `:deliver`
     # Default: :deliver (Rails version < 4.2) or :deliver_now (Rails version 4.2+)
     #
-    # user.email_delivery_method =
+    user.email_delivery_method = :deliver_later
 
     # activation needed email method on your mailer class.
     # Default: `:activation_needed_email`
@@ -529,16 +529,4 @@ Rails.application.config.sorcery.configure do |config|
   # This line must come after the 'user config' block.
   # Define which model authenticates with sorcery.
   config.user_class = 'User'
-end
-
-#TODO: check
-module Sorcery
-  module Model
-    module InstanceMethods
-      def generic_send_email(method, mailer)
-        config = sorcery_config
-        config.send(mailer).send(config.send(method), self).deliver_later
-      end
-    end
-  end
 end
