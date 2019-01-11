@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     require 'sidekiq/web'
+    require 'sidekiq/cron/web'
+
     mount Sidekiq::Web, at: '/sidekiq'
   end
 end

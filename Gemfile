@@ -18,6 +18,7 @@ gem 'sorcery'
 gem 'enumerize'
 
 gem 'sidekiq'
+gem 'sidekiq-cron'
 
 gem 'puma'
 
