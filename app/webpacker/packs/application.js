@@ -4,15 +4,11 @@ const componentRequireContext = require.context('components', true);
 const ReactRailsUJS = require('react_ujs');
 ReactRailsUJS.useContext(componentRequireContext);
 
-// https://github.com/rails/webpacker/issues/1207
-import Rails from 'rails-ujs';
-Rails.start();
+require('@rails/ujs').start();
 
-import * as ActiveStorage from 'activestorage';
-ActiveStorage.start();
+require('@rails/activestorage').start();
 
-import ActionCable from 'actioncable';
-window.Cable = ActionCable.createConsumer();
+require('../src/javascripts/channels');
 
 import 'jquery/dist/jquery';
 
