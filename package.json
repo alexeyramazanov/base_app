@@ -5,21 +5,21 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-free": "^5.5.0",
-    "@rails/webpacker": "^4.0.0-rc.2",
+    "@rails/webpacker": "^4.0.7",
     "actioncable": "^5.2.0",
     "activestorage": "^5.2.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.2.0",
     "jquery": "^3.3.0",
     "popper.js": "^1.14.0",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.7.2",
     "rails-ujs": "^5.2.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react_ujs": "^2.4.4",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react_ujs": "^2.6.0",
     "webpack": "^4.27.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.8.0"
   }
 }
