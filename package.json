@@ -1,25 +1,26 @@
 {
   "name": "base_app",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^4.0.7",
-    "@rails/ujs": "^6.0.0-alpha",
-    "@rails/activestorage": "^6.0.0-alpha",
-    "@rails/actioncable": "^6.0.0-alpha",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@fortawesome/fontawesome-free": "^5.5.0",
+    "@rails/webpacker": "^4.2.2",
+    "@rails/ujs": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/actioncable": "^6.0.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-react": "^7.9.0",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "bootstrap": "^4.2.0",
-    "jquery": "^3.3.0",
-    "popper.js": "^1.14.0",
+    "bootstrap": "^4.4.0",
+    "jquery": "^3.5.0",
+    "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react_ujs": "^2.6.0",
-    "webpack": "^4.27.1"
+    "webpack": "^4.42.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.10.0"
   }
 }
