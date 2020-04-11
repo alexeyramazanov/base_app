@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  # NOTE: fixes 'ArgumentError: To use reset_password submodule, you must define a mailer' error.
+  # Current master is broken because of combination of 2 PRs:
+  # https://github.com/Sorcery/sorcery/issues/137
+  # https://github.com/Sorcery/sorcery/pull/209
+  # Waiting for Sorcery 0.15+
+  include Sorcery::Controller
+
   extend Enumerize
 
   authenticates_with_sorcery!
