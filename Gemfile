@@ -30,6 +30,7 @@ group :development do
   gem 'web-console'
   gem 'listen', '~> 3.2'
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'spring-watcher-listen'
   gem 'rack-mini-profiler'
   gem 'bullet'
