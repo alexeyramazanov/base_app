@@ -12,8 +12,6 @@ gem 'hamlit-rails'
 gem 'webpacker'
 gem 'react-rails'
 
-gem 'mini_magick'
-
 gem 'sorcery'
 gem 'enumerize'
 
@@ -30,7 +28,7 @@ end
 
 group :development do
   gem 'web-console'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'rack-mini-profiler'
