@@ -26,6 +26,7 @@ yarn-debug.log*
 # Config files
 /config/database.yml
 /.env.local
+/.env.development
 
 # Public
 /public/system

@@ -16,7 +16,7 @@
             .input-group-text
               %i.fas.fa-key
           = password_field_tag :password, '', class: 'form-control', placeholder: 'Password'
-      .form-check
+      .form-group.form-check
         = check_box_tag :remember_me, '1', false, class: 'form-check-input'
         = label_tag :remember_me, 'Remember me', class: 'form-check-label'
       = submit_tag 'Log in', class: 'btn btn-primary'

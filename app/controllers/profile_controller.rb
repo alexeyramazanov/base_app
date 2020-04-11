@@ -6,7 +6,7 @@ class ProfileController < ApplicationController
 
   def update
     @user.update_password = true
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       redirect_to edit_profile_url, notice: 'Password was successfully updated.'
     else
       render :edit

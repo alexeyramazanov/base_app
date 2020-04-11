@@ -39,7 +39,14 @@ Required `ENVs`:
 
 ## Notes
 
-* You can use foreman/forego. To see app log add the following code to the `config/environments/development.rb`:
+#### You can use foreman/forego.
+
+Specify proper `.env` file in `.foreman`:
+```
+env: .env.local
+```
+
+To see app log add the following code to the `config/environments/development.rb`:
 ```ruby
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
@@ -47,7 +54,6 @@ Required `ENVs`:
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 ```
-* IE10+
 
 ## Known Issues
 If you see `No such file or directory @ unlink_internal - .../pids/server.pid (Errno::ENOENT)`
