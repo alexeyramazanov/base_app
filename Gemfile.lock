@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/Sorcery/sorcery.git
+  revision: c30cefa751c364ee20b361eb63a766f782b69e5e
+  specs:
+    sorcery (0.14.0)
+      bcrypt (~> 3.1)
+      oauth (~> 0.4, >= 0.4.4)
+      oauth2 (~> 1.0, >= 0.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -234,10 +243,6 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
-    sorcery (0.14.0)
-      bcrypt (~> 3.1)
-      oauth (~> 0.4, >= 0.4.4)
-      oauth2 (~> 1.0, >= 0.8.0)
     spring (2.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -301,7 +306,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-cron
   simplecov
-  sorcery
+  sorcery!
   spring
   spring-commands-rspec
   spring-watcher-listen

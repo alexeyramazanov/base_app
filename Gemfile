@@ -12,7 +12,8 @@ gem 'hamlit-rails'
 gem 'webpacker'
 gem 'react-rails'
 
-gem 'sorcery'
+# NOTE: master includes fixes for Rails 6, waiting for 0.15+
+gem 'sorcery', github: 'Sorcery/sorcery'
 gem 'enumerize'
 
 gem 'sidekiq'
