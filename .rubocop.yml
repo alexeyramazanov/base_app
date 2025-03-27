@@ -2,6 +2,7 @@ AllCops:
   TargetRubyVersion: 3.4
   Exclude:
     - 'bin/*'
+    - 'db/schema.rb'
 
 plugins:
   - rubocop-rails
