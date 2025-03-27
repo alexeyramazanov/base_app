@@ -1,6 +1,0 @@
-%ul.navbar-nav.my-2.my-md-0
-  %li.nav-item.dropdown
-    %a.nav-link.dropdown-toggle{href: '#', role: 'button', aria: {expanded: false, haspopup: 'true'}, data: {toggle: 'dropdown'}}
-      = current_user.email
-    .dropdown-menu
-      = dropdown_element 'Logout', logout_path, method: :delete
