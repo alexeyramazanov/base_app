@@ -8,6 +8,10 @@ gem 'rails', '~> 8.0.2'
 # https://github.com/ged/ruby-pg
 gem 'pg', '~> 1.5.9'
 
+# Haml-rails provides Haml generators for Rails 5, 6, 7, and 8
+# https://github.com/haml/haml-rails
+gem 'haml-rails', '~> 2.1.0'
+
 # Deliver assets for Rails
 # https://github.com/rails/propshaft
 gem 'propshaft', '~> 1.1.0'

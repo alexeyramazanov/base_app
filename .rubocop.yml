@@ -16,3 +16,6 @@ Style/FrozenStringLiteralComment:
     - 'Gemfile'
     - 'Rakefile'
     - 'config.ru'
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
