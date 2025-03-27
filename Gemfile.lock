@@ -293,33 +293,32 @@ PLATFORMS
   aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
   arm64-darwin
+  ruby
   x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu
   x86_64-linux-musl
 
 DEPENDENCIES
-  bootsnap
-  brakeman
-  debug
-  importmap-rails
-  pg (~> 1.1)
-  propshaft
-  puma (>= 5.0)
+  bootsnap (~> 1.18.4)
+  brakeman (~> 7.0.0)
+  debug (~> 1.10.0)
+  importmap-rails (~> 2.1.0)
+  pg (~> 1.5.9)
+  propshaft (~> 1.1.0)
+  puma (~> 6.6.0)
   rails (~> 8.0.2)
+  rubocop (~> 1.75.1)
   rubocop-performance (~> 1.24.0)
   rubocop-rails (~> 2.30.3)
-  solid_cable
-  solid_cache
-  solid_queue
-  stimulus-rails
-  thruster
-  turbo-rails
-  tzinfo-data
-  web-console
+  solid_cable (~> 3.0.7)
+  solid_cache (~> 1.0.7)
+  solid_queue (~> 1.1.4)
+  stimulus-rails (~> 1.3.4)
+  thruster (~> 0.1.12)
+  turbo-rails (~> 2.0.13)
+  web-console (~> 4.2.1)
 
 BUNDLED WITH
    2.6.6

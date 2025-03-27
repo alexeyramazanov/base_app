@@ -1,57 +1,77 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Ruby on Rails
+# https://github.com/rails/rails/
 gem 'rails', '~> 8.0.2'
-# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem 'propshaft'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
-# Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '>= 5.0'
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'importmap-rails'
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails'
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem 'stimulus-rails'
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+# A PostgreSQL client library for Ruby
+# https://github.com/ged/ruby-pg
+gem 'pg', '~> 1.5.9'
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[windows jruby]
+# Deliver assets for Rails
+# https://github.com/rails/propshaft
+gem 'propshaft', '~> 1.1.0'
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem 'solid_cable'
-gem 'solid_cache'
-gem 'solid_queue'
+# A Ruby/Rack web server built for parallelism
+# https://github.com/puma/puma
+gem 'puma', '~> 6.6.0'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
+# Use ESM with importmap to manage modern JavaScript in Rails without transpiling or bundling
+# https://github.com/rails/importmap-rails
+gem 'importmap-rails', '~> 2.1.0'
 
-# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem 'thruster', require: false
+# Use Turbo in your Ruby on Rails app
+# https://github.com/hotwired/turbo-rails
+gem 'turbo-rails', '~> 2.0.13'
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+# Use Stimulus in your Ruby on Rails app
+# https://github.com/hotwired/stimulus-rails
+gem 'stimulus-rails', '~> 1.3.4'
+
+# A database backed ActionCable adapter
+# https://github.com/rails/solid_cable
+gem 'solid_cable', '~> 3.0.7'
+
+# A database-backed ActiveSupport::Cache::Store
+# https://github.com/rails/solid_cache
+gem 'solid_cache', '~> 1.0.7'
+
+# Database-backed Active Job backend
+# https://github.com/rails/solid_queue
+gem 'solid_queue', '~> 1.1.4'
+
+# Boot large Ruby/Rails apps faster
+# https://github.com/Shopify/bootsnap
+gem 'bootsnap', '~> 1.18.4', require: false
+
+# HTTP/2 proxy for simple production-ready deployments of Rails applications
+# https://github.com/basecamp/thruster/
+gem 'thruster', '~> 0.1.12', require: false
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
+  # Debugging functionality for Ruby
+  # https://github.com/ruby/debug
+  gem 'debug', '~> 1.10.0'
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', require: false
+  # A static analysis security vulnerability scanner for Ruby on Rails applications
+  # https://github.com/presidentbeef/brakeman
+  gem 'brakeman', '~> 7.0.0', require: false
 
-  # A RuboCop extension focused on enforcing Rails best practices and coding conventions.
+  # A Ruby static code analyzer and formatter, based on the community Ruby style guide
+  # https://github.com/rubocop/rubocop
+  gem 'rubocop', '~> 1.75.1', require: false
+
+  # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
   gem 'rubocop-rails', '~> 2.30.3', require: false
 
-  # An extension of RuboCop focused on code performance checks.
+  # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
   gem 'rubocop-performance', '~> 1.24.0', require: false
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
+  # Rails Console on the Browser
+  # https://github.com/rails/web-console
+  gem 'web-console', '~> 4.2.1'
 end
