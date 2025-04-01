@@ -24,9 +24,9 @@ gem 'propshaft', '~> 1.1.0'
 # https://github.com/puma/puma
 gem 'puma', '~> 6.6.0'
 
-# Use ESM with importmap to manage modern JavaScript in Rails without transpiling or bundling
-# https://github.com/rails/importmap-rails
-gem 'importmap-rails', '~> 2.1.0'
+# Vite.js in Ruby, bringing joy to your JavaScript experience
+# https://github.com/ElMassimo/vite_ruby
+gem 'vite_rails', '~> 3.0.19'
 
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
