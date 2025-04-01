@@ -8,6 +8,10 @@ gem 'rails', '~> 8.0.2'
 # https://github.com/ged/ruby-pg
 gem 'pg', '~> 1.5.9'
 
+# bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm
+# https://github.com/bcrypt-ruby/bcrypt-ruby
+gem 'bcrypt', '~> 3.1.13'
+
 # Haml-rails provides Haml generators for Rails 5, 6, 7, and 8
 # https://github.com/haml/haml-rails
 gem 'haml-rails', '~> 2.1.0'
