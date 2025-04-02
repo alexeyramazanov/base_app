@@ -12,10 +12,6 @@ gem 'pg', '~> 1.5.9'
 # https://github.com/bcrypt-ruby/bcrypt-ruby
 gem 'bcrypt', '~> 3.1.13'
 
-# Haml-rails provides Haml generators for Rails 5, 6, 7, and 8
-# https://github.com/haml/haml-rails
-gem 'haml-rails', '~> 2.1.0'
-
 # Deliver assets for Rails
 # https://github.com/rails/propshaft
 gem 'propshaft', '~> 1.1.0'

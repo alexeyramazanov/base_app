@@ -1,0 +1,7 @@
+<h1>Request activation link</h1>
+
+<%= form_with url: request_activation_link_signup_path do |form| %>
+  <%= form.email_field :email, required: true, autofocus: true, autocomplete: 'email', placeholder: 'Email address' %>
+  <br>
+  <%= form.submit 'Request activation link' %>
+<% end %>
