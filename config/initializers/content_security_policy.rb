@@ -14,6 +14,7 @@ Rails.application.configure do
     policy.object_src  :none
     policy.script_src  :self, :https
     policy.style_src   :self, :https
+    policy.connect_src :self
 
     # Allow @vite/client to hot reload changes in development
     if Rails.env.development?
