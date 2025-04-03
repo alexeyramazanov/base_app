@@ -24,5 +24,7 @@ Rails.application.routes.draw do
 
   get 'too_many_requests', to: 'pages#too_many_requests'
 
+  get 'about', to: 'home#about'
+
   root 'home#show'
 end

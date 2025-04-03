@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <title><%= content_for(:title) || "Base App" %></title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="mobile-web-app-capable">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= vite_client_tag %>
+  <%= yield :head %>
+  <link href="/icon.png" rel="icon" type="image/png">
+  <link href="/icon.png" rel="apple-touch-icon">
+  <%= vite_javascript_tag 'application' %>
+  <%= vite_stylesheet_tag 'application' %>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="text-gray-700 body-font border-b border-gray-200">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="<%= root_path %>">
+        <%= vite_image_tag 'images/logo.png', class: 'h-10' %>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <%= link_to 'About Us', about_path, class: 'mr-5' %>
+        <%= link_to 'Sign up', signup_path, class: 'mr-5' %>
+        <%= link_to 'Sign in', sign_in_url %>
+      </nav>
+    </div>
+  </header>
+
+  <div class="flex-grow">
+    <%= yield %>
+  </div>
+
+  <footer class="text-gray-700 body-font">
+    <div class="bg-gray-100">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        <p class="text-gray-500 text-sm text-center sm:text-left">
+          &#169; <%= Time.current.year %> Base App
+        </p>
+        <span class="sm:ml-auto sm:mt-0 mt-2 sm:w-auto w-full sm:text-left text-center text-gray-500 text-sm">
+          Mauris placerat tincidunt tellus
+        </span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
