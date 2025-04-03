@@ -7,6 +7,8 @@ class PasswordResetController < ApplicationController
 
   rate_limit to: 5, within: 10.minutes, only: :create, with: -> { redirect_to too_many_requests_url }
 
+  layout 'public'
+
   def new
   end
 

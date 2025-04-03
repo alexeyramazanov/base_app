@@ -1,19 +1,40 @@
-<h1>Sign In</h1>
+<section class="text-gray-600 body-font container px-5 py-24 mx-auto">
+  <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:m-auto w-full mt-10 md:mt-0">
+    <h2 class="text-gray-900 text-lg text-center font-medium title-font mb-4">Sign In</h2>
+    <div class="w-full bg-gray-200 my-3" style="height: 1px"></div>
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+    <% if flash[:alert] %>
+      <div class="w-full mb-2 select-none border-l-4 border-red-400 bg-red-100 p-4">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="w-full mb-2 select-none border-l-4 border-green-400 bg-green-100 p-4">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
-<%= form_with url: sign_in_path do |form| %>
-  <%= form.email_field :email, required: true, autofocus: true, autocomplete: "username", placeholder: "Email address", value: params[:email] %>
-  <br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Password", maxlength: 72 %>
-  <br>
-  <%= form.submit "Sign in" %>
-<% end %>
+    <%= form_with url: sign_in_path do |form| %>
+      <div class="relative mb-4">
+        <%= form.label :email, class: 'leading-7 text-sm text-gray-600' %>
+        <%= form.email_field :email, required: true, autofocus: true, autocomplete: 'email', value: params[:email],
+                             class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+      <div class="relative mb-4">
+        <%= form.label :password, class: 'leading-7 text-sm text-gray-600' %>
+        <%= form.password_field :password, required: true, autocomplete: 'current-password', maxlength: 72,
+                                class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+      <%= form.submit 'Sign in', class: 'w-full cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' %>
+    <% end %>
 
-<br>
-<%= link_to 'Create account', signup_path %>
-<br>
-<%= link_to "Forgot password?", password_reset_path %>
-<br>
-<%= link_to 'Request activation link', request_activation_link_signup_path %>
+    <div class="flex flex-wrap items-center justify-between mt-3">
+      <div class="w-full lg:w-auto">
+        <%= link_to 'Create account', signup_path %>
+      </div>
+      <div class="w-full lg:w-auto">
+        <%= link_to 'Forgot password?', password_reset_path %>
+      </div>
+    </div>
+  </div>
+</section>
