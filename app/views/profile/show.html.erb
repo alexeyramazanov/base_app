@@ -1,0 +1,47 @@
+<h1 class="font-semibold text-xl text-gray-700 pb-4">Profile</h1>
+
+<div class="flex flex-row gap-4 md:flex-wrap lg:flex-nowrap">
+  <div class="lg:basis-1/2 md:basis-full bg-white border border-solid border-gray-200 rounded-sm">
+    <div class="p-4">
+      <h3 class="pb-4">Email</h3>
+      <input type="text" name="current_email" disabled value="<%= Current.user.email %>"
+             class="w-full bg-gray-100 rounded border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8">
+    </div>
+  </div>
+
+  <div class="lg:basis-1/2 md:basis-full bg-white border border-solid border-gray-200 rounded-sm">
+    <div class="p-4">
+      <h3 class="pb-4">Change Password</h3>
+
+      <% if flash[:alert] %>
+        <div class="w-full mb-2 select-none border-l-4 border-red-400 bg-red-100 p-4">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="w-full mb-2 select-none border-l-4 border-green-400 bg-green-100 p-4">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%= form_with url: profile_path, method: :put do |form| %>
+        <div class="mb-4">
+          <%= form.label :current_password, class: 'leading-7 text-sm text-gray-600' %>
+          <%= form.password_field :current_password, required: true, autocomplete: 'current-password', maxlength: 72,
+                                  class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+        </div>
+        <div class="mb-4">
+          <%= form.label :password, 'New password', class: 'leading-7 text-sm text-gray-600' %>
+          <%= form.password_field :password, required: true, autocomplete: 'new-password', maxlength: 72,
+                                  class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+        </div>
+        <div class="mb-4">
+          <%= form.label :password_confirmation, 'New password confirmation', class: 'leading-7 text-sm text-gray-600' %>
+          <%= form.password_field :password_confirmation, required: true, autocomplete: 'new-password', maxlength: 72,
+                                  class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+        </div>
+        <%= form.submit 'Save', class: 'w-full cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg disabled:opacity-50' %>
+      <% end %>
+    </div>
+  </div>
+</div>

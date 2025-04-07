@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   put  'password_reset/:token', to: 'password_reset#update', as: 'set_new_password_password_reset'
 
   resource :dashboard, only: %i[show], controller: 'dashboard'
+  resource :profile, only: %i[show update], controller: 'profile'
 
   get 'too_many_requests', to: 'pages#too_many_requests'
 
