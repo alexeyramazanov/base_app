@@ -12,7 +12,7 @@ class ProfileController < ApplicationController
       render 'show', status: :unprocessable_entity and return
     end
 
-    if user.update(password_update_params)
+    if user.update_password(password_update_params)
       redirect_to profile_url, notice: 'Password successfully updated'
     else
       flash.now[:alert] = user.errors.full_messages.join('<br>').html_safe
