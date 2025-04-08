@@ -24,6 +24,7 @@ module Authentication
     # `confirmation: true` is executed only if attribute is present, so we have to check presence additionally
     validates :password_confirmation, presence: true,
                                       if:       -> { new_record? || changes[:password_digest] || password_changed }
+    validate { |record| record.errors.add(:password, :blank) if record.password_digest.blank? }
 
     # TODO: add support for expiring all sessions except current one
     has_many :sessions, class_name: 'UserSession', dependent: :destroy

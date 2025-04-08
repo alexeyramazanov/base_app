@@ -10,6 +10,7 @@ module AdminAuthentication
 
     validates :email, presence: true, uniqueness: true
     validates :password, length: { minimum: 6, maximum: 40 }, if: -> { new_record? || changes[:password_digest] }
+    validate { |record| record.errors.add(:password, :blank) if record.password_digest.blank? }
 
     # TODO: add support for expiring all sessions except current one
     has_many :sessions, class_name: 'AdminSession', dependent: :destroy
