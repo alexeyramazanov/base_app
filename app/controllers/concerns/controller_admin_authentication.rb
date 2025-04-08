@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-module ControllerAuthentication
+module ControllerAdminAuthentication
   extend ActiveSupport::Concern
 
   included do
     before_action :resume_session
-    before_action :redirect_if_admin
     before_action :require_authentication
   end
 
@@ -19,15 +18,11 @@ module ControllerAuthentication
   private
 
   def require_authentication
-    request_authentication unless Current.user
-  end
-
-  def redirect_if_admin
-    redirect_to admin_dashboard_url if cookies.signed[:admin_session_id]
+    request_authentication unless Current.admin_user
   end
 
   def redirect_if_authenticated
-    redirect_to dashboard_url if Current.user
+    redirect_to admin_dashboard_url if Current.admin_user
   end
 
   def resume_session
@@ -35,24 +30,24 @@ module ControllerAuthentication
   end
 
   def find_session_by_cookie
-    UserSession.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
+    AdminSession.find_by(id: cookies.signed[:admin_session_id]) if cookies.signed[:admin_session_id]
   end
 
   def request_authentication
     session[:return_to_after_authenticating] = request.url
 
-    redirect_to sign_in_url
+    redirect_to admin_sign_in_url
   end
 
   def after_authentication_url
-    session.delete(:return_to_after_authenticating) || dashboard_url
+    session.delete(:return_to_after_authenticating) || admin_dashboard_url
   end
 
-  def start_new_session_for(user)
-    user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
+  def start_new_session_for(admin)
+    admin.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
       Current.session = session
 
-      cookies.signed[:session_id] = {
+      cookies.signed[:admin_session_id] = {
         expires:   2.weeks.from_now.utc,
         httponly:  true,
         same_site: :lax,
@@ -65,6 +60,6 @@ module ControllerAuthentication
   def terminate_session
     Current.session.destroy
 
-    cookies.delete(:session_id)
+    cookies.delete(:admin_session_id)
   end
 end

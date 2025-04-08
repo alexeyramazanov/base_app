@@ -10,9 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_27_115702) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_07_124100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "admin_sessions", force: :cascade do |t|
+    t.bigint "admin_user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_admin_sessions_on_admin_user_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+  end
 
   create_table "user_sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -33,10 +50,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_27_115702) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activation_token"], name: "index_users_on_activation_token"
+    t.index ["activation_token"], name: "index_users_on_activation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "admin_sessions", "admin_users"
   add_foreign_key "user_sessions", "users"
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
+Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   get 'up', to: 'rails/health#show', as: :rails_health_check
 
   get  'signup', to: 'signup#new'
@@ -26,6 +26,16 @@ Rails.application.routes.draw do
   get 'too_many_requests', to: 'pages#too_many_requests'
 
   get 'about', to: 'home#about'
+
+  namespace :admin do
+    get    'sign_in', to: 'sign_in#new'
+    post   'sign_in', to: 'sign_in#create'
+    delete 'sign_in', to: 'sign_in#destroy'
+
+    resource :dashboard, only: %i[show], controller: 'dashboard'
+  end
+
+  get 'admin', to: redirect('/admin/dashboard')
 
   root 'home#show'
 end

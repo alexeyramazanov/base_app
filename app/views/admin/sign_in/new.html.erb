@@ -1,0 +1,31 @@
+<section class="text-gray-600 body-font container px-5 py-24 mx-auto">
+  <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:m-auto w-full mt-10 md:mt-0">
+    <h2 class="text-gray-900 text-lg text-center font-medium title-font mb-4">Admin Sign In</h2>
+    <div class="w-full bg-gray-200 my-3" style="height: 1px"></div>
+
+    <% if flash[:alert] %>
+      <div class="w-full mb-2 select-none border-l-4 border-red-400 bg-red-100 p-4">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="w-full mb-2 select-none border-l-4 border-green-400 bg-green-100 p-4">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <%= form_with url: admin_sign_in_path do |form| %>
+      <div class="relative mb-4">
+        <%= form.label :email, class: 'leading-7 text-sm text-gray-600' %>
+        <%= form.email_field :email, required: true, autofocus: true, autocomplete: 'email', value: params[:email],
+                             class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+      <div class="relative mb-4">
+        <%= form.label :password, class: 'leading-7 text-sm text-gray-600' %>
+        <%= form.password_field :password, required: true, autocomplete: 'current-password', maxlength: 72,
+                                class: 'w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' %>
+      </div>
+      <%= form.submit 'Sign in', class: 'w-full cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' %>
+    <% end %>
+  </div>
+</section>

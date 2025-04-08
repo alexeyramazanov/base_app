@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <title><%= content_for(:title) || "Base App Admin" %></title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="mobile-web-app-capable">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= vite_client_tag %>
+  <%= yield :head %>
+  <link href="/icon.png" rel="icon" type="image/png">
+  <link href="/icon.png" rel="apple-touch-icon">
+  <%= vite_javascript_tag 'application' %>
+  <%= vite_stylesheet_tag 'application' %>
+</head>
+<body class="bg-gray-100">
+  <header class="text-gray-600 body-font border-b border-gray-200 bg-white">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="<%= admin_dashboard_path %>">
+        <%= vite_image_tag 'images/logo.png', class: 'h-6' %>
+      </a>
+      <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+        <%= navigation_link 'Dashboard', admin_dashboard_path %>
+      </nav>
+      <div data-controller="shared--dropdown" data-action="click@window->shared--dropdown#close"
+           class="relative">
+        <button data-action="shared--dropdown#toggle" class="flex items-center cursor-pointer">
+          <%= Current.admin_user.email %>
+          <i class="fa-solid fa-chevron-down fa-sm pl-2"></i>
+        </button>
+        <div data-shared--dropdown-target="menu"
+             role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
+             class="hidden origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-gray-200 focus:outline-none">
+          <%= link_to admin_sign_in_path, data: { turbo_method: :delete }, class: 'text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100', role: 'menuitem' do %>
+            <i class="fa-solid fa-right-from-bracket pr-2"></i>
+            Sign out
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto p-5">
+    <%= yield %>
+  </div>
+</body>
+</html>
