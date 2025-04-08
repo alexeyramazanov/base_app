@@ -53,6 +53,10 @@ gem 'bootsnap', '~> 1.18.4', require: false
 gem 'thruster', '~> 0.1.12', require: false
 
 group :development, :test do
+  # A Ruby gem to load environment variables from `.env`.
+  # https://github.com/bkeepers/dotenv
+  gem 'dotenv', '~> 3.1.7'
+
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
   gem 'debug', '~> 1.10.0'

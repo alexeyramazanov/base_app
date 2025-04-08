@@ -37,8 +37,15 @@ node_modules
 
 /public/assets
 
-# Ignore master key for decrypting credentials and more.
+# Config files
+/config/database.yml
 /config/master.key
+/config/credentials.*
+
+# Ignore dotenv files, but keep example
+/.env
+/.env.*
+!/.env.example
 
 # Other develoment files
 .idea

@@ -1,24 +1,11 @@
-# README
+# Known issues
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+If you see
 
-Things you may want to cover:
+```
+objc[70458]: +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called.
+objc[70458]: +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called. We cannot safely call it or ignore it in the fork() child process. Crashing instead. Set a breakpoint on objc_initializeAfterForkError to debug.
+```
 
-* Ruby version
+when starting rails server just add `PGGSSENCMODE=disable` to your `.env` file. This is not related to Rails, see more info here - https://github.com/rails/rails/issues/38560#issuecomment-1881733872.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
