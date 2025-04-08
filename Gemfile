@@ -67,11 +67,11 @@ group :development, :test do
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
-  gem 'rubocop-rails', '~> 2.30.3', require: false
+  gem 'rubocop-rails', '~> 2.31.0', require: false
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
-  gem 'rubocop-performance', '~> 1.24.0', require: false
+  gem 'rubocop-performance', '~> 1.25.0', require: false
 end
 
 group :development do
