@@ -8,6 +8,10 @@ gem 'rails', '~> 8.0.2'
 # https://github.com/ged/ruby-pg
 gem 'pg', '~> 1.5.9'
 
+# A Ruby client library for Redis
+# https://github.com/redis/redis-rb
+gem 'redis', '~> 5.4.0'
+
 # bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm
 # https://github.com/bcrypt-ruby/bcrypt-ruby
 gem 'bcrypt', '~> 3.1.13'
@@ -35,10 +39,6 @@ gem 'stimulus-rails', '~> 1.3.4'
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
 gem 'solid_cable', '~> 3.0.7'
-
-# A database-backed ActiveSupport::Cache::Store
-# https://github.com/rails/solid_cache
-gem 'solid_cache', '~> 1.0.7'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq

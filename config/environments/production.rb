@@ -49,7 +49,7 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   config.active_support.report_deprecations = false
 
   # Replace the default in-process memory cache store with a durable alternative.
-  config.cache_store = :solid_cache_store
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_CACHE_URL'] }
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
   # config.active_job.queue_adapter = :solid_queue
