@@ -40,9 +40,13 @@ gem 'solid_cable', '~> 3.0.7'
 # https://github.com/rails/solid_cache
 gem 'solid_cache', '~> 1.0.7'
 
-# Database-backed Active Job backend
-# https://github.com/rails/solid_queue
-gem 'solid_queue', '~> 1.1.4'
+# Simple, efficient background processing for Ruby
+# https://github.com/sidekiq/sidekiq
+gem 'sidekiq', '~> 8.0.2'
+
+# Scheduler / Cron for Sidekiq jobs
+# https://github.com/sidekiq-cron/sidekiq-cron
+gem 'sidekiq-cron', '~> 2.2.0'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
@@ -82,4 +86,8 @@ group :development do
   # Rails Console on the Browser
   # https://github.com/rails/web-console
   gem 'web-console', '~> 4.2.1'
+
+  # Preview mail in the browser instead of sending
+  # https://github.com/ryanb/letter_opener
+  gem 'letter_opener', '~> 1.10.0'
 end

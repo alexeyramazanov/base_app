@@ -1,0 +1,4 @@
+monthly_user_stats:
+  cron: "0 0 1 * *"
+  class: "Admin::MonthlyUserStatsJob"
+  queue: default

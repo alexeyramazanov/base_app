@@ -93,7 +93,7 @@ module Authentication
     )
     save!(validate: false)
 
-    AuthenticationMailer.with(user: self).activation_link.deliver_later
+    AuthenticationMailer.with(user_id: id).activation_link.deliver_later
   end
 
   def send_password_reset_link
@@ -105,6 +105,6 @@ module Authentication
     )
     save!(validate: false)
 
-    AuthenticationMailer.with(user: self).reset_password.deliver_later
+    AuthenticationMailer.with(user_id: id).reset_password.deliver_later
   end
 end

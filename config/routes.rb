@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
+  mount Sidekiq::Web => '/sidekiq'
+
   get 'up', to: 'rails/health#show', as: :rails_health_check
 
   get  'signup', to: 'signup#new'
@@ -32,7 +37,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     post   'sign_in', to: 'sign_in#create'
     delete 'sign_in', to: 'sign_in#destroy'
 
-    resource :dashboard, only: %i[show], controller: 'dashboard'
+    resource :dashboard, only: %i[show], controller: 'dashboard' do
+      post :request_user_stats
+    end
   end
 
   get 'admin', to: redirect('/admin/dashboard')

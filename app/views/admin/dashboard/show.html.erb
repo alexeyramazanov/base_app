@@ -1,7 +1,16 @@
 <h1 class="font-semibold text-xl text-gray-700 pb-4">Admin Dashboard</h1>
 
+<% if flash[:notice] %>
+  <div class="w-full mb-2 select-none border-l-4 border-green-400 bg-green-100 p-4">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="bg-white border border-solid border-gray-200 rounded-sm">
   <div class="p-4">
-    Admin!
+    <%= form_with url: request_user_stats_admin_dashboard_path do |form| %>
+      <%= form.submit 'Request User Stats',
+                      class: 'cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' %>
+    <% end %>
   </div>
 </div>

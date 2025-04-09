@@ -40,5 +40,9 @@ module BaseApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.active_job.queue_adapter = :sidekiq
+
+    config.action_mailer.deliver_later_queue_name = :mailers
   end
 end
