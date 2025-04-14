@@ -63,7 +63,7 @@ gem 'thruster', '~> 0.1.12', require: false
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
   # https://github.com/bkeepers/dotenv
-  gem 'dotenv', '~> 3.1.7'
+  gem 'dotenv', '~> 3.1.8'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
