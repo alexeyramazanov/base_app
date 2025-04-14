@@ -41,6 +41,7 @@ node_modules
 /config/database.yml
 /config/master.key
 /config/credentials.*
+/anycable.toml
 
 # Ignore dotenv files, but keep example
 /.env

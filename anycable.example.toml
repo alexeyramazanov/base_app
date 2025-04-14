@@ -1,0 +1,42 @@
+# The application secret key
+secret = "secret"
+
+# Broadcasting adapters for app-to-clients messages
+broadcast_adapters = ["redisx"]
+
+# Pub/sub adapter for inter-node communication
+pubsub_adapter = "redis"
+
+[server]
+host = "localhost"
+port = 8080
+
+[logging]
+debug = true
+
+# Read more about broker: https://docs.anycable.io/anycable-go/reliable_streams
+[broker]
+adapter = "memory"
+history_ttl = 300
+history_limit = 100
+sessions_ttl = 300
+
+[rpc]
+host = "localhost:50051"
+# Specify HTTP headers that must be proxied to the RPC service
+proxy_headers = ["cookie", "origin"]
+# RPC concurrency (max number of concurrent RPC requests)
+concurrency = 10
+
+# Read more about AnyCable signed streams: https://docs.anycable.io/anycable-go/signed_streams
+[streams]
+# Enable public (unsigned) streams
+# public = true
+# Enable whispering support for pub/sub streams
+# whisper = true
+pubsub_channel = "$pubsub"
+turbo = true
+# cable_ready = true
+
+[redis]
+url = "redis://localhost:6379"

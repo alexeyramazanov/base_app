@@ -1,0 +1,35 @@
+<div class="flex flex-col flex-grow" data-controller="chat" data-chat-room-value="<%= @room %>">
+  <h1 class="font-semibold text-xl text-gray-700 pb-4 flex items-center">
+    Chat
+    <i class="fa-solid fa-circle text-xs pl-2 text-red-300" data-chat-target="status"></i>
+  </h1>
+
+  <div class="flex-grow flex gap-4">
+    <div class="w-1/4 bg-white border border-solid rounded-l-sm border-gray-200">
+      <div class="p-4">
+        <% ChatMessage::ROOMS.each do |room| %>
+          <%= link_to room.capitalize, chat_path(room:), data: { turbo_prefetch: false },
+                      class: "block rounded-md p-3 mb-1 transition-all hover:bg-slate-100 active:bg-slate-200 cursor-pointer #{@room == room ? 'bg-slate-200' : ''}" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="messages_container" class="w-3/4 bg-white border border-solid rounded-r-sm border-gray-200 relative">
+      <div class="p-4 overflow-y-scroll h-0" data-chat-target="messages">
+        <%= render partial: 'message', collection: @last_messages, as: :message %>
+      </div>
+
+      <div id="input_container" class="bg-white border-t border-gray-300 p-4 absolute bottom-0 mb-px w-full">
+        <div class="flex items-center">
+          <input type="text" placeholder="Type a message..." disabled
+                 data-chat-target="input" data-action="keydown.enter->chat#sendMessage"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 disabled:bg-gray-100 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+          <button disabled data-action="click->chat#sendMessage" data-chat-target="submit"
+                  class="text-white bg-indigo-500 border-0 px-4 py-2 ml-2 focus:outline-none hover:bg-indigo-600 disabled:bg-indigo-400 rounded cursor-pointer disabled:cursor-default">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,13 +9,14 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= vite_client_tag %>
+  <%= action_cable_with_jwt_meta_tag(current_user: Current.user) %>
   <%= yield :head %>
   <link href="/icon.png" rel="icon" type="image/png">
   <link href="/icon.png" rel="apple-touch-icon">
   <%= vite_javascript_tag 'application' %>
   <%= vite_stylesheet_tag 'application' %>
 </head>
-<body class="bg-gray-100">
+<body class="min-h-screen flex flex-col bg-gray-100">
   <header class="text-gray-600 body-font border-b border-gray-200 bg-white">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="<%= dashboard_path %>">
@@ -23,6 +24,7 @@
       </a>
       <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
         <%= navigation_link 'Dashboard', dashboard_path %>
+        <%= navigation_link 'Chat', chat_path, options: { simple: true }, link_options: { data: { turbo_prefetch: false } } %>
       </nav>
       <div data-controller="shared--dropdown" data-action="click@window->shared--dropdown#close"
            class="relative">
@@ -47,7 +49,7 @@
     </div>
   </header>
 
-  <div class="container mx-auto p-5">
+  <div class="container mx-auto p-5 flex-grow flex flex-col">
     <%= yield %>
   </div>
 </body>

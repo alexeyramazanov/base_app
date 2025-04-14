@@ -2,18 +2,11 @@
 
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
+    # lazily evaluated when requested, should match `action_cable_with_jwt_meta_tag`
     identified_by :current_user
 
-    def connect
-      set_current_user || reject_unauthorized_connection
-    end
-
-    private
-
-    def set_current_user
-      if (session = UserSession.find_by(id: cookies.signed[:session_id]))
-        self.current_user = session.user
-      end
-    end
+    # `connect` is not being called via JWT authentication
+    # def connect
+    # end
   end
 end

@@ -27,6 +27,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
 
   resource :dashboard, only: %i[show], controller: 'dashboard'
   resource :profile, only: %i[show update], controller: 'profile'
+  get 'chat/(:room)', to: 'chat#show', as: 'chat'
 
   get 'too_many_requests', to: 'pages#too_many_requests'
 

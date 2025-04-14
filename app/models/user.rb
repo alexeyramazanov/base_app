@@ -2,4 +2,6 @@
 
 class User < ApplicationRecord
   include Authentication
+
+  has_many :chat_messages, dependent: :delete_all
 end

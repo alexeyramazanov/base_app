@@ -40,6 +40,10 @@ gem 'stimulus-rails', '~> 1.3.4'
 # https://github.com/rails/solid_cable
 gem 'solid_cable', '~> 3.0.7'
 
+# AnyCable for Ruby on Rails applications
+# https://github.com/anycable/anycable-rails
+gem 'anycable-rails', '~> 1.6.0'
+
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
 gem 'sidekiq', '~> 8.0.2'
