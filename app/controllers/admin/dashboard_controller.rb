@@ -3,6 +3,7 @@
 module Admin
   class DashboardController < BaseController
     def show
+      @new_users = User.order(created_at: :desc).limit(5)
     end
 
     def request_user_stats

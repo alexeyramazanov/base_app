@@ -1,3 +1,5 @@
+<%= turbo_stream_from 'admin_new_users' %>
+
 <h1 class="font-semibold text-xl text-gray-700 pb-4">Admin Dashboard</h1>
 
 <% if flash[:notice] %>
@@ -6,13 +8,32 @@
   </div>
 <% end %>
 
-<div class="w-1/4 bg-white border border-solid border-gray-200 rounded-sm">
-  <div class="p-4">
-    <%= turbo_frame_tag 'request_user_stats' do %>
-      <%= form_with url: request_user_stats_admin_dashboard_path do |form| %>
-        <%= form.submit 'Request User Stats',
-                        class: 'w-full cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' %>
+<div class="flex items-start gap-4">
+  <div class="w-1/2 bg-white border border-solid border-gray-200 rounded-sm">
+    <div class="p-4">
+      <h3 class="pb-4">New users</h3>
+      <table class="w-full text-left table-auto min-w-max">
+        <thead>
+        <tr class="border-b border-slate-300 bg-slate-50">
+          <th class="p-2 text-sm font-normal leading-none text-slate-500">Email</th>
+          <th class="p-2 text-sm font-normal leading-none text-slate-500">Created at</th>
+        </tr>
+        </thead>
+        <tbody id="admin_new_users">
+          <%= render partial: 'new_user_row', collection: @new_users, as: :user %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="w-1/4 bg-white border border-solid border-gray-200 rounded-sm">
+    <div class="p-4">
+      <%= turbo_frame_tag 'request_user_stats' do %>
+        <%= form_with url: request_user_stats_admin_dashboard_path do |form| %>
+          <%= form.submit 'Request User Stats',
+                          class: 'w-full cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg' %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

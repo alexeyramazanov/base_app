@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= vite_client_tag %>
+  <%= action_cable_with_jwt_meta_tag(current_admin: Current.admin_user) %>
   <%= yield :head %>
   <link href="/icon.png" rel="icon" type="image/png">
   <link href="/icon.png" rel="apple-touch-icon">
