@@ -1,4 +1,49 @@
-# Known issues
+# Base App
+
+## Purpose
+
+Stop wasting time on creating basic Ruby on Rails applications.
+
+## What's inside
+
+### Components
+
+* PostgreSQL
+* Redis
+* Vite
+* TailwindCSS
+* Font Awesome
+* Hotwire (Turbo/Stimulus)
+* AnyCable with Solid Cable and Turbo support
+* Sidekiq (+ cron)
+
+### Features
+
+* Basic UI
+* Simple authentication
+* Admin panel
+* Chat example
+
+## How To Use
+
+TBD
+
+## Notes
+
+You can use [foreman](https://github.com/ddollar/foreman)/[overmind](https://github.com/DarthSim/overmind) to run application:
+
+```shell
+foreman start -f Procfile.dev -e .env.development.local
+OVERMIND_ENV=.env.development.local overmind s -f Procfile.dev --no-port
+```
+
+Using Overmind allows you to use interactive processes (like `debugger`) simply by connecting to running `web` instance in 2nd console:
+
+```shell
+overmind c web
+```
+
+## Known issues
 
 If you see
 
