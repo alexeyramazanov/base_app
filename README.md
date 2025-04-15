@@ -16,6 +16,7 @@ Stop wasting time on creating basic Ruby on Rails applications.
 * Hotwire (Turbo/Stimulus)
 * AnyCable with Solid Cable and Turbo support
 * Sidekiq (+ cron)
+* Carrierwave (Amazon S3)
 
 ### Features
 

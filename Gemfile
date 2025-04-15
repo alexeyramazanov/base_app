@@ -52,6 +52,14 @@ gem 'sidekiq', '~> 8.0.2'
 # https://github.com/sidekiq-cron/sidekiq-cron
 gem 'sidekiq-cron', '~> 2.2.0'
 
+# Classier solution for file uploads for Rails, Sinatra and other Ruby web frameworks
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave', '~> 3.1.2'
+
+# Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
+# https://github.com/fog/fog-aws
+gem 'fog-aws', '~> 3.30.0'
+
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
 gem 'bootsnap', '~> 1.18.4', require: false
