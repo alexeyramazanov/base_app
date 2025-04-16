@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Document < ApplicationRecord
-  belongs_to :user
+  include DocumentUploader::Attachment(:file)
 
-  mount_uploader :file, DocumentUploader
+  belongs_to :user
 end

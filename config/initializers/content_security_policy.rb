@@ -18,6 +18,7 @@ Rails.application.configure do
 
     # Allow @vite/client to hot reload changes in development
     if Rails.env.development?
+      policy.img_src(*policy.img_src, :http)
       policy.connect_src(*policy.connect_src,
                          "ws://#{ViteRuby.config.host_with_port}", ENV.fetch('ANYCABLE_WEBSOCKET_URL'))
       policy.script_src(*policy.script_src, :unsafe_eval, :unsafe_inline, "http://#{ViteRuby.config.host_with_port}")

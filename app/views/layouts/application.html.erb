@@ -25,6 +25,7 @@
       <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
         <%= navigation_link 'Dashboard', dashboard_path %>
         <%= navigation_link 'Chat', chat_path, options: { simple: true }, link_options: { data: { turbo_prefetch: false } } %>
+        <%= navigation_link 'Documents', documents_path %>
       </nav>
       <div data-controller="shared--dropdown" data-action="click@window->shared--dropdown#close"
            class="relative">

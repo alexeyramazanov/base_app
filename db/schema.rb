@@ -42,9 +42,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_15_112046) do
 
   create_table "documents", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "file"
+    t.jsonb "file_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["file_data"], name: "index_documents_on_file_data", using: :gin
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 

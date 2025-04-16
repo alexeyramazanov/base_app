@@ -52,13 +52,21 @@ gem 'sidekiq', '~> 8.0.2'
 # https://github.com/sidekiq-cron/sidekiq-cron
 gem 'sidekiq-cron', '~> 2.2.0'
 
-# Classier solution for file uploads for Rails, Sinatra and other Ruby web frameworks
-# https://github.com/carrierwaveuploader/carrierwave
-gem 'carrierwave', '~> 3.1.2'
+# File Attachment toolkit for Ruby applications
+# https://github.com/shrinerb/shrine
+gem 'shrine', '~> 3.6.0'
 
-# Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
-# https://github.com/fog/fog-aws
-gem 'fog-aws', '~> 3.30.0'
+# The official AWS SDK for Ruby
+# https://github.com/aws/aws-sdk-ruby
+gem 'aws-sdk-s3', '~> 1.183.0'
+
+# High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
+# https://github.com/janko/image_processing
+gem 'image_processing', '~> 1.14.0'
+
+# Ruby MIME type registry library
+# https://github.com/mime-types/ruby-mime-types/
+gem 'mime-types', '~> 3.6.2'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
