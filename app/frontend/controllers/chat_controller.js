@@ -1,8 +1,8 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from '@hotwired/stimulus';
 
-import { createCable } from "~/utils/cable";
-import { isTurboPreview } from "~/utils/turbo.js";
-import { ChatChannel } from "~/channels/chat_channel";
+import { createCable } from '~/utils/cable';
+import { isTurboPreview } from '~/utils/turbo.js';
+import { ChatChannel } from '~/channels/chat_channel';
 
 // It is possible that some messages could be lost during page load,
 // this is known and is out of the scope of this example

@@ -11,7 +11,7 @@ Stop wasting time on creating basic Ruby on Rails applications.
 * PostgreSQL
 * Redis
 * Vite
-* TailwindCSS
+* Tailwind CSS
 * Font Awesome
 * Hotwire (Turbo/Stimulus)
 * AnyCable with Solid Cable and Turbo support
@@ -23,7 +23,8 @@ Stop wasting time on creating basic Ruby on Rails applications.
 * Basic UI
 * Simple authentication
 * Admin panel
-* Chat example
+* Chat example (AnyCable + Hotwire) 
+* File upload example (Direct S3 upload via Uppy)
 
 ## How To Use
 

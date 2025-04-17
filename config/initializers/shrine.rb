@@ -27,6 +27,13 @@ Shrine.plugin :backgrounding
 Shrine.plugin :upload_options,
               cache: { acl: 'private', cache_control: "public, max-age=#{365.days.to_i}" },
               store: { acl: 'private', cache_control: "public, max-age=#{365.days.to_i}" }
+Shrine.plugin :presign_endpoint, presign_options: lambda { |request|
+  {
+    content_length_range: 0..(10 * 1024 * 1024), # 10 MB
+    content_disposition:  ContentDisposition.inline(request.params['filename']),
+    content_type:         request.params['type']
+  }
+}
 
 Shrine::Attacher.promote_block do
   ShrineJobs::PromoteJob.perform_async(self.class.name, record.class.name, record.id, name.to_s, file_data)

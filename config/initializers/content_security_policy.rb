@@ -20,7 +20,8 @@ Rails.application.configure do
     if Rails.env.development?
       policy.img_src(*policy.img_src, :http)
       policy.connect_src(*policy.connect_src,
-                         "ws://#{ViteRuby.config.host_with_port}", ENV.fetch('ANYCABLE_WEBSOCKET_URL'))
+                         "ws://#{ViteRuby.config.host_with_port}", ENV.fetch('ANYCABLE_WEBSOCKET_URL'),
+                         ENV.fetch('AWS_ENDPOINT'))
       policy.script_src(*policy.script_src, :unsafe_eval, :unsafe_inline, "http://#{ViteRuby.config.host_with_port}")
       policy.style_src(*policy.style_src, :unsafe_inline)
     end
