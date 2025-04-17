@@ -110,4 +110,12 @@ group :development do
   # Preview mail in the browser instead of sending
   # https://github.com/ryanb/letter_opener
   gem 'letter_opener', '~> 1.10.0'
+
+  # next generation CRuby profiler
+  # https://github.com/jhawthorn/vernier
+  gem 'vernier', '~> 1.7.0'
+
+  # Firefox Profiler for Ruby
+  # https://github.com/tenderlove/profiler
+  gem 'profile-viewer', '~> 0.0.4', require: false
 end
