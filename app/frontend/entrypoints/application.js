@@ -1,21 +1,18 @@
-// TODO: move to typescript
+import '@hotwired/turbo-rails'
+import { Application } from '@hotwired/stimulus'
+import { registerControllers } from 'stimulus-vite-helpers'
 
-import "@hotwired/turbo-rails"
+const application = Application.start()
+application.debug = false
 
-import './../controllers/index'
+const regularControllers = import.meta.glob('./../**/*_controller.js', { eager: true })
+let componentControllers = import.meta.glob('./../../components/**/*_controller.js', { eager: true })
+componentControllers = Object.entries(componentControllers).reduce((acc, [path, module]) => {
+  // remove the full path to the file, leave just the file name
+  const fileName = path.split('/').pop()
+  acc[fileName] = module
+  return acc
+}, {})
+registerControllers(application, { ...regularControllers, ...componentControllers })
 
-// Example: Load Rails libraries in Vite.
-//
-// import * as Turbo from '@hotwired/turbo'
-// Turbo.start()
-//
-// import ActiveStorage from '@rails/activestorage'
-// ActiveStorage.start()
-//
-// // Import all channels.
-// const channels = import.meta.globEager('./**/*_channel.js')
-
-// Example: Import a stylesheet in app/frontend/index.css
-// import '~/index.css'
-
-console.log('Vite ⚡️ Rails')
+window.Stimulus = application

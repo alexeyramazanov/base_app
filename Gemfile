@@ -28,6 +28,10 @@ gem 'puma', '~> 6.6.0'
 # https://github.com/ElMassimo/vite_ruby
 gem 'vite_rails', '~> 3.0.19'
 
+# A framework for building reusable, testable & encapsulated view components in Ruby on Rails
+# https://github.com/viewcomponent/view_component
+gem 'view_component', '~> 3.22.0'
+
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
 gem 'turbo-rails', '~> 2.0.13'

@@ -1,0 +1,8 @@
+<% if @url == :separator %>
+  <div class="h-px bg-gray-200 my-1"></div>
+<% else %>
+  <%= link_to @url, data: @data, class: 'text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100', role: 'menuitem' do %>
+    <i class="<%= @icon %> pr-2"></i>
+    <%= @title %>
+  <% end %>
+<% end %>

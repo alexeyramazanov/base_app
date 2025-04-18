@@ -44,5 +44,9 @@ module BaseApp
     config.active_job.queue_adapter = :sidekiq
 
     config.action_mailer.deliver_later_queue_name = :mailers
+
+    config.view_component.generate.stimulus_controller = true
+    config.view_component.generate.sidecar = true
+    config.view_component.component_parent_class = 'ApplicationComponent'
   end
 end
