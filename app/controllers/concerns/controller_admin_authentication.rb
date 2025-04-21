@@ -5,6 +5,7 @@ module ControllerAdminAuthentication
 
   included do
     before_action :resume_session
+    before_action :redirect_if_user
     before_action :require_authentication
   end
 
@@ -19,6 +20,10 @@ module ControllerAdminAuthentication
 
   def require_authentication
     request_authentication unless Current.admin_user
+  end
+
+  def redirect_if_user
+    redirect_to dashboard_url if cookies.signed[:session_id]
   end
 
   def redirect_if_authenticated
