@@ -2,10 +2,10 @@
 
 module NavigationHelper
   def navigation_link(name, url, options: {}, link_options: {})
-    klass = 'mr-5 hover:text-gray-900'
+    klass = 'link mr-5'
 
     current_page_matches = options[:simple] ? request.path.start_with?(url) : current_page?(url)
-    klass += ' text-indigo-600' unless current_page_matches
+    klass += ' link-active' if current_page_matches
 
     link_to name, url, { class: klass }.merge(link_options)
   end

@@ -16,15 +16,11 @@
   <%= vite_javascript_tag 'application' %>
   <%= vite_stylesheet_tag 'application' %>
 </head>
-<body class="bg-gray-100">
-  <header class="text-gray-600 body-font border-b border-gray-200 bg-white">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="<%= admin_dashboard_path %>">
-        <%= vite_image_tag 'images/logo.png', class: 'h-6' %>
-      </a>
-      <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-        <%= navigation_link 'Dashboard', admin_dashboard_path %>
-      </nav>
+<body class="min-h-screen flex flex-col bg-gray-100">
+  <%= render LayoutHeaderComponent.new(logo_url: admin_dashboard_path) do |layout_component| %>
+    <%= navigation_link 'Dashboard', admin_dashboard_path %>
+
+    <% layout_component.with_dropdown do %>
       <%= render DropdownComponent.new(align: :right) do |component| %>
         <% component.with_title do %>
           <%= Current.admin_user.email %>
@@ -33,10 +29,10 @@
         <%= render DropdownElementComponent.new(url: admin_sign_in_path, title: 'Sign out', icon: 'fa-solid fa-right-from-bracket',
                                                 data: { turbo_method: :delete }) %>
       <% end %>
-    </div>
-  </header>
+    <% end %>
+  <% end %>
 
-  <div class="container mx-auto p-5">
+  <div class="container mx-auto p-5 flex-grow flex flex-col">
     <%= yield %>
   </div>
 </body>

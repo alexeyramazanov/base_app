@@ -8,6 +8,7 @@ module Admin
 
     def request_user_stats
       Admin::UserStatsJob.perform_async(Current.admin_user.id)
+      flash.now[:notice] = 'You will receive an email soon.'
     end
   end
 end

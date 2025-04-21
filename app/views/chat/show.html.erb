@@ -23,9 +23,9 @@
         <div class="flex items-center">
           <input type="text" placeholder="Type a message..." disabled
                  data-chat-target="input" data-action="keydown.enter->chat#sendMessage"
-                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 disabled:bg-gray-100 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                 class="input-field">
           <button disabled data-action="click->chat#sendMessage" data-chat-target="submit"
-                  class="text-white bg-indigo-500 border-0 px-4 py-2 ml-2 focus:outline-none hover:bg-indigo-600 disabled:bg-indigo-400 rounded cursor-pointer disabled:cursor-default">
+                  class="button w-auto px-4 py-2 ml-2 text-base disabled:cursor-default">
             Send
           </button>
         </div>
