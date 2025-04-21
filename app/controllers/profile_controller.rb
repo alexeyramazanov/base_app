@@ -15,7 +15,7 @@ class ProfileController < ApplicationController
     if user.update_password(password_update_params)
       redirect_to profile_url, notice: 'Password successfully updated'
     else
-      flash.now[:alert] = user.errors.full_messages.join('<br>').html_safe
+      flash.now[:alert] = user.errors.full_messages.join('<br>').html_safe # rubocop:disable Rails/OutputSafety
       render 'show', status: :unprocessable_entity
     end
   end

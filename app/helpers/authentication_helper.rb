@@ -5,7 +5,7 @@ module AuthenticationHelper
     case status
     when :activation_required
       link = tag.a('here', href: request_activation_link_signup_path, class: 'text-indigo-500')
-      "You need to activate your account #{link} first.".html_safe
+      "You need to activate your account #{link} first.".html_safe # rubocop:disable Rails/OutputSafety
     else
       'Invalid email or password.'
     end
