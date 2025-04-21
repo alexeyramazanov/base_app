@@ -33,7 +33,7 @@ class SignupController < ApplicationController
   end
 
   def request_activation_link
-    return if request.get?
+    return if request.get? || request.head? # Rails treats HEAD requests just like GET requests
 
     user = User.find_by(email: params[:email])
     user&.send_activation_link

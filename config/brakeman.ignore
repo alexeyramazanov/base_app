@@ -1,0 +1,28 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "cdb677d308f423403e81ba20f108aac2d1eb67c878b015d9e18e5024cf8cc1f3",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/documents_controller.rb",
+      "line": 36,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Document.find(params[:id]).file.url(:response_content_disposition => ContentDisposition.attachment(Document.find(params[:id]).file.metadata[\"filename\"])), :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "DocumentsController",
+        "method": "download"
+      },
+      "user_input": "Document.find(params[:id]).file.url(:response_content_disposition => ContentDisposition.attachment(Document.find(params[:id]).file.metadata[\"filename\"]))",
+      "confidence": "Weak",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.2"
+}
