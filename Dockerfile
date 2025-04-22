@@ -52,7 +52,7 @@ COPY --from=build /app /app
 
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
+    chown -R rails:rails db log tmp
 USER 1000:1000
 
 ENTRYPOINT ["/app/bin/docker-entrypoint"]
