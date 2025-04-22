@@ -6,18 +6,18 @@ default: &default
   # Use Redis Streams to broadcast messages to AnyCable server
   broadcast_adapter: redisx
   # Number of worker threads to use for gRPC server
-  rpc_pool_size: <%= ENV.fetch('ANYCABLE_RPC_POOL_SIZE') %>
+  rpc_pool_size: <%= ENV.fetch('ANYCABLE_RPC_POOL_SIZE', 10) %>
   # Redis connection URL
-  redis_url: <%= ENV.fetch('ANYCABLE_REDIS_URL') %>
+  redis_url: <%= ENV.fetch('ANYCABLE_REDIS_URL', 'redis://localhost:6379/0') %>
   # Use the same channel name for WebSocket server, e.g.:
   #   $ anycable-go --redis_channel="__anycable__"
   redis_channel: __anycable__
   # Must be the same as in your AnyCable server config
-  secret: <%= ENV.fetch('ANYCABLE_SECRET') %>
+  secret: <%= ENV.fetch('ANYCABLE_SECRET', nil) %>
   # WebSocket endpoint of your AnyCable server for clients to connect to
   # Make sure you have the `action_cable_meta_tag` in your HTML layout
   # to propagate this value to the client app
-  websocket_url: <%= ENV.fetch('ANYCABLE_WEBSOCKET_URL') %>
+  websocket_url: <%= ENV.fetch('ANYCABLE_WEBSOCKET_URL', 'ws://localhost:8080/cable') %>
 
 development:
   <<: *default

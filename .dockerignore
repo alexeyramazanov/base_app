@@ -45,3 +45,8 @@
 # Ignore Docker-related files
 /.dockerignore
 /Dockerfile*
+
+# Other develoment files
+.idea
+.vscode
+*.DS_Store

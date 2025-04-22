@@ -5,12 +5,12 @@ require 'shrine/storage/s3'
 require 'image_processing/vips'
 
 s3_options = {
-  access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID'),
-  secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-  region:            ENV.fetch('AWS_REGION'),
-  bucket:            ENV.fetch('AWS_BUCKET'),
-  endpoint:          ENV.fetch('AWS_ENDPOINT'),
-  force_path_style:  ENV.fetch('AWS_PATH_STYLE')
+  access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+  secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
+  region:            ENV.fetch('AWS_REGION', 'us-east-1'),
+  bucket:            ENV.fetch('AWS_BUCKET', 'base-app'),
+  endpoint:          ENV.fetch('AWS_ENDPOINT', nil),
+  force_path_style:  ENV.fetch('AWS_PATH_STYLE', nil)
 }
 
 Shrine.storages = {

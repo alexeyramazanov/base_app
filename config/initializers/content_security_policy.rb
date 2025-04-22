@@ -16,12 +16,24 @@ Rails.application.configure do
     policy.style_src   :self, :https
     policy.connect_src :self
 
-    # Allow @vite/client to hot reload changes in development
-    if Rails.env.development?
+    if ENV.fetch('ANYCABLE_WEBSOCKET_URL', nil).present?
+      policy.connect_src(*policy.connect_src, ENV.fetch('ANYCABLE_WEBSOCKET_URL'))
+    end
+    if ENV.fetch('AWS_ENDPOINT', nil).present?
+      policy.connect_src(*policy.connect_src, ENV.fetch('AWS_ENDPOINT'))
+      policy.img_src(*policy.img_src, ENV.fetch('AWS_ENDPOINT'))
+    end
+
+    case Rails.env
+    when 'production'
+      # turbo progressbar - https://github.com/hotwired/turbo/issues/809
+      policy.style_src(*policy.style_src, "'sha256-WAyOw4V+FqDc35lQPyRADLBWbuNK8ahvYEaQIYF1+Ps='")
+    else
+      # Allow @vite/client to hot reload changes in development
+      # Allow to access resources from http
+      # Allow embedding of inline js/css for turbo and other libs
       policy.img_src(*policy.img_src, :http)
-      policy.connect_src(*policy.connect_src,
-                         "ws://#{ViteRuby.config.host_with_port}", ENV.fetch('ANYCABLE_WEBSOCKET_URL'),
-                         ENV.fetch('AWS_ENDPOINT'))
+      policy.connect_src(*policy.connect_src, "ws://#{ViteRuby.config.host_with_port}")
       policy.script_src(*policy.script_src, :unsafe_eval, :unsafe_inline, "http://#{ViteRuby.config.host_with_port}")
       policy.style_src(*policy.style_src, :unsafe_inline)
     end

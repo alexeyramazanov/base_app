@@ -27,10 +27,10 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   config.active_storage.service = :local
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
-  config.assume_ssl = true
+  config.assume_ssl = ActiveRecord::Type::Boolean.new.cast(ENV.fetch('ENABLE_SSL', true))
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = ActiveRecord::Type::Boolean.new.cast(ENV.fetch('ENABLE_SSL', true))
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
@@ -62,13 +62,13 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   config.action_mailer.smtp_settings = {
     authentication:       :plain,
     enable_starttls_auto: true,
-    domain:               ENV.fetch('SMTP_DOMAIN'),
-    address:              ENV.fetch('SMTP_ADDRESS'),
-    port:                 ENV.fetch('SMTP_PORT'),
-    user_name:            ENV.fetch('SMTP_USERNAME'),
-    password:             ENV.fetch('SMTP_PASSWORD')
+    domain:               ENV.fetch('SMTP_DOMAIN', nil),
+    address:              ENV.fetch('SMTP_ADDRESS', nil),
+    port:                 ENV.fetch('SMTP_PORT', nil),
+    user_name:            ENV.fetch('SMTP_USERNAME', nil),
+    password:             ENV.fetch('SMTP_PASSWORD', nil)
   }
-  config.action_mailer.default_url_options = { host: ENV.fetch('APPLICATION_HOST') }
+  config.action_mailer.default_url_options = { host: ENV.fetch('APPLICATION_HOST', nil) }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -89,5 +89,5 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  config.turbo.signed_stream_verifier_key = ENV.fetch('ANYCABLE_SECRET')
+  config.turbo.signed_stream_verifier_key = ENV.fetch('ANYCABLE_SECRET', nil)
 end
