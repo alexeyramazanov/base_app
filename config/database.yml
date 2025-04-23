@@ -8,17 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: base_app_development
+  # issue related only to macOS devices:
+  # https://github.com/rails/rails/issues/38560
+  # https://github.com/ged/ruby-pg/issues/538
+  gssencmode: disable
 
 test:
   <<: *default
-  database: base_app_test
+  gssencmode: disable
 
-# TODO: cache/queue/cable custom configuration
 production:
-  primary: &primary_production
-    <<: *default
-  cable:
-    <<: *primary_production
-    database: base_app_production_cable
-    migrations_paths: db/cable_migrate
+  <<: *default

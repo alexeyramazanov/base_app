@@ -29,7 +29,7 @@ services:
       - ANYCABLE_DISABLE_TELEMETRY=true
     ports:
       - '8080:8080'
-    command: ./anycable-go --host 0.0.0.0 --port 8080 --rpc_host anycable-grpc:50051
+    command: /bin/sh -c './anycable-go --host 0.0.0.0 --port 8080 --rpc_host anycable-grpc:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$$ANYCABLE_SECRET" --enforce_jwt --turbo_streams'
   postgres:
     image: postgres:17-alpine
     volumes:

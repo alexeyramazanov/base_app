@@ -10,7 +10,7 @@ ARG ANYCABLE_URL="https://github.com/anycable/anycable/releases/download/v${ANYC
 WORKDIR /app
 
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
+    apt-get install --no-install-recommends -y procps curl libjemalloc2 libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives && \
     curl -L -s -o anycable-go "${ANYCABLE_URL}" && \
     chmod +x anycable-go
