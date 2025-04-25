@@ -40,6 +40,10 @@
 /.dockerignore
 /Dockerfile*
 
+# Other files
+/coverage
+spec/examples.txt
+
 # Other develoment files
 .idea
 .vscode

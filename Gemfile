@@ -85,6 +85,14 @@ group :development, :test do
   # https://github.com/bkeepers/dotenv
   gem 'dotenv', '~> 3.1.8'
 
+  # Pretty print your Ruby objects with style -- in full color and with proper indentation
+  # https://github.com/amazing-print/amazing_print
+  gem 'amazing_print', '~> 1.7.2'
+
+  # RSpec for Rails 7+
+  # https://github.com/rspec/rspec-rails
+  gem 'rspec-rails', '~> 7.1.1'
+
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
   gem 'debug', '~> 1.10.0'
@@ -101,9 +109,17 @@ group :development, :test do
   # https://github.com/rubocop/rubocop-rails
   gem 'rubocop-rails', '~> 2.31.0', require: false
 
+  # A library for setting up Ruby objects as test data
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails', '~> 6.4.4'
+
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
   gem 'rubocop-performance', '~> 1.25.0', require: false
+
+  # Code style checking for RSpec files
+  # https://github.com/rubocop/rubocop-rspec
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
@@ -122,4 +138,19 @@ group :development do
   # Firefox Profiler for Ruby
   # https://github.com/tenderlove/profiler
   gem 'profile-viewer', '~> 0.0.4', require: false
+end
+
+group :test do
+  # RSpec for Sidekiq
+  # https://github.com/wspurgin/rspec-sidekiq
+  gem 'rspec-sidekiq', '~> 5.1.0'
+
+  # Strategies for cleaning databases in Ruby
+  # https://github.com/DatabaseCleaner/database_cleaner
+  gem 'database_cleaner-active_record', '~> 2.2.0'
+  gem 'database_cleaner-redis', '~> 2.0.0'
+
+  # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
+  # https://github.com/simplecov-ruby/simplecov
+  gem 'simplecov', '~> 0.22.0', require: false
 end

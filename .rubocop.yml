@@ -6,6 +6,7 @@ AllCops:
 
 plugins:
   - rubocop-rails
+  - rubocop-rspec
   - rubocop-performance
 
 Style/Documentation:
@@ -29,3 +30,9 @@ Metrics/MethodLength:
 
 Metrics/AbcSize:
   Max: 25
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 20
