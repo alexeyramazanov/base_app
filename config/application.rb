@@ -50,5 +50,7 @@ module BaseApp
     config.view_component.generate.stimulus_controller = true
     config.view_component.generate.sidecar = true
     config.view_component.component_parent_class = 'ApplicationComponent'
+
+    config.turbo.signed_stream_verifier_key = ENV.fetch('ANYCABLE_SECRET', nil)
   end
 end

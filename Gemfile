@@ -93,6 +93,18 @@ group :development, :test do
   # https://github.com/rspec/rspec-rails
   gem 'rspec-rails', '~> 7.1.1'
 
+  # A library for setting up Ruby objects as test data
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails', '~> 6.4.4'
+
+  # Acceptance test framework for web applications
+  # https://github.com/teamcapybara/capybara
+  gem 'capybara', '~> 3.40.0'
+
+  # Selenium implements the W3C WebDriver protocol to automate popular browsers
+  # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
+  gem 'selenium-webdriver', '~> 4.31.0'
+
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
   gem 'debug', '~> 1.10.0'
@@ -101,17 +113,9 @@ group :development, :test do
   # https://github.com/presidentbeef/brakeman
   gem 'brakeman', '~> 7.0.0', require: false
 
-  # A Ruby static code analyzer and formatter, based on the community Ruby style guide
-  # https://github.com/rubocop/rubocop
-  gem 'rubocop', '~> 1.75.1', require: false
-
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
   gem 'rubocop-rails', '~> 2.31.0', require: false
-
-  # A library for setting up Ruby objects as test data
-  # https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails', '~> 6.4.4'
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance

@@ -36,3 +36,7 @@ RSpec/MultipleExpectations:
 
 RSpec/ExampleLength:
   Max: 20
+
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - spec/features/**/*.rb
