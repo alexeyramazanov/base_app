@@ -40,6 +40,22 @@ RSpec.describe Authentication, type: :module do
         }
         expect(user.errors.details).to eq(expected_errors)
       end
+
+      it 'validates password confirmation matches password' do
+        user.update(password: 'new_password', password_confirmation: 'different_password', password_changed: true)
+
+        expected_errors = {
+          password_confirmation: [{ error: :confirmation, attribute: 'Password' }]
+        }
+        expect(user.errors.details).to include(expected_errors)
+      end
+
+      it 'skips password validations when password_changed is false' do
+        result = user.update(email: 'new_email@example.com')
+
+        expect(result).to be(true)
+        expect(user.errors.details).to be_empty
+      end
     end
 
     it 'validates activation_state' do

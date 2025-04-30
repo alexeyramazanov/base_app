@@ -8,9 +8,21 @@ module AdminAuthentication
 
     normalizes :email, with: ->(e) { e.strip.downcase }
 
+    attr_accessor :password_changed
+
     validates :email, presence: true, uniqueness: true
-    validates :password, length: { minimum: 6, maximum: 40 }, if: -> { new_record? || changes[:password_digest] }
-    validate { |record| record.errors.add(:password, :blank) if record.password_digest.blank? }
+    # length replaces `presence` validation
+    # `password_changed` flag is used to trigger validations on empty passwords
+    validates :password, length: { minimum: 6, maximum: 40 },
+                         if:     -> { new_record? || changes[:password_digest] || password_changed }
+    validates :password, confirmation: true,
+                         if:           lambda { |record|
+                record.password.present? && (new_record? || changes[:password_digest] || password_changed)
+              }
+    # `confirmation: true` is executed only if attribute is present, so we have to check presence additionally
+    validates :password_confirmation, presence: true,
+                                      if:       -> { new_record? || changes[:password_digest] || password_changed }
+    validate { |record| record.errors.add(:password, :blank) if record.persisted? && record.password_digest.blank? }
 
     # TODO: add support for expiring all sessions except current one
     has_many :sessions, class_name: 'AdminSession', dependent: :destroy
