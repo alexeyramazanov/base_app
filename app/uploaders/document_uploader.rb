@@ -14,6 +14,7 @@ class DocumentUploader < Shrine
     }
   end
 
+  # fall back to the original file URL when the derivative is missing
   Attacher.default_url do |derivative: nil, **|
     file&.url if derivative
   end

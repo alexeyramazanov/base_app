@@ -68,9 +68,9 @@ gem 'aws-sdk-s3', '~> 1.183.0'
 # https://github.com/janko/image_processing
 gem 'image_processing', '~> 1.14.0'
 
-# Ruby MIME type registry library
-# https://github.com/mime-types/ruby-mime-types/
-gem 'mime-types', '~> 3.6.2'
+# Find the mime type of files, examining file, filename and declared type
+# https://github.com/rails/marcel
+gem 'marcel', '~> 1.0.4'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap

@@ -28,7 +28,7 @@ end
 
 Shrine.plugin :activerecord
 Shrine.plugin :validation_helpers
-Shrine.plugin :determine_mime_type, analyzer: :mime_types
+Shrine.plugin :determine_mime_type, analyzer: :marcel
 Shrine.plugin :default_url
 Shrine.plugin :derivatives
 Shrine.plugin :backgrounding
