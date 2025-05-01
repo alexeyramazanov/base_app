@@ -2,21 +2,29 @@
 
 require 'shrine'
 require 'shrine/storage/s3'
+require 'shrine/storage/file_system'
 require 'image_processing/vips'
 
-s3_options = {
-  access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID', nil),
-  secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
-  region:            ENV.fetch('AWS_REGION', 'us-east-1'),
-  bucket:            ENV.fetch('AWS_BUCKET', 'base-app'),
-  endpoint:          ENV.fetch('AWS_ENDPOINT', nil),
-  force_path_style:  ENV.fetch('AWS_PATH_STYLE', nil)
-}
+if Rails.env.test?
+  Shrine.storages = {
+    cache: Shrine::Storage::FileSystem.new('tmp/storage', prefix: 'cache'),
+    store: Shrine::Storage::FileSystem.new('tmp/storage', prefix: 'store')
+  }
+else
+  s3_options = {
+    access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+    secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
+    region:            ENV.fetch('AWS_REGION', 'us-east-1'),
+    bucket:            ENV.fetch('AWS_BUCKET', 'base-app'),
+    endpoint:          ENV.fetch('AWS_ENDPOINT', nil),
+    force_path_style:  ENV.fetch('AWS_PATH_STYLE', nil)
+  }
 
-Shrine.storages = {
-  cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options),
-  store: Shrine::Storage::S3.new(prefix: 'store', **s3_options)
-}
+  Shrine.storages = {
+    cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options),
+    store: Shrine::Storage::S3.new(prefix: 'store', **s3_options)
+  }
+end
 
 Shrine.plugin :activerecord
 Shrine.plugin :validation_helpers

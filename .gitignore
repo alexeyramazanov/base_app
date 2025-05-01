@@ -18,6 +18,11 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore temp storage.
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
 # Vite Ruby
 /public/vite*
 node_modules
