@@ -9,7 +9,7 @@ RSpec.describe AuthenticationMailer do
     subject(:mail) { described_class.with(user_id: user.id).activation_link }
 
     before do
-      user.update!(activation_token: 'test-activation-token')
+      user.update!(activation_token: 'act123')
     end
 
     it 'sends to the correct email' do
@@ -21,7 +21,7 @@ RSpec.describe AuthenticationMailer do
     end
 
     it 'includes activation link in the email body' do
-      expect(mail.body).to include(activate_signup_url('test-activation-token'))
+      expect(mail.body).to include(activate_signup_url('act123'))
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe AuthenticationMailer do
     subject(:mail) { described_class.with(user_id: user.id).reset_password }
 
     before do
-      user.update!(reset_password_token: 'test-reset-token')
+      user.update!(reset_password_token: 'reset123')
     end
 
     it 'sends to the correct email' do
@@ -41,7 +41,7 @@ RSpec.describe AuthenticationMailer do
     end
 
     it 'includes reset password link in the email body' do
-      expect(mail.body).to include(new_password_password_reset_url('test-reset-token'))
+      expect(mail.body).to include(new_password_password_reset_url('reset123'))
     end
   end
 end
