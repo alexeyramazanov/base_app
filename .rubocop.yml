@@ -40,3 +40,6 @@ RSpec/ExampleLength:
 RSpec/SpecFilePathFormat:
   Exclude:
     - spec/features/**/*.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
