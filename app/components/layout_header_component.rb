@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class LayoutHeaderComponent < ApplicationComponent
-  renders_one :links
   renders_one :dropdown
 
   def initialize(logo_url:)
