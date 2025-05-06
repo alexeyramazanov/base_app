@@ -17,11 +17,12 @@ RSpec.configure do |config|
 
     DatabaseCleaner[:active_record].clean_with(:truncation)
     DatabaseCleaner[:redis].clean_with(:deletion)
+    DatabaseCleaner[:redis].db = ENV.fetch('REDIS_CACHE_URL')
   end
 
   config.before do
     DatabaseCleaner[:active_record].strategy = :transaction
-    DatabaseCleaner[:redis].strategy = :deletion
+    DatabaseCleaner[:redis].strategy = DatabaseCleaner::Redis::Deletion.new(except: ['__anycable__'])
   end
 
   config.before(:each, type: :feature) do

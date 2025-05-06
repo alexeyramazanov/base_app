@@ -9,14 +9,14 @@ class DocumentsController < ApplicationController
     # expect to always succeed
     Current.user.documents.create!(file: params[:file])
 
-    redirect_to documents_path
+    redirect_to documents_url
   end
 
   def destroy
-    document = Document.find(params[:id])
+    document = Current.user.documents.find(params[:id])
     document.destroy
 
-    redirect_to documents_path
+    redirect_to documents_url
   end
 
   def s3_params
@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
   end
 
   def download
-    document = Document.find(params[:id])
+    document = Current.user.documents.find(params[:id])
     url = document.file.url(
       response_content_disposition: ContentDisposition.attachment(document.file.metadata['filename'])
     )
