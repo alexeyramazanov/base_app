@@ -6,16 +6,16 @@
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
-    "@tailwindcss/vite": "^4.0.17",
+    "@tailwindcss/vite": "^4.1.5",
     "@uppy/aws-s3": "^4.2.3",
     "@uppy/core": "^4.4.4",
     "@uppy/drag-drop": "^4.1.2",
     "@uppy/status-bar": "^4.1.3",
-    "tailwindcss": "^4.0.17"
+    "tailwindcss": "^4.1.5"
   },
   "devDependencies": {
     "stimulus-vite-helpers": "^3.1.0",
-    "vite": "^6.2.6",
+    "vite": "^6.3.5",
     "vite-plugin-rails": "^0.5.0"
   }
 }

@@ -50,7 +50,7 @@ gem 'anycable-rails', '~> 1.6.0'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
-gem 'sidekiq', '~> 8.0.2'
+gem 'sidekiq', '~> 8.0.3'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
@@ -62,7 +62,7 @@ gem 'shrine', '~> 3.6.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.183.0'
+gem 'aws-sdk-s3', '~> 1.185.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -78,7 +78,7 @@ gem 'bootsnap', '~> 1.18.4', require: false
 
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
-gem 'thruster', '~> 0.1.12', require: false
+gem 'thruster', '~> 0.1.13', require: false
 
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
@@ -91,7 +91,7 @@ group :development, :test do
 
   # RSpec for Rails 7+
   # https://github.com/rspec/rspec-rails
-  gem 'rspec-rails', '~> 7.1.1'
+  gem 'rspec-rails', '~> 8.0.0'
 
   # A library for setting up Ruby objects as test data
   # https://github.com/thoughtbot/factory_bot_rails
@@ -103,7 +103,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.31.0'
+  gem 'selenium-webdriver', '~> 4.32.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
