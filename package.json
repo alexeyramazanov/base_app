@@ -1,4 +1,5 @@
 {
+  "name": "base_app",
   "private": true,
   "type": "module",
   "dependencies": {

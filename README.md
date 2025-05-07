@@ -29,7 +29,19 @@ Stop wasting time on creating basic Ruby on Rails applications.
 
 ## How To Use
 
-TBD
+1. `git clone --depth=1 --branch=master git@github.com:alexeyramazanov/base_app.git my_new_app`
+2. `cd my_new_app`
+3. `rm -rf .git`
+4. `rake rename_app['BrandNewName']`
+5. `rm lib/tasks/rename_app.rake`
+6. update `config/database.yml` (if needed)
+7. update `db/seeds.rb`
+8. `cp .env.example .env.development.local`
+9. update `.env.local`
+10. update `.env.test`
+11. `rm README.md`
+12. `bundle`
+13. `npm install`
 
 ## Docker
 
