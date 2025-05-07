@@ -130,7 +130,7 @@ RSpec.describe DocumentsController do
     # have to have this spec because in test env we use FileSystem as a storage backend
     # which does not support a response_content_disposition option
     it 'passes the correct content disposition header' do
-      expect_any_instance_of(Shrine::UploadedFile) # rubocop:disable Rspec/AnyInstance
+      expect_any_instance_of(Shrine::UploadedFile) # rubocop:disable RSpec/AnyInstance
         .to receive(:url)
         .with(response_content_disposition: "attachment; filename=\"sample.jpg\"; filename*=UTF-8''sample.jpg")
         .and_call_original
