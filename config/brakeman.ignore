@@ -3,20 +3,20 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "cdb677d308f423403e81ba20f108aac2d1eb67c878b015d9e18e5024cf8cc1f3",
+      "fingerprint": "d74134c7a36f777fba00164a96e42e0c4bdf2c13ce1a62a2f685f8a116c87f61",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/documents_controller.rb",
-      "line": 36,
+      "line": 45,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Document.find(params[:id]).file.url(:response_content_disposition => ContentDisposition.attachment(Document.find(params[:id]).file.metadata[\"filename\"])), :allow_other_host => true)",
+      "code": "redirect_to(Current.user.documents.find(params[:id]).file.url(:response_content_disposition => ContentDisposition.attachment(Current.user.documents.find(params[:id]).file.metadata[\"filename\"])), :allow_other_host => true)",
       "render_path": null,
       "location": {
         "type": "method",
         "class": "DocumentsController",
         "method": "download"
       },
-      "user_input": "Document.find(params[:id]).file.url(:response_content_disposition => ContentDisposition.attachment(Document.find(params[:id]).file.metadata[\"filename\"]))",
+      "user_input": "Current.user.documents.find(params[:id]).file.url(:response_content_disposition => ContentDisposition.attachment(Current.user.documents.find(params[:id]).file.metadata[\"filename\"]))",
       "confidence": "Weak",
       "cwe_id": [
         601
