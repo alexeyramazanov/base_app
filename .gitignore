@@ -36,8 +36,7 @@ node_modules
 # Ignore dotenv files, but keep example
 /.env
 /.env.*
-!/.env.example
-!/.env.test
+!/.env.*.example
 
 # Other files
 /coverage

@@ -34,14 +34,13 @@ Stop wasting time on creating basic Ruby on Rails applications.
 3. `rm -rf .git`
 4. `rake rename_app['BrandNewName']`
 5. `rm lib/tasks/rename_app.rake`
-6. update `config/database.yml` (if needed)
+6. update `config/database.yml`
 7. update `db/seeds.rb`
-8. `cp .env.example .env.development.local`
-9. update `.env.local`
-10. update `.env.test`
-11. `rm README.md`
-12. `bundle`
-13. `npm install`
+8. update `.env.development.local`
+9. update `.env.test.local`
+10. `rm README.md`
+11. `bundle`
+12. `npm install`
 
 ## Docker
 
