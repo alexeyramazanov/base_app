@@ -16,9 +16,10 @@ RSpec.describe ShrineJobs::PromoteJob do
   let(:attacher) { instance_double(uploader_attacher) }
 
   before do
-    allow(uploader_attacher).to receive(:retrieve)
-                                 .with(model: record, name: name, file: file_data)
-                                 .and_return(attacher)
+    allow(uploader_attacher)
+      .to receive(:retrieve)
+      .with(model: record, name: name, file: file_data)
+      .and_return(attacher)
     allow(attacher).to receive(:create_derivatives)
     allow(attacher).to receive(:atomic_promote)
   end

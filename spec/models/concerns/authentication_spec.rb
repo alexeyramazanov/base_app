@@ -74,7 +74,7 @@ RSpec.describe Authentication, type: :module do
 
     session = create(:user_session, user: user)
 
-    expect(user.sessions).to match_array([session])
+    expect(user.sessions).to contain_exactly(session)
   end
 
   it 'implements password-based authentication' do
@@ -112,7 +112,7 @@ RSpec.describe Authentication, type: :module do
 
     context 'when user is present but account is not activated' do
       before do
-        user.update_column(:activation_state, 'pending')
+        user.update_column(:activation_state, 'pending') # rubocop:disable Rails/SkipsModelValidations
       end
 
       it 'returns :activation_required' do
@@ -201,7 +201,7 @@ RSpec.describe Authentication, type: :module do
       end
 
       it 'returns nil' do
-        expect(User.find_by_reset_password_token('token')).to be_nil
+        expect(User.find_by_reset_password_token('token')).to be_nil # rubocop:disable Rails/DynamicFindBy
       end
     end
 
@@ -211,7 +211,7 @@ RSpec.describe Authentication, type: :module do
       end
 
       it 'returns nil' do
-        expect(User.find_by_reset_password_token('abc')).to be_nil
+        expect(User.find_by_reset_password_token('abc')).to be_nil # rubocop:disable Rails/DynamicFindBy
       end
     end
 
@@ -221,7 +221,7 @@ RSpec.describe Authentication, type: :module do
       end
 
       it 'returns user' do
-        expect(User.find_by_reset_password_token('abc')).to eq(user)
+        expect(User.find_by_reset_password_token('abc')).to eq(user) # rubocop:disable Rails/DynamicFindBy
       end
     end
   end

@@ -17,8 +17,8 @@ module AdminAuthentication
                          if:     -> { new_record? || changes[:password_digest] || password_changed }
     validates :password, confirmation: true,
                          if:           lambda { |record|
-                record.password.present? && (new_record? || changes[:password_digest] || password_changed)
-              }
+                           record.password.present? && (new_record? || changes[:password_digest] || password_changed)
+                         }
     # `confirmation: true` is executed only if attribute is present, so we have to check presence additionally
     validates :password_confirmation, presence: true,
                                       if:       -> { new_record? || changes[:password_digest] || password_changed }

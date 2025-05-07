@@ -59,7 +59,7 @@ RSpec.describe AdminAuthentication, type: :module do
 
     session = create(:admin_session, admin_user: admin_user)
 
-    expect(admin_user.sessions).to match_array([session])
+    expect(admin_user.sessions).to contain_exactly(session)
   end
 
   it 'implements password-based authentication' do
