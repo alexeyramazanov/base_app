@@ -3,6 +3,7 @@
 class PasswordResetController < ApplicationController
   allow_only_unauthenticated_access
 
+  before_action :skip_authorization
   before_action :set_user_by_token, only: %i[edit update]
 
   rate_limit to: 5, within: 10.minutes, only: :create, with: -> { redirect_to too_many_requests_url }

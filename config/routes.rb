@@ -47,8 +47,11 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     post   'sign_in', to: 'sign_in#create'
     delete 'sign_in', to: 'sign_in#destroy'
 
-    resource :dashboard, only: %i[show], controller: 'dashboard' do
-      post :request_user_stats
+    resource :dashboard, only: %i[show], controller: 'dashboard'
+    resources :users, only: %i[index] do
+      collection do
+        post :request_user_stats
+      end
     end
   end
 

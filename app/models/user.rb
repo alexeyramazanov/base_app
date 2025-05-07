@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :documents, dependent: :destroy
 
   after_create_commit lambda {
-    broadcast_prepend_to 'admin_new_users', partial: 'admin/dashboard/new_user_row',
+    broadcast_prepend_to 'admin_new_users', partial: 'admin/users/new_user_row',
                          locals: { user: User.last }, target: 'admin_new_users'
   }
 end

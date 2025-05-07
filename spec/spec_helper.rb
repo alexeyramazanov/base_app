@@ -4,6 +4,7 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   add_group 'Jobs', 'app/sidekiq'
   add_group 'Uploaders', 'app/uploaders'
+  add_group 'Policies', 'app/policies'
   add_group 'Components', 'app/components'
 end
 

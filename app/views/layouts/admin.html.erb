@@ -19,6 +19,7 @@
 <body class="min-h-screen flex flex-col bg-gray-100">
   <%= render LayoutHeaderComponent.new(logo_url: admin_dashboard_path) do |layout_component| %>
     <%= navigation_link 'Dashboard', admin_dashboard_path %>
+    <%= navigation_link 'Users', admin_users_path %>
 
     <% layout_component.with_dropdown do %>
       <%= render DropdownComponent.new(align: :right) do |component| %>

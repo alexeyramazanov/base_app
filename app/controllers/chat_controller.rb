@@ -2,6 +2,8 @@
 
 class ChatController < ApplicationController
   def show
+    authorize ChatMessage
+
     @room = ChatMessage::ROOMS.include?(params[:room]) ? params[:room] : nil
     redirect_to chat_path(ChatMessage::ROOMS.first) and return unless @room
 

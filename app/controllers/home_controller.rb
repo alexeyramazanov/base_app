@@ -3,6 +3,8 @@
 class HomeController < ApplicationController
   allow_only_unauthenticated_access
 
+  before_action :skip_authorization
+
   layout 'public'
 
   def show

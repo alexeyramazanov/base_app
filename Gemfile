@@ -28,6 +28,10 @@ gem 'puma', '~> 6.6.0'
 # https://github.com/ElMassimo/vite_ruby
 gem 'vite_rails', '~> 3.0.19'
 
+# Minimal authorization through OO design and pure Ruby classes
+# https://github.com/varvet/pundit
+gem 'pundit', '~> 2.5.0'
+
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
 gem 'view_component', '~> 3.22.0'

@@ -2,10 +2,12 @@
 
 class ProfileController < ApplicationController
   def show
+    authorize Current.user
   end
 
   def update
     user = Current.user
+    authorize user
 
     unless user.authenticate_password(params[:current_password])
       flash.now[:alert] = 'Incorrect current password'

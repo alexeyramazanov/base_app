@@ -2,24 +2,31 @@
 
 class DocumentsController < ApplicationController
   def index
-    @documents = Current.user.documents.order(created_at: :desc)
+    @documents = policy_scope(Document).order(created_at: :desc)
   end
 
   def create
+    document = Current.user.documents.new(file: params[:file])
+    authorize document
+
     # expect to always succeed
-    Current.user.documents.create!(file: params[:file])
+    document.save!
 
     redirect_to documents_url
   end
 
   def destroy
     document = Current.user.documents.find(params[:id])
+    authorize document
+
     document.destroy
 
     redirect_to documents_url
   end
 
   def s3_params
+    authorize Document
+
     response = DocumentUploader.presign_response(:cache, request.env)
 
     self.status = response[0]
@@ -29,6 +36,8 @@ class DocumentsController < ApplicationController
 
   def download
     document = Current.user.documents.find(params[:id])
+    authorize document
+
     url = document.file.url(
       response_content_disposition: ContentDisposition.attachment(document.file.metadata['filename'])
     )

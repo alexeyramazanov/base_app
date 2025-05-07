@@ -4,6 +4,8 @@ module Admin
   class SignInController < BaseController
     allow_only_unauthenticated_access only: %i[new create]
 
+    before_action :skip_authorization, only: %i[new create]
+
     rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to too_many_requests_url }
 
     layout 'public'
@@ -25,6 +27,8 @@ module Admin
     end
 
     def destroy
+      authorize Current.session
+
       terminate_session
 
       redirect_to root_url
