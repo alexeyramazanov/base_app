@@ -23,6 +23,7 @@ class AppRenamer < Thor
     gsub_file 'docker-compose.yml', 'base_app', new_name_underscored
 
     copy_file '.env.example', '.env.development.local'
+    copy_file '.env.example', '.env.compose.local'
     copy_file '.env.test.example', '.env.test.local'
   end
 end
