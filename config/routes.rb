@@ -1,32 +1,61 @@
-Rails.application.routes.draw do
-  root to: 'home#show'
+# frozen_string_literal: true
 
-  get  'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
 
-  get  'registration', to: 'registration#new'
-  post 'registration', to: 'registration#create'
-  get  'registration/activate', to: 'registration#activate'
+Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
+  mount Sidekiq::Web => '/sidekiq'
 
-  get  'reset_password', to: 'password_reset#new', as: :new_reset_password
-  post 'reset_password', to: 'password_reset#create', as: :reset_password
-  get  'reset_password/:id', to: 'password_reset#edit', as: :new_reset_password_tokenized
-  match 'reset_password/:id', to: 'password_reset#update', as: :reset_password_tokenized, via: [:put, :patch]
+  get 'up', to: 'rails/health#show', as: :rails_health_check
+
+  get  'signup', to: 'signup#new'
+  post 'signup', to: 'signup#create'
+  get  'signup/success', to: 'signup#success', as: 'success_signup'
+  get  'signup/activate/:token', to: 'signup#activate', as: 'activate_signup'
+  match 'signup/request_activation_link', to: 'signup#request_activation_link', as: 'request_activation_link_signup',
+        via: %i[get post]
+
+  get    'sign_in', to: 'sign_in#new'
+  post   'sign_in', to: 'sign_in#create'
+  delete 'sign_in', to: 'sign_in#destroy'
+
+  get  'password_reset', to: 'password_reset#new'
+  post 'password_reset', to: 'password_reset#create'
+  get  'password_reset/success', to: 'password_reset#success', as: 'success_password_reset'
+  get  'password_reset/:token', to: 'password_reset#edit', as: 'new_password_password_reset'
+  put  'password_reset/:token', to: 'password_reset#update', as: 'set_new_password_password_reset'
+
+  resource :dashboard, only: %i[show], controller: 'dashboard'
+  resource :profile, only: %i[show update], controller: 'profile'
+  resources :documents, only: %i[index create destroy] do
+    collection do
+      match 's3/params', to: 'documents#s3_params', via: %i[get]
+    end
+
+    member do
+      get :download
+    end
+  end
+  get 'chat/(:room)', to: 'chat#show', as: 'chat'
+
+  get 'too_many_requests', to: 'pages#too_many_requests'
+
+  get 'about', to: 'home#about'
 
   namespace :admin do
-    resource :dashboard, only: [:show], controller: :dashboard
+    get    'sign_in', to: 'sign_in#new'
+    post   'sign_in', to: 'sign_in#create'
+    delete 'sign_in', to: 'sign_in#destroy'
+
+    resource :dashboard, only: %i[show], controller: 'dashboard'
+    resources :users, only: %i[index] do
+      collection do
+        post :request_user_stats
+      end
+    end
   end
 
-  resource :home, only: [:show], controller: :home
+  get 'admin', to: redirect('/admin/dashboard')
 
-  resource :dashboard, only: [:show], controller: :dashboard
-  resource :profile, only: [:edit, :update], controller: :profile
-
-  if Rails.env.development?
-    require 'sidekiq/web'
-    require 'sidekiq/cron/web'
-
-    mount Sidekiq::Web, at: '/sidekiq'
-  end
+  root 'home#show'
 end

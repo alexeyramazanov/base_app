@@ -1,0 +1,8 @@
+<% if @model.errors.any? %>
+  <div class="w-full select-none border-l-4 border-red-400 bg-red-100 p-4">
+    <% @model.errors.full_messages.each do |msg| %>
+      <%= msg %>
+      <br>
+    <% end %>
+  </div>
+<% end %>

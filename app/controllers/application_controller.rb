@@ -1,18 +1,24 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-  before_action :require_login
-  before_action :redirect_if_admin
+  include Pundit::Authorization
+  include ControllerAuthentication
 
-  protected
+  allow_browser versions: :modern
 
-  def not_authenticated
-    redirect_to login_url, alert: 'Please login first'
+  after_action :verify_pundit_authorization
+
+  private
+
+  def verify_pundit_authorization
+    if action_name == 'index'
+      verify_policy_scoped
+    else
+      verify_authorized
+    end
   end
 
-  def redirect_if_authenticated
-    redirect_to dashboard_url if current_user
-  end
-
-  def redirect_if_admin
-    redirect_to admin_dashboard_url if current_user&.admin?
+  def pundit_user
+    Current.user
   end
 end

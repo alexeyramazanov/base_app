@@ -1,21 +1,15 @@
-class AuthenticationMailer < ActionMailer::Base
-  def activation_needed_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'Confirmation instructions')
+# frozen_string_literal: true
+
+class AuthenticationMailer < ApplicationMailer
+  def activation_link
+    @user = User.find(params[:user_id])
+
+    mail to: @user.email, subject: 'Activate your account'
   end
 
-  def activation_success_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'Account successfully activated')
-  end
+  def reset_password
+    @user = User.find(params[:user_id])
 
-  def reset_password_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'Reset password instructions')
-  end
-
-  def reset_password_success_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'New password for your account')
+    mail to: @user.email, subject: 'Reset password instructions'
   end
 end

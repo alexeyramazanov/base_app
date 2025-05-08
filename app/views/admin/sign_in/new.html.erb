@@ -1,0 +1,19 @@
+<%= render PublicAccountActionComponent.new(title: 'Admin Sign In') do %>
+  <div class="mb-2">
+    <%= render FlashMessagesComponent.new(flash:) %>
+  </div>
+
+  <%= form_with url: admin_sign_in_path do |form| %>
+    <div class="relative mb-4">
+      <%= form.label :email, class: 'leading-7 text-sm text-gray-600' %>
+      <%= form.email_field :email, required: true, autofocus: true, autocomplete: 'email', value: params[:email],
+                           class: 'input-field' %>
+    </div>
+    <div class="relative mb-4">
+      <%= form.label :password, class: 'leading-7 text-sm text-gray-600' %>
+      <%= form.password_field :password, required: true, autocomplete: 'current-password', maxlength: 72,
+                              class: 'input-field' %>
+    </div>
+    <%= form.submit 'Sign in', class: 'button' %>
+  <% end %>
+<% end %>

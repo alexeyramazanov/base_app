@@ -1,34 +1,47 @@
+# frozen_string_literal: true
+
 class PasswordResetController < ApplicationController
-  skip_before_action :require_login
-  before_action :load_user, only: [:edit, :update]
+  allow_only_unauthenticated_access
+
+  before_action :skip_authorization
+  before_action :set_user_by_token, only: %i[edit update]
+
+  rate_limit to: 5, within: 10.minutes, only: :create, with: -> { redirect_to too_many_requests_url }
+
+  layout 'public'
 
   def new
   end
 
   def create
-    @user = User.where(email: params[:email]).first
+    user = User.find_by(email: params[:email])
+    user&.send_password_reset_link
 
-    @user.deliver_reset_password_instructions! if @user
+    redirect_to success_password_reset_url
+  end
+
+  def success
   end
 
   def edit
   end
 
   def update
-    @user.update_password = true
-    if @user.change_password!(params[:user][:password])
-      redirect_to login_path, notice: 'Password was successfully updated.'
+    if @user.update_password(new_password_params)
+      redirect_to sign_in_url, notice: 'Password has been reset.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  protected
+  private
 
-  def load_user
-    @token = params[:id]
-    @user = User.load_from_reset_password_token(@token)
+  def set_user_by_token
+    @user = User.find_by_reset_password_token(params[:token]) # rubocop:disable Rails/DynamicFindBy
+    redirect_to password_reset_url, alert: 'Password reset link is invalid or has expired.' unless @user
+  end
 
-    redirect_to new_reset_password_url, alert: 'Incorrect link.' unless @user
+  def new_password_params
+    params.require(:user).permit(:password, :password_confirmation)
   end
 end

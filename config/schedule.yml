@@ -1,4 +1,4 @@
-#my_first_job:
-#  cron: "*/5 * * * *"
-#  class: "HardWorker"
-#  queue: hard_worker
+monthly_user_stats:
+  cron: "0 0 1 * *"
+  class: "Admin::MonthlyUserStatsJob"
+  queue: default

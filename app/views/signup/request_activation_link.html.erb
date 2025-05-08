@@ -1,0 +1,19 @@
+<%= render PublicAccountActionComponent.new(title: 'Request activation link') do %>
+  <%= form_with url: request_activation_link_signup_path do |form| %>
+    <div class="relative mb-4">
+      <%= form.label :email, class: 'leading-7 text-sm text-gray-600' %>
+      <%= form.email_field :email, required: true, autofocus: true, autocomplete: 'email',
+                           class: 'input-field' %>
+    </div>
+    <%= form.submit 'Request activation link', class: 'button' %>
+  <% end %>
+
+  <div class="flex flex-wrap items-center justify-between mt-3">
+    <div class="w-full lg:w-auto">
+      <%= link_to 'Sign In', sign_in_path %>
+    </div>
+    <div class="w-full lg:w-auto">
+      <%= link_to 'Forgot password?', password_reset_path %>
+    </div>
+  </div>
+<% end %>

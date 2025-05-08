@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/fontawesome";
+@import "@fortawesome/fontawesome-free/css/regular";
+@import "@fortawesome/fontawesome-free/css/solid";
+@import "@fortawesome/fontawesome-free/css/brands";
+
+/* trigger tailwind on views, components and helpers change */
+@source "../../views/**/*.html.erb";
+@source "../../components/**/*";
+@source "../../helpers/**/*";
+
+@layer components {
+    .link {
+        @apply text-indigo-600 hover:text-gray-900;
+    }
+    .link-active {
+        @apply text-gray-600;
+    }
+
+    .page-header {
+        @apply font-semibold text-xl text-gray-700 pb-4;
+    }
+
+    .card {
+        @apply bg-white border border-solid border-gray-200 rounded-sm p-4;
+    }
+
+    .field-label {
+        @apply leading-7 text-sm text-gray-600;
+    }
+
+    .input-field {
+        @apply w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2
+            focus:ring-indigo-200 disabled:bg-gray-100 text-base outline-none text-gray-700 py-1 px-3 leading-8
+            transition-colors duration-200 ease-in-out;
+    }
+
+    .button {
+        @apply w-full cursor-pointer text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none
+            hover:bg-indigo-600 rounded text-lg;
+    }
+}

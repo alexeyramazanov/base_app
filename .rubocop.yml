@@ -1,0 +1,49 @@
+AllCops:
+  TargetRubyVersion: 3.4
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
+
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'config.ru'
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/AbcSize:
+  Max: 25
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/SpecFilePathFormat:
+  Exclude:
+    - spec/features/**/*.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 4

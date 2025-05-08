@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
-    sequence(:email) { |n| "user#{n}@gmail.com" }
+    sequence(:email) { |n| "user#{n}@email.com" }
     password { '123123' }
-    #password_confirmation { password }
-    role { 'user' }
+    password_confirmation { '123123' }
+    activation_state { 'active' }
 
-    trait :admin do
-      role { 'admin' }
+    # cleanup attributes to match the case when the user is fetched from DB
+    after(:create) do |user|
+      # do not use direct assignment here as it will trigger `password_digest` update
+      user.instance_variable_set(:@password, nil)
+      user.instance_variable_set(:@password_confirmation, nil)
     end
-
-    factory :admin, traits: [:admin]
   end
 end

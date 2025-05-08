@@ -1,25 +1,30 @@
-class ProfileController < ApplicationController
-  before_action :set_user
+# frozen_string_literal: true
 
-  def edit
+class ProfileController < ApplicationController
+  def show
+    authorize Current.user
   end
 
   def update
-    @user.update_password = true
-    if @user.update(user_params)
-      redirect_to edit_profile_url, notice: 'Password was successfully updated.'
+    user = Current.user
+    authorize user
+
+    unless user.authenticate_password(params[:current_password])
+      flash.now[:alert] = 'Incorrect current password'
+      render 'show', status: :unprocessable_entity and return
+    end
+
+    if user.update_password(password_update_params)
+      redirect_to profile_url, notice: 'Password successfully updated'
     else
-      render :edit
+      flash.now[:alert] = user.errors.full_messages.join('<br>').html_safe # rubocop:disable Rails/OutputSafety
+      render 'show', status: :unprocessable_entity
     end
   end
 
-  protected
+  private
 
-  def set_user
-    @user = current_user
-  end
-
-  def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+  def password_update_params
+    params.permit(:password, :password_confirmation)
   end
 end

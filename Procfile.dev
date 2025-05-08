@@ -1,0 +1,5 @@
+web: bin/rails s
+vite: bin/vite dev
+sidekiq: bundle exec sidekiq
+anycable-grpc: bundle exec anycable
+anycable-ws: ANYCABLE_DISABLE_TELEMETRY=true anycable-go --debug --port 8080 --rpc_host localhost:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$ANYCABLE_SECRET" --enforce_jwt --turbo_streams

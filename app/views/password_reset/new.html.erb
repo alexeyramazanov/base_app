@@ -1,0 +1,23 @@
+<%= render PublicAccountActionComponent.new(title: 'Forgot your password?') do %>
+  <div class="mb-2">
+    <%= render FlashMessagesComponent.new(flash:) %>
+  </div>
+
+  <%= form_with url: password_reset_path do |form| %>
+    <div class="relative mb-4">
+      <%= form.label :email, class: 'leading-7 text-sm text-gray-600' %>
+      <%= form.email_field :email, required: true, autofocus: true, autocomplete: 'email',
+                           class: 'input-field' %>
+    </div>
+    <%= form.submit 'Send reset password link', class: 'button' %>
+  <% end %>
+
+  <div class="flex flex-wrap items-center justify-between mt-3">
+    <div class="w-full lg:w-auto">
+      <%= link_to 'Sign In', sign_in_path %>
+    </div>
+    <div class="w-full lg:w-auto">
+      <%= link_to 'Create account', signup_path %>
+    </div>
+  </div>
+<% end %>

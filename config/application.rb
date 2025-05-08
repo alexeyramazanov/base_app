@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails'
@@ -5,15 +7,14 @@ require 'rails'
 require 'active_model/railtie'
 require 'active_job/railtie'
 require 'active_record/railtie'
-require 'active_storage/engine'
+# require 'active_storage/engine'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
-require 'action_mailbox/engine'
-require 'action_text/engine'
+# require 'action_mailbox/engine'
+# require 'action_text/engine'
 require 'action_view/railtie'
 require 'action_cable/engine'
-# require 'sprockets/railtie'
-# require 'rails/test_unit/railtie'
+# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -22,30 +23,34 @@ Bundler.require(*Rails.groups)
 module BaseApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 8.0
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w[assets tasks])
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
 
-    config.eager_load_paths << Rails.root.join('lib')
-
-    config.generators do |generate|
-      generate.helper false
-      generate.javascript_engine false
-      generate.request_specs false
-      generate.routing_specs false
-      generate.stylesheets false
-      generate.test_framework :rspec
-      generate.view_specs false
+    config.generators do |g|
+      g.system_tests nil
+      g.test_framework :rspec
     end
 
     config.active_job.queue_adapter = :sidekiq
 
-    config.action_view.field_error_proc = Proc.new { |html_tag, _instance| html_tag.html_safe }
+    config.action_mailer.deliver_later_queue_name = :mailers
+
+    config.view_component.generate.stimulus_controller = true
+    config.view_component.generate.sidecar = true
+    config.view_component.component_parent_class = 'ApplicationComponent'
+
+    config.turbo.signed_stream_verifier_key = ENV.fetch('ANYCABLE_SECRET', nil)
   end
 end

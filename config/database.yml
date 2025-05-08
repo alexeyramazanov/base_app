@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
+  pool: <%= Integer(ENV.fetch('DATABASE_POOL', 5)) %>
+  reaping_frequency: <%= Integer(ENV.fetch('DATABASE_REAPING_FREQUENCY', 60)) %>
+  timeout: <%= Integer(ENV.fetch('DATABASE_TIMEOUT', 5000)) %>
+
+development:
+  <<: *default
+  database: base_app_development
+  # issue related only to macOS devices:
+  # https://github.com/rails/rails/issues/38560
+  # https://github.com/ged/ruby-pg/issues/538
+  gssencmode: disable
+
+test:
+  <<: *default
+  database: base_app_test
+  gssencmode: disable
+
+production:
+  <<: *default

@@ -1,15 +1,12 @@
+# frozen_string_literal: true
+
 module NavigationHelper
-  def navigation_element(name, url, options = {})
-    klass = current_page?(url) ? 'nav-item active' : 'nav-item'
+  def navigation_link(name, url, options: {}, link_options: {})
+    klass = 'link mr-5'
 
-    content_tag :li, class: klass do
-      link_to name, url, {class: 'nav-link'}.merge(options)
-    end
-  end
+    current_page_matches = options[:simple] ? request.path.start_with?(url) : current_page?(url)
+    klass += ' link-active' if current_page_matches
 
-  def dropdown_element(name, url, options = {})
-    klass = current_page?(url) ? 'dropdown-item active' : 'dropdown-item'
-
-    link_to name, url, {class: klass}.merge(options)
+    link_to name, url, { class: klass }.merge(link_options)
   end
 end

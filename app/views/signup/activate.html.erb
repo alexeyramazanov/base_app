@@ -1,0 +1,5 @@
+<%= render PublicAccountActionComponent.new(title: 'Invalid activation link') do %>
+  <div class="text-center pt-3">
+    You can request new link <%= link_to 'here', request_activation_link_signup_url, class: 'link' %>.
+  </div>
+<% end %>

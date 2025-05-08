@@ -1,0 +1,14 @@
+<div data-controller="dropdown-component"
+     data-action="click@window->dropdown-component#close"
+     class="relative inline-block">
+  <button data-action="dropdown-component#toggle" class="flex items-center cursor-pointer">
+    <%= title %>
+    <i class="fa-solid fa-chevron-down fa-sm pl-2"></i>
+  </button>
+
+  <div data-dropdown-component-target="menu"
+       role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
+       class="<%= align_class %> z-10 hidden origin-top-right absolute mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-gray-200 focus:outline-none">
+    <%= content %>
+  </div>
+</div>

@@ -1,7 +1,15 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
-  skip_before_action :require_login
-  before_action :redirect_if_authenticated
+  allow_only_unauthenticated_access
+
+  before_action :skip_authorization
+
+  layout 'public'
 
   def show
+  end
+
+  def about
   end
 end

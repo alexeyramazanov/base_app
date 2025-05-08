@@ -1,0 +1,63 @@
+x-app: &app
+  build:
+    context: .
+    dockerfile: Dockerfile
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  env_file: .env.compose.local
+  stdin_open: true
+  tty: true
+
+services:
+  web:
+    <<: *app
+    ports:
+      - '80:80'
+    command: ./bin/thrust ./bin/rails server
+  sidekiq:
+    <<: *app
+    command: bundle exec sidekiq
+  anycable-grpc:
+    <<: *app
+    command: bundle exec anycable --rpc-host 0.0.0.0:50051
+  anycable-ws:
+    <<: *app
+    environment:
+      - ANYCABLE_DISABLE_TELEMETRY=true
+    ports:
+      - '8080:8080'
+    command: /bin/sh -c './anycable-go --host 0.0.0.0 --port 8080 --rpc_host anycable-grpc:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$$ANYCABLE_SECRET" --enforce_jwt --turbo_streams'
+  postgres:
+    image: postgres:17-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=base_app
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: pg_isready -U postgres -d base_app
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+  redis:
+    image: redis:8-alpine
+    volumes:
+      - redis_data:/data
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: redis-cli ping
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+volumes:
+  postgres_data:
+  redis_data:

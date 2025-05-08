@@ -1,21 +1,13 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  # NOTE: fixes 'ArgumentError: To use reset_password submodule, you must define a mailer' error.
-  # Current master is broken because of combination of 2 PRs:
-  # https://github.com/Sorcery/sorcery/issues/137
-  # https://github.com/Sorcery/sorcery/pull/209
-  # Waiting for Sorcery 0.15+
-  include Sorcery::Controller
+  include Authentication
 
-  extend Enumerize
+  has_many :chat_messages, dependent: :delete_all
+  has_many :documents, dependent: :destroy
 
-  authenticates_with_sorcery!
-
-  enumerize :role, in: %w[ user admin ], default: 'user', predicates: true
-
-  validates :email, presence: true, uniqueness: true
-  # length replaces presence validation, update_password is used to prevent empty passwords
-  validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] || update_password }
-  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
-
-  attr_accessor :update_password
+  after_create_commit lambda {
+    broadcast_prepend_to 'admin_new_users', partial: 'admin/users/new_user_row',
+                         locals: { user: User.last }, target: 'admin_new_users'
+  }
 end
