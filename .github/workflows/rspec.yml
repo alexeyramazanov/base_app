@@ -14,6 +14,7 @@ env:
   REDIS_CACHE_URL: redis://localhost:6379/0
   AWS_EC2_METADATA_DISABLED: true
   SIDEKIQ_REDIS_URL: redis://localhost:6379/0
+  ANYCABLE_BINARY: https://github.com/anycable/anycable/releases/download/v1.6.1/anycable-go-linux-amd64
   ANYCABLE_RPC_POOL_SIZE: 5
   ANYCABLE_REDIS_URL: redis://localhost:6379/0
   ANYCABLE_SECRET: 6bd541cde3eaef4346468ffa2271fa00
@@ -46,6 +47,9 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y libvips-tools
+
+      - name: Install AnyCable
+        run: curl -o anycable-go ${{ env.ANYCABLE_BINARY }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
