@@ -1,0 +1,59 @@
+name: RSpec
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  RACK_ENV: test
+  RAILS_ENV: test
+  SECRET_KEY_BASE: 368ff1a04146545057690d897547969a
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: base_app_test
+  DATABASE_URL: postgresql://postgres:postgres@localhost:5432
+  REDIS_CACHE_URL: redis://localhost:6379/0
+  AWS_EC2_METADATA_DISABLED: true
+  SIDEKIQ_REDIS_URL: redis://localhost:6379/0
+  ANYCABLE_RPC_POOL_SIZE: 5
+  ANYCABLE_REDIS_URL: redis://localhost:6379/0
+  ANYCABLE_SECRET: 6bd541cde3eaef4346468ffa2271fa00
+  ANYCABLE_WEBSOCKET_URL: ws://localhost:8123/cable
+
+jobs:
+  tests:
+    name: RSpec tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17-alpine
+        ports:
+          - 5432:5432
+      redis:
+        image: redis:8-alpine
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Run RSpec
+        run: bundle exec rspec
