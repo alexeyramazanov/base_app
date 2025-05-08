@@ -38,9 +38,10 @@ Stop wasting time on creating basic Ruby on Rails applications.
 7. update `db/seeds.rb`
 8. update `.env.development.local`
 9. update `.env.test.local`
-10. `rm README.md`
-11. `bundle`
-12. `npm install`
+10. update `.env.compose.local`
+11. `rm README.md`
+12. `bundle`
+13. `npm install`
 
 ## Docker
 

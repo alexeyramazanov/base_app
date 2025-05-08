@@ -12,24 +12,6 @@ x-app: &app
   tty: true
 
 services:
-  web:
-    <<: *app
-    ports:
-      - '80:80'
-    command: ./bin/thrust ./bin/rails server
-  sidekiq:
-    <<: *app
-    command: bundle exec sidekiq
-  anycable-grpc:
-    <<: *app
-    command: bundle exec anycable --rpc-host 0.0.0.0:50051
-  anycable-ws:
-    <<: *app
-    environment:
-      - ANYCABLE_DISABLE_TELEMETRY=true
-    ports:
-      - '8080:8080'
-    command: /bin/sh -c './anycable-go --host 0.0.0.0 --port 8080 --rpc_host anycable-grpc:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$$ANYCABLE_SECRET" --enforce_jwt --turbo_streams'
   postgres:
     image: postgres:17-alpine
     volumes:
@@ -58,6 +40,26 @@ services:
       timeout: 5s
       retries: 5
       start_period: 5s
+  web:
+    <<: *app
+    ports:
+      - '80:80'
+    command: ./bin/thrust ./bin/rails server
+  sidekiq:
+    <<: *app
+    command: bundle exec sidekiq
+  anycable-grpc:
+    <<: *app
+    command: bundle exec anycable --rpc-host 0.0.0.0:50051
+  anycable-ws:
+    image: anycable/anycable-go:1.6-alpine
+    env_file: .env.compose.local
+    environment:
+      - ANYCABLE_DISABLE_TELEMETRY=true
+    ports:
+      - '8080:8080'
+    entrypoint: ''
+    command: /bin/sh -c 'anycable-go --host 0.0.0.0 --port 8080 --redis_url redis://redis:6379/0 --rpc_host anycable-grpc:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$$ANYCABLE_SECRET" --enforce_jwt --turbo_streams'
 volumes:
   postgres_data:
   redis_data:
