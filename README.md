@@ -29,7 +29,7 @@ Stop wasting time on creating basic Ruby on Rails applications.
 
 ## How To Use
 
-1. `git clone --depth=1 --branch=master git@github.com:alexeyramazanov/base_app.git my_new_app`
+1. `git clone --depth=1 --branch=main git@github.com:alexeyramazanov/base_app.git my_new_app`
 2. `cd my_new_app`
 3. `rm -rf .git`
 4. `rake rename_app['BrandNewName']`

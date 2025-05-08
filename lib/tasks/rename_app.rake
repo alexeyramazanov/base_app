@@ -5,6 +5,10 @@ require 'thor'
 class AppRenamer < Thor
   include Thor::Actions
 
+  def self.source_root
+    File.join(__dir__, '..', '..')
+  end
+
   desc 'rename_application NEW_NAME', 'rename application'
   def rename_application(new_name)
     new_name_underscored = new_name.underscore
