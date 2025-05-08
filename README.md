@@ -44,7 +44,9 @@ Stop wasting time on creating basic Ruby on Rails applications.
 
 ## Docker
 
-TBD
+`docker build -t base_app .`
+
+`docker compose up`
 
 ## Notes
 
