@@ -50,8 +50,8 @@ jobs:
 
       - name: Install AnyCable
         run: |
-          curl -L -o ./anycable-go ${{ env.ANYCABLE_BINARY }}
-          chmod +x ./anycable-go
+          curl -L -o /usr/local/bin/anycable-go ${{ env.ANYCABLE_BINARY }}
+          chmod +x /usr/local/bin/anycable-go
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
