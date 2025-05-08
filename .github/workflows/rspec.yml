@@ -22,7 +22,7 @@ env:
 
 jobs:
   tests:
-    name: RSpec tests
+    name: Tests
     runs-on: ubuntu-latest
 
     services:

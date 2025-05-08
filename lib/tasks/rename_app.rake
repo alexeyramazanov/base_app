@@ -13,6 +13,8 @@ class AppRenamer < Thor
     gsub_file 'config/database.yml', 'base_app_development', "#{new_name_underscored}_development"
     gsub_file 'config/database.yml', 'base_app_test', "#{new_name_underscored}_test"
 
+    gsub_file '.github/workflows/rspec.yml', 'base_app_test', "#{new_name_underscored}_test"
+
     gsub_file 'package.json', 'base_app', new_name_underscored
     gsub_file 'docker-compose.yml', 'base_app', new_name_underscored
 
