@@ -10,9 +10,6 @@ env:
   RACK_ENV: test
   RAILS_ENV: test
   SECRET_KEY_BASE: 368ff1a04146545057690d897547969a
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: base_app_test
   DATABASE_URL: postgresql://postgres:postgres@localhost:5432
   REDIS_CACHE_URL: redis://localhost:6379/0
   AWS_EC2_METADATA_DISABLED: true
@@ -30,6 +27,10 @@ jobs:
     services:
       postgres:
         image: postgres:17-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: base_app_test
         ports:
           - 5432:5432
       redis:
