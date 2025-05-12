@@ -1,12 +1,42 @@
 version: 2
 updates:
-- package-ecosystem: bundler
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      bundler:
+        applies-to: version-updates
+    open-pull-requests-limit: 3
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      npm:
+        applies-to: version-updates
+    open-pull-requests-limit: 3
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      docker:
+        applies-to: version-updates
+    open-pull-requests-limit: 3
+  - package-ecosystem: docker-compose
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      docker:
+        applies-to: version-updates
+    open-pull-requests-limit: 3
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        applies-to: version-updates
+    open-pull-requests-limit: 3

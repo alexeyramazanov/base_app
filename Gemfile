@@ -46,7 +46,7 @@ gem 'stimulus-rails', '~> 1.3.4'
 
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
-gem 'solid_cable', '~> 3.0.7'
+gem 'solid_cable', '~> 3.0.8'
 
 # AnyCable for Ruby on Rails applications
 # https://github.com/anycable/anycable-rails
@@ -91,7 +91,7 @@ group :development, :test do
 
   # Pretty print your Ruby objects with style -- in full color and with proper indentation
   # https://github.com/amazing-print/amazing_print
-  gem 'amazing_print', '~> 1.7.2'
+  gem 'amazing_print', '~> 1.8.0'
 
   # RSpec for Rails 7+
   # https://github.com/rspec/rspec-rails
