@@ -2,7 +2,7 @@
 # check=error=true
 
 # base image used for all steps, ruby version should match version specified in .ruby-version
-FROM docker.io/library/ruby:3.4.2-slim AS base
+FROM docker.io/library/ruby:3.4.3-slim AS base
 
 WORKDIR /app
 
