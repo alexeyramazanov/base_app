@@ -1,47 +1,47 @@
 version: 2
 updates:
   - package-ecosystem: bundler
-    directory: /
+    directory: "/"
     schedule:
       interval: weekly
     groups:
       bundler:
         patterns:
-          - *
+          - "*"
     open-pull-requests-limit: 3
   - package-ecosystem: npm
-    directory: /
+    directory: "/"
     schedule:
       interval: weekly
     groups:
       npm:
         patterns:
-          - *
+          - "*"
     open-pull-requests-limit: 3
   - package-ecosystem: docker
-    directory: /
+    directory: "/"
     schedule:
       interval: weekly
     groups:
       docker:
         patterns:
-          - *
+          - "*"
     open-pull-requests-limit: 3
   - package-ecosystem: docker-compose
-    directory: /
+    directory: "/"
     schedule:
       interval: weekly
     groups:
       docker-compose:
         patterns:
-          - *
+          - "*"
     open-pull-requests-limit: 3
   - package-ecosystem: github-actions
-    directory: /
+    directory: "/"
     schedule:
       interval: weekly
     groups:
       github-actions:
         patterns:
-          - *
+          - "*"
     open-pull-requests-limit: 3
