@@ -6,7 +6,8 @@ updates:
       interval: weekly
     groups:
       bundler:
-        applies-to: version-updates
+        patterns:
+          - *
     open-pull-requests-limit: 3
   - package-ecosystem: npm
     directory: /
@@ -14,7 +15,8 @@ updates:
       interval: weekly
     groups:
       npm:
-        applies-to: version-updates
+        patterns:
+          - *
     open-pull-requests-limit: 3
   - package-ecosystem: docker
     directory: /
@@ -22,15 +24,17 @@ updates:
       interval: weekly
     groups:
       docker:
-        applies-to: version-updates
+        patterns:
+          - *
     open-pull-requests-limit: 3
   - package-ecosystem: docker-compose
     directory: /
     schedule:
       interval: weekly
     groups:
-      docker:
-        applies-to: version-updates
+      docker-compose:
+        patterns:
+          - *
     open-pull-requests-limit: 3
   - package-ecosystem: github-actions
     directory: /
@@ -38,5 +42,6 @@ updates:
       interval: weekly
     groups:
       github-actions:
-        applies-to: version-updates
+        patterns:
+          - *
     open-pull-requests-limit: 3
