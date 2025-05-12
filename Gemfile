@@ -46,7 +46,7 @@ gem 'stimulus-rails', '~> 1.3.4'
 
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
-gem 'solid_cable', '~> 3.0.7'
+gem 'solid_cable', '~> 3.0.8'
 
 # AnyCable for Ruby on Rails applications
 # https://github.com/anycable/anycable-rails
