@@ -19,9 +19,12 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
     if ENV.fetch('ANYCABLE_WEBSOCKET_URL', nil).present?
       policy.connect_src(*policy.connect_src, ENV.fetch('ANYCABLE_WEBSOCKET_URL'))
     end
-    if ENV.fetch('AWS_ENDPOINT', nil).present?
-      policy.connect_src(*policy.connect_src, ENV.fetch('AWS_ENDPOINT'))
-      policy.img_src(*policy.img_src, ENV.fetch('AWS_ENDPOINT'))
+
+    if ENV.fetch('ALLOW_CSP_SOURCES', nil).present?
+      sources = ENV.fetch('ALLOW_CSP_SOURCES').split(',').map(&:strip)
+
+      policy.connect_src(*policy.connect_src, *sources)
+      policy.img_src(*policy.img_src, *sources)
     end
 
     case Rails.env
