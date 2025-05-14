@@ -287,11 +287,6 @@ GEM
     profile-viewer (0.0.4)
       optparse
       webrick
-    propshaft (1.1.0)
-      actionpack (>= 7.0.0)
-      activesupport (>= 7.0.0)
-      rack
-      railties (>= 7.0.0)
     psych (5.2.5)
       date
       stringio
@@ -519,7 +514,6 @@ DEPENDENCIES
   marcel (~> 1.0.4)
   pg (~> 1.5.9)
   profile-viewer (~> 0.0.4)
-  propshaft (~> 1.1.0)
   puma (~> 6.6.0)
   pundit (~> 2.5.0)
   rails (~> 8.0.2)
