@@ -4,11 +4,16 @@
 # base image used for all steps, ruby version should match version specified in .ruby-version
 FROM docker.io/library/ruby:3.4.3-slim AS base
 
+ARG ANYCABLE_VERSION=1.6.1
+ARG ANYCABLE_URL="https://github.com/anycable/anycable/releases/download/v${ANYCABLE_VERSION}/anycable-go-linux-amd64"
+
 WORKDIR /app
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y procps curl libjemalloc2 libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives && \
+    curl -L -s -o anycable-go "${ANYCABLE_URL}" && \
+    chmod +x anycable-go
 
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="true" \

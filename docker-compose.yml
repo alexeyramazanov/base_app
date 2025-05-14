@@ -52,14 +52,12 @@ services:
     <<: *app
     command: bundle exec anycable --rpc-host 0.0.0.0:50051
   anycable-ws:
-    image: anycable/anycable-go:1.6-alpine
-    env_file: .env.compose.local
+    <<: *app
     environment:
       - ANYCABLE_DISABLE_TELEMETRY=true
     ports:
       - '8080:8080'
-    entrypoint: ''
-    command: /bin/sh -c 'anycable-go --host 0.0.0.0 --port 8080 --redis_url redis://redis:6379/0 --rpc_host anycable-grpc:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$$ANYCABLE_SECRET" --enforce_jwt --turbo_streams'
+    command: /bin/sh -c './anycable-go --host 0.0.0.0 --port 8080 --redis_url redis://redis:6379/0 --rpc_host anycable-grpc:50051 --rpc_concurrency 10 --headers cookie,origin --broadcast_adapter redisx --broker memory --pubsub redis --secret "$$ANYCABLE_SECRET" --enforce_jwt --turbo_streams'
 volumes:
   postgres_data:
   redis_data:
