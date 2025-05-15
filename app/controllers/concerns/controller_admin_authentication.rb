@@ -35,7 +35,11 @@ module ControllerAdminAuthentication
   end
 
   def find_session_by_cookie
-    AdminSession.find_by(id: cookies.signed[:admin_session_id]) if cookies.signed[:admin_session_id]
+    session = AdminSession.find_by(id: cookies.signed[:admin_session_id]) if cookies.signed[:admin_session_id]
+
+    cookies.delete(:admin_session_id) unless session
+
+    session
   end
 
   def request_authentication

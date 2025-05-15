@@ -149,6 +149,24 @@ RSpec.describe ControllerAuthentication do
       end
     end
 
+    context 'when user is authenticated but session id is invalid' do
+      before do
+        allow(controller).to receive(:cookies).and_return(cookies)
+
+        cookies.signed[:session_id] = user_session.id
+
+        user_session.destroy!
+      end
+
+      it 'does not assign a session and removes session_id from cookie' do
+        get :index
+
+        expect(Current).to have_received(:session=).with(nil)
+
+        expect(cookies.signed[:session_id]).to be_nil
+      end
+    end
+
     context 'when admin is authenticated' do
       before do
         cookies.signed[:admin_session_id] = admin_session.id
