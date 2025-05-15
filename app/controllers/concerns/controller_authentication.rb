@@ -35,7 +35,11 @@ module ControllerAuthentication
   end
 
   def find_session_by_cookie
-    UserSession.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
+    session = UserSession.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
+
+    cookies.delete(:session_id) unless session
+
+    session
   end
 
   def request_authentication
