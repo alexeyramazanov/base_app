@@ -8,7 +8,7 @@ module PublicApi
         # GET /documents
         desc 'List documents'
         get do
-          Document.all
+          policy_scope(Document)
         end
       end
     end
