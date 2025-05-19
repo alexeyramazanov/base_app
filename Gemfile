@@ -54,7 +54,7 @@ gem 'sidekiq', '~> 8.0.3'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
-gem 'sidekiq-cron', '~> 2.2.0'
+gem 'sidekiq-cron', '~> 2.3.0'
 
 # File Attachment toolkit for Ruby applications
 # https://github.com/shrinerb/shrine
@@ -62,7 +62,7 @@ gem 'shrine', '~> 3.6.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.185.0'
+gem 'aws-sdk-s3', '~> 1.186.1'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -74,7 +74,7 @@ gem 'marcel', '~> 1.0.4'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
-gem 'bootsnap', '~> 1.18.4', require: false
+gem 'bootsnap', '~> 1.18.6', require: false
 
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
@@ -115,7 +115,7 @@ group :development, :test do
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
-  gem 'rubocop-rails', '~> 2.31.0', require: false
+  gem 'rubocop-rails', '~> 2.32.0', require: false
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
@@ -137,11 +137,11 @@ group :development do
 
   # next generation CRuby profiler
   # https://github.com/jhawthorn/vernier
-  gem 'vernier', '~> 1.7.0'
+  gem 'vernier', '~> 1.7.1'
 
   # Firefox Profiler for Ruby
   # https://github.com/tenderlove/profiler
-  gem 'profile-viewer', '~> 0.0.4', require: false
+  gem 'profile-viewer', '~> 0.0.5', require: false
 end
 
 group :test do
@@ -151,7 +151,7 @@ group :test do
 
   # Strategies for cleaning databases in Ruby
   # https://github.com/DatabaseCleaner/database_cleaner
-  gem 'database_cleaner-active_record', '~> 2.2.0'
+  gem 'database_cleaner-active_record', '~> 2.2.1'
   gem 'database_cleaner-redis', '~> 2.0.0'
 
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
