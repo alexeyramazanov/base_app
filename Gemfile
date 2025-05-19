@@ -80,6 +80,10 @@ gem 'bootsnap', '~> 1.18.6', require: false
 # https://github.com/basecamp/thruster/
 gem 'thruster', '~> 0.1.13', require: false
 
+# An opinionated framework for creating REST-like APIs in Ruby.
+# https://github.com/ruby-grape/grape
+gem 'grape', '~> 2.3.0'
+
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
   # https://github.com/bkeepers/dotenv
