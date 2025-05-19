@@ -2,7 +2,7 @@
 # check=error=true
 
 # base image used for all steps, ruby version should match version specified in .ruby-version
-FROM docker.io/library/ruby:3.4.3-slim AS base
+FROM docker.io/library/ruby:3.4.4-slim AS base
 
 ARG ANYCABLE_VERSION=1.6.1
 ARG ANYCABLE_URL="https://github.com/anycable/anycable/releases/download/v${ANYCABLE_VERSION}/anycable-go-linux-amd64"
