@@ -17,6 +17,13 @@ RSpec.describe User do
       expect { user.destroy }.to change(ChatMessage, :count).by(-1)
     end
 
+    it 'deletes associated api_tokens when destroyed' do
+      user = create(:user)
+      create(:api_token, user: user)
+
+      expect { user.destroy }.to change(ApiToken, :count).by(-1)
+    end
+
     it 'destroys associated documents when destroyed' do
       user = create(:user)
       create(:document, user: user)

@@ -53,6 +53,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
         post :request_user_stats
       end
     end
+    resources :api_tokens, only: %i[index create destroy]
   end
 
   get 'admin', to: redirect('/admin/dashboard')

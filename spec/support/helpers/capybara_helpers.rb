@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module CapybaraHelpers
-  def sign_in(user, password)
-    visit sign_in_path
+  def sign_in(user, password, admin: false)
+    visit(admin ? admin_sign_in_path : sign_in_path)
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: password

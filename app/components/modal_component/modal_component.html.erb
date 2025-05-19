@@ -1,0 +1,20 @@
+<div class="fixed inset-0 bg-black/60 z-[999] overflow-y-auto !block" data-controller="modal-component">
+  <div class="flex items-start justify-center min-h-screen px-4">
+    <div class="relative bg-white shadow-3xl border-0 p-0 rounded-lg overflow-hidden my-8 w-full <%= @width_class %>">
+      <div class="flex bg-white items-center justify-between px-4 py-3">
+        <div class="font-medium text-lg">
+          <%= @title %>
+        </div>
+        <button class="text-black/40 hover:text-black cursor-pointer" data-action="click->modal-component#close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-4 border-y border-black/10">
+        <%= content %>
+      </div>
+      <div class="p-4 flex justify-end items-center gap-4">
+        <%= footer %>
+      </div>
+    </div>
+  </div>
+</div>
