@@ -1,0 +1,21 @@
+<%= turbo_stream.update 'modal' do %>
+  <%= render ModalComponent.new(title: 'API Token', width_class: 'max-w-xl') do |component| %>
+    <% component.with_footer do %>
+      <button class="button w-auto text-sm bg-gray-200 hover:bg-gray-300 text-gray-700" data-action="click->modal-component#close">
+        I saved the token
+      </button>
+    <% end %>
+
+    This is an API Token generated for user <strong><%= @api_token.user.email %></strong>.
+    <br>
+    Make sure to copy it now as you will not be able to see this again.
+
+    <div class="w-full border-l-4 border-sky-400 bg-sky-100 p-4">
+      <%= @api_token.token %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update 'api_tokens_index' do %>
+  <%= render 'index' %>
+<% end %>

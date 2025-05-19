@@ -20,6 +20,7 @@
   <%= render LayoutHeaderComponent.new(logo_url: admin_dashboard_path) do |layout_component| %>
     <%= navigation_link 'Dashboard', admin_dashboard_path %>
     <%= navigation_link 'Users', admin_users_path %>
+    <%= navigation_link 'API Tokens', admin_api_tokens_path %>
 
     <% layout_component.with_dropdown do %>
       <%= render DropdownComponent.new(align: :right) do |component| %>
@@ -36,5 +37,7 @@
   <div class="container mx-auto p-5 flex-grow flex flex-col">
     <%= yield %>
   </div>
+
+  <%= turbo_frame_tag 'modal' %>
 </body>
 </html>

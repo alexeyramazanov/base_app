@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :chat_messages, dependent: :delete_all
   has_many :documents, dependent: :destroy
+  has_many :api_tokens, dependent: :delete_all
 
   after_create_commit lambda {
     broadcast_prepend_to 'admin_new_users', partial: 'admin/users/new_user_row',

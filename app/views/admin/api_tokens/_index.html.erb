@@ -1,0 +1,46 @@
+<h1 class="font-semibold text-xl text-gray-700 pb-4">API Tokens</h1>
+
+<div class="flex items-start gap-4">
+  <div class="card w-3/4">
+    <table id="api_tokens" class="w-full text-left table-auto min-w-max">
+      <thead>
+        <tr class="border-b border-slate-300 bg-slate-50">
+          <th class="p-2 text-sm font-normal leading-none text-slate-500">ID</th>
+          <th class="p-2 text-sm font-normal leading-none text-slate-500">User</th>
+          <th class="p-2 text-sm font-normal leading-none text-slate-500">Created</th>
+          <th class="p-2 text-sm font-normal leading-none text-slate-500">Last Used</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @api_tokens.each do |api_token| %>
+          <tr>
+            <td class="p-2 border-b border-slate-200">
+              <%= api_token.id %>
+            </td>
+            <td class="p-2 border-b border-slate-200">
+              <%= api_token.user.email %>
+            </td>
+            <td class="p-2 border-b border-slate-200">
+              <%= l api_token.created_at, format: :short %>
+            </td>
+            <td class="p-2 border-b border-slate-200">
+              <%= api_token.last_used_at ? l(api_token.last_used_at, format: :short) : 'Never' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card w-1/4">
+    <h3 class="font-semibold text-xl text-gray-700 pb-4">Create API Token</h3>
+
+    <%= form_with model: ApiToken.new, url: admin_api_tokens_path do |form| %>
+      <div class="mb-4">
+        <%= form.label :user_id, class: 'leading-7 text-sm text-gray-600' %>
+        <%= form.select :user_id, @users.map { |u| [u.email, u.id] }, {required: true}, class: 'input-field' %>
+      </div>
+      <%= form.submit 'Create', class: 'button' %>
+    <% end %>
+  </div>
+</div>
