@@ -8,7 +8,9 @@ module PublicApi
         # GET /documents
         desc 'List documents'
         get do
-          policy_scope(Document)
+          documents = policy_scope(Document)
+
+          present documents, with: Entities::V1::Document
         end
       end
     end

@@ -84,6 +84,10 @@ gem 'thruster', '~> 0.1.13', require: false
 # https://github.com/ruby-grape/grape
 gem 'grape', '~> 2.3.0'
 
+# An API focused facade that sits on top of an object model.
+# https://github.com/ruby-grape/grape-entity
+gem 'grape-entity', '~> 1.0.1'
+
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
   # https://github.com/bkeepers/dotenv
