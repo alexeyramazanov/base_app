@@ -6,7 +6,7 @@ module PublicApi
       include Pundit::Authorization
 
       def verify_pundit_authorization!
-        error_pundit_not_authorized! if !pundit_policy_authorized? && !pundit_policy_scoped?
+        error_forbidden! if !pundit_policy_authorized? && !pundit_policy_scoped? && !public_route?
       end
     end
   end

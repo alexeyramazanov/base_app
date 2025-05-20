@@ -22,6 +22,9 @@ Style/FrozenStringLiteralComment:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table

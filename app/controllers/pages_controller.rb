@@ -7,4 +7,8 @@ class PagesController < ApplicationController
 
   def too_many_requests
   end
+
+  def swagger
+    render layout: 'swagger'
+  end
 end

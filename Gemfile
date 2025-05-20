@@ -88,6 +88,14 @@ gem 'grape', '~> 2.3.0'
 # https://github.com/ruby-grape/grape-entity
 gem 'grape-entity', '~> 1.0.1'
 
+# Add OAPI/swagger v2.0 compliant documentation to your grape API
+# https://github.com/ruby-grape/grape-swagger
+gem 'grape-swagger', '~> 2.1.2'
+
+# A simple grape-swagger adapter to allow parse representers as response model
+# https://github.com/ruby-grape/grape-swagger-entity
+gem 'grape-swagger-entity', '~> 0.6.2'
+
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
   # https://github.com/bkeepers/dotenv
