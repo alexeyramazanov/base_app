@@ -44,6 +44,11 @@ module PublicApi
       def internal_server_error!
         error!({ code: 500, message: Rack::Utils::HTTP_STATUS_CODES[500], with: Entities::V1::Error }, 500)
       end
+
+      def log_exception(exception)
+        Rails.logger.error "\n\n#{exception.class} (#{exception.message}):"
+        Rails.logger.error exception.backtrace.join("\n")
+      end
     end
   end
 end
