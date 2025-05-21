@@ -10,7 +10,7 @@ module PublicApi
       PER_PAGE = 10
 
       params :pagination do
-        optional :page, type: Integer, default: 1, desc: 'Page number'
+        optional :page, type: Integer, desc: 'Page number'
       end
 
       def paginate(collection)
