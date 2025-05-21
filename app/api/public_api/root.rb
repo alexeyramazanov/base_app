@@ -18,6 +18,8 @@ module PublicApi
       verify_pundit_authorization!
     end
 
+    # newer versions should be mounted before older ones
+    mount V2::Root
     mount V1::Root
 
     add_swagger_documentation(

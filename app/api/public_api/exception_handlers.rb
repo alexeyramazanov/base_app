@@ -13,6 +13,7 @@ module PublicApi
         error_not_found!
       end
 
+      # TODO: log errors
       rescue_from :all do
         internal_server_error!
       end
