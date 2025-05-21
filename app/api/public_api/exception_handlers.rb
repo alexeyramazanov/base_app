@@ -15,6 +15,10 @@ module PublicApi
         error_not_found!
       end
 
+      rescue_from Pagy::VariableError do |e|
+        error_unprocessable_entity!(e.message)
+      end
+
       rescue_from :all do |e|
         log_exception(e)
         internal_server_error!

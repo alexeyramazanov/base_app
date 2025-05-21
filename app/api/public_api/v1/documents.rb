@@ -4,7 +4,7 @@ module PublicApi
   module V1
     class Documents < Grape::API
       resources :documents do # rubocop:disable Metrics/BlockLength
-        extend Helpers::ErrorHelper
+        extend Helpers::ErrorHelpers
 
         # GET /documents
         desc 'List documents',

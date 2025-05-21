@@ -4,9 +4,10 @@ module PublicApi
   class Root < Grape::API
     include ExceptionHandlers
 
-    helpers Helpers::AuthenticationHelper,
-            Helpers::PunditHelper,
-            Helpers::ErrorHelper
+    helpers Helpers::AuthenticationHelpers,
+            Helpers::AuthorizationHelpers,
+            Helpers::ErrorHelpers,
+            Helpers::PaginationHelpers
 
     format :json
 

@@ -2,7 +2,7 @@
 
 module PublicApi
   module Helpers
-    module AuthenticationHelper
+    module AuthenticationHelpers
       def authenticate!
         return if public_route?
 

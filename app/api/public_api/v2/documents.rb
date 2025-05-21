@@ -4,24 +4,24 @@ module PublicApi
   module V2
     class Documents < Grape::API
       resources :documents do # rubocop:disable Metrics/BlockLength
-        extend Helpers::ErrorHelper
+        extend Helpers::ErrorHelpers
+
+        helpers Helpers::PaginationHelpers
 
         # GET /documents
         desc 'List documents',
              success: {
-               message:  'Documents list',
-               model:    Entities::V2::Document,
-               examples: {
-                 'application/json': [
-                   { id: 241, user_id: 15, file_name: 'image.png', file_size: 78_325 }
-                 ]
-               }
+               message: 'Documents list',
+               model:   Entities::V2::PaginatedDocuments
              },
              failure: failures(401, 500)
+        params do
+          use :pagination
+        end
         get do
-          documents = policy_scope(Document)
+          paginated_data = paginate(policy_scope(Document).order(id: :desc))
 
-          present documents, with: Entities::V2::Document
+          present paginated_data, with: Entities::V2::PaginatedDocuments
         end
 
         desc 'Create a document',
@@ -32,7 +32,7 @@ module PublicApi
                  'application/json': { id: 241, user_id: 15, file_name: 'image.png', file_size: 78_325 }
                }
              },
-             failure: failures(401, 500)
+             failure: failures(401, 422, 500)
         params do
           requires :file_name, type: String, desc: 'File name', documentation: { type: 'string', default: 'image.png' }
           requires :data, type: String, desc: 'Base64 encoded file content',

@@ -32,6 +32,10 @@ gem 'pundit', '~> 2.5.0'
 # https://github.com/viewcomponent/view_component
 gem 'view_component', '~> 3.22.0'
 
+# The Best Pagination Ruby Gem
+# https://github.com/ddnexus/pagy
+gem 'pagy', '~> 9.3.4'
+
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
 gem 'turbo-rails', '~> 2.0.13'

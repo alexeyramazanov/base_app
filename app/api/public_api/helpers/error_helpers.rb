@@ -2,10 +2,10 @@
 
 module PublicApi
   module Helpers
-    module ErrorHelper
+    module ErrorHelpers
       def failures(*codes)
         codes.map do |code|
-          errors = (code == 422) ? ['Invalid value for field "name"'] : []
+          errors = (code == 422) ? ["Invalid value for field 'name'"] : []
 
           {
             code:     code,

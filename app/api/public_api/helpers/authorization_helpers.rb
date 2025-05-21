@@ -2,7 +2,7 @@
 
 module PublicApi
   module Helpers
-    module PunditHelper
+    module AuthorizationHelpers
       include Pundit::Authorization
 
       def verify_pundit_authorization!
