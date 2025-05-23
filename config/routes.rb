@@ -6,6 +6,9 @@ require 'sidekiq/cron/web'
 Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   mount Sidekiq::Web => '/sidekiq'
 
+  mount PublicApi::Root => '/public_api'
+  get 'public_api/swagger', to: 'pages#swagger'
+
   get 'up', to: 'rails/health#show', as: :rails_health_check
 
   get  'signup', to: 'signup#new'

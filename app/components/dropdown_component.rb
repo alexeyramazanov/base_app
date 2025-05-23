@@ -12,6 +12,6 @@ class DropdownComponent < ApplicationComponent
   end
 
   def align_class
-    align == :right ? 'right-0' : ''
+    (align == :right) ? 'right-0' : ''
   end
 end

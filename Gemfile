@@ -32,6 +32,10 @@ gem 'pundit', '~> 2.5.0'
 # https://github.com/viewcomponent/view_component
 gem 'view_component', '~> 3.22.0'
 
+# The Best Pagination Ruby Gem
+# https://github.com/ddnexus/pagy
+gem 'pagy', '~> 9.3.4'
+
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
 gem 'turbo-rails', '~> 2.0.13'
@@ -79,6 +83,22 @@ gem 'bootsnap', '~> 1.18.6', require: false
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
 gem 'thruster', '~> 0.1.13', require: false
+
+# An opinionated framework for creating REST-like APIs in Ruby.
+# https://github.com/ruby-grape/grape
+gem 'grape', '~> 2.3.0'
+
+# An API focused facade that sits on top of an object model.
+# https://github.com/ruby-grape/grape-entity
+gem 'grape-entity', '~> 1.0.1'
+
+# Add OAPI/swagger v2.0 compliant documentation to your grape API
+# https://github.com/ruby-grape/grape-swagger
+gem 'grape-swagger', '~> 2.1.2'
+
+# A simple grape-swagger adapter to allow parse representers as response model
+# https://github.com/ruby-grape/grape-swagger-entity
+gem 'grape-swagger-entity', '~> 0.6.2'
 
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
