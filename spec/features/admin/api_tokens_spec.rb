@@ -33,7 +33,6 @@ RSpec.describe Admin::ApiTokensController do
       visit admin_api_tokens_path
 
       select user.email, from: 'User'
-      sleep 0.5
       click_button 'Create'
 
       within('#modal') do
