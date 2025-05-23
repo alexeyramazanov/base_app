@@ -121,6 +121,10 @@ group :development, :test do
   # https://github.com/teamcapybara/capybara
   gem 'capybara', '~> 3.40.0'
 
+  # Automatically save screen shots when a Capybara scenario fails
+  # https://github.com/mattheworiordan/capybara-screenshot
+  gem 'capybara-screenshot', '~> 1.0.26'
+
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
   gem 'selenium-webdriver', '~> 4.32.0'

@@ -18,7 +18,7 @@ RSpec.describe ChatController do
       fill_in 'Type a message...', with: 'Hello'
       click_button 'Send'
 
-      expect(find(messages_div)).to have_content("#{user.email}: Hello")
+      expect(find(messages_div)).to have_content("#{user.email}: HelloInvalid") # TODO: fix
 
       click_link 'Support'
 
