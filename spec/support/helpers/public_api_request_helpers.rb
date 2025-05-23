@@ -5,12 +5,6 @@ module PublicApiRequestHelpers
     headers = { 'Authorization' => "Bearer #{token}" }.reverse_merge(headers) if token
 
     send(method, path, params:, headers:)
-
-    # if %i[patch post put].include?(method)
-    #   send(method, path, params: params, headers: headers, as: :json)
-    # else
-    #   send(method, path, params:, headers:)
-    # end
   end
 end
 
