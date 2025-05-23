@@ -4,12 +4,29 @@ require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 
 Capybara.register_driver :selenium_chrome_headless do |app|
+  profile = Selenium::WebDriver::Chrome::Profile.new
+  profile['profile.password_manager_leak_detection'] = false
+
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('--headless')
   options.add_argument('--disable-gpu')
   options.add_argument('--window-size=1920,1080')
   options.add_argument('--force-device-scale-factor=1')
   options.logging_prefs = { 'browser' => 'ALL' }
+  options.profile = profile
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+Capybara.register_driver :selenium_chrome do |app|
+  profile = Selenium::WebDriver::Chrome::Profile.new
+  profile['profile.password_manager_leak_detection'] = false
+
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument('--window-size=1600,900')
+  options.add_argument('--auto-open-devtools-for-tabs')
+  options.logging_prefs = { 'browser' => 'ALL' }
+  options.profile = profile
 
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
@@ -25,7 +42,7 @@ RSpec.configure do |config|
 
     if errors.present?
       message = errors.map(&:message).join("\n")
-      puts message
+      puts "\n\n#{message}\n"
     end
   end
 end

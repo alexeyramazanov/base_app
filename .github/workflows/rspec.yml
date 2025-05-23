@@ -77,3 +77,6 @@ jobs:
           name: capybara-screenshots
           path: tmp/capybara
           if-no-files-found: ignore
+
+      - name: Code metrics report
+        uses: k1LoW/octocov-action@v1
