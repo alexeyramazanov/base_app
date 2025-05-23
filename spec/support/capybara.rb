@@ -25,7 +25,7 @@ RSpec.configure do |config|
 
     if errors.present?
       message = errors.map(&:message).join("\n")
-      puts message
+      puts "\n\n#{message}\n"
     end
   end
 end
