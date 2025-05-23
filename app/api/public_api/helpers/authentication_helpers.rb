@@ -23,7 +23,7 @@ module PublicApi
       private
 
       def public_route?
-        %w[/public_api/swagger_doc.json].include?(request.path)
+        PublicApi::Root::PUBLIC_ROUTES.include?(request.path)
       end
     end
   end

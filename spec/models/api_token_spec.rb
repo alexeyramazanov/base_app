@@ -36,4 +36,17 @@ RSpec.describe ApiToken do
       expect(api_token.token).to match(/^[a-zA-Z0-9]+$/)
     end
   end
+
+  describe '#used_now!' do
+    let(:api_token) { create(:api_token) }
+
+    it 'sets last_used_at value to current time' do
+      expect(api_token.last_used_at).to be_nil
+
+      api_token.used_now!
+
+      api_token.reload
+      expect(api_token.last_used_at).to be_within(2.seconds).of(Time.current)
+    end
+  end
 end

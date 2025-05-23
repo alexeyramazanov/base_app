@@ -44,6 +44,8 @@ module PublicApi
           else
             error_unprocessable_entity!(*document.errors.full_messages)
           end
+        rescue Shrine::Plugins::DataUri::ParseError
+          error_unprocessable_entity!('Invalid file')
         end
       end
     end

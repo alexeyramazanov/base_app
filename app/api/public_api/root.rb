@@ -4,6 +4,8 @@ module PublicApi
   class Root < Grape::API
     include ExceptionHandlers
 
+    PUBLIC_ROUTES = %w[/public_api/swagger_doc.json].freeze
+
     helpers Helpers::AuthenticationHelpers,
             Helpers::AuthorizationHelpers,
             Helpers::ErrorHelpers,
@@ -26,7 +28,7 @@ module PublicApi
     add_swagger_documentation(
       doc_version:          '1.0.0',
       info:                 {
-        title: 'BaseApp RESTful API'
+        title: 'Public API'
       },
       schemes:              %w[development test].include?(Rails.env) ? %w[http] : %w[https],
       host:                 proc { |request| request.host_with_port },
