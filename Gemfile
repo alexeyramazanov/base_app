@@ -30,7 +30,7 @@ gem 'pundit', '~> 2.5.0'
 
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
-gem 'view_component', '~> 3.22.0'
+gem 'view_component', '~> 3.23.2'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
@@ -107,7 +107,7 @@ group :development, :test do
 
   # Pretty print your Ruby objects with style -- in full color and with proper indentation
   # https://github.com/amazing-print/amazing_print
-  gem 'amazing_print', '~> 1.8.0'
+  gem 'amazing_print', '~> 1.8.1'
 
   # RSpec for Rails 7+
   # https://github.com/rspec/rspec-rails
@@ -127,7 +127,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.32.0'
+  gem 'selenium-webdriver', '~> 4.33.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
