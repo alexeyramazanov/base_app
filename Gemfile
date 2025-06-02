@@ -30,7 +30,7 @@ gem 'pundit', '~> 2.5.0'
 
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
-gem 'view_component', '~> 3.22.0'
+gem 'view_component', '~> 3.23.2'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
@@ -54,7 +54,7 @@ gem 'anycable-rails', '~> 1.6.0'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
-gem 'sidekiq', '~> 8.0.3'
+gem 'sidekiq', '~> 8.0.4'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
@@ -66,7 +66,7 @@ gem 'shrine', '~> 3.6.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.186.1'
+gem 'aws-sdk-s3', '~> 1.188.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -107,7 +107,7 @@ group :development, :test do
 
   # Pretty print your Ruby objects with style -- in full color and with proper indentation
   # https://github.com/amazing-print/amazing_print
-  gem 'amazing_print', '~> 1.8.0'
+  gem 'amazing_print', '~> 1.8.1'
 
   # RSpec for Rails 7+
   # https://github.com/rspec/rspec-rails
@@ -127,7 +127,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.32.0'
+  gem 'selenium-webdriver', '~> 4.33.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
@@ -161,7 +161,7 @@ group :development do
 
   # next generation CRuby profiler
   # https://github.com/jhawthorn/vernier
-  gem 'vernier', '~> 1.7.1'
+  gem 'vernier', '~> 1.8.0'
 
   # Firefox Profiler for Ruby
   # https://github.com/tenderlove/profiler
