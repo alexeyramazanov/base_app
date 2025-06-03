@@ -100,6 +100,10 @@ gem 'grape-swagger', '~> 2.1.2'
 # https://github.com/ruby-grape/grape-swagger-entity
 gem 'grape-swagger-entity', '~> 0.6.2'
 
+# Ruby implementation of GraphQL
+# https://github.com/rmosolgo/graphql-ruby
+gem 'graphql', '~> 2.5.8'
+
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
   # https://github.com/bkeepers/dotenv

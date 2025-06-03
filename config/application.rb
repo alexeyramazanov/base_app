@@ -43,6 +43,17 @@ module BaseApp
       g.test_framework :rspec
     end
 
+    config.active_record.query_log_tags = [
+      # Rails query log tags:
+      :application, :controller, :action, :job,
+      # GraphQL-Ruby query log tags:
+      {
+        current_graphql_operation:         -> { GraphQL::Current.operation_name },
+        current_graphql_field:             -> { GraphQL::Current.field&.path },
+        current_graphql_dataloader_source: -> { GraphQL::Current.dataloader_source_class }
+      }
+    ]
+
     config.active_job.queue_adapter = :sidekiq
 
     config.action_mailer.deliver_later_queue_name = :mailers
