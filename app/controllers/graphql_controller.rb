@@ -11,7 +11,9 @@ class GraphqlController < ActionController::Base # rubocop:disable Rails/Applica
       current_user: @current_user
     }
 
-    result = BaseAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = PublicGraphqlApi::BaseAppSchema.execute(
+      query, variables: variables, context: context, operation_name: operation_name
+    )
 
     render json: result
   rescue StandardError => e
