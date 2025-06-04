@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
-class GraphqlController < ApplicationController
-  # Allow for outside API access while preventing CSRF attacks
-  protect_from_forgery with: :null_session
+class GraphqlController < ActionController::Base # rubocop:disable Rails/ApplicationController
+  include ApiTokenAuthentication
 
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      current_user: Current.user
+      current_user: @current_user
     }
 
     result = BaseAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
@@ -47,6 +46,6 @@ class GraphqlController < ApplicationController
     logger.error e.message
     logger.error e.backtrace.join("\n")
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: :internal_server_error
   end
 end
