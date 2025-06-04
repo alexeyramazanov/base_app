@@ -2,6 +2,8 @@
 
 module PublicGraphqlApi
   class BaseAppSchema < GraphQL::Schema
+    include PublicGraphqlApi::ErrorHandlers::Rescue
+
     use GraphQL::Dataloader
     query Types::QueryType
     mutation Types::MutationType

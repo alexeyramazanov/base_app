@@ -20,4 +20,8 @@ module ApiTokenAuthentication
     api_token.used_now!
     @current_user = api_token.user
   end
+
+  def current_user
+    @current_user
+  end
 end

@@ -8,7 +8,7 @@ class GraphqlController < ActionController::Base # rubocop:disable Rails/Applica
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      current_user: @current_user
+      current_user:
     }
 
     result = PublicGraphqlApi::BaseAppSchema.execute(
@@ -44,10 +44,15 @@ class GraphqlController < ActionController::Base # rubocop:disable Rails/Applica
     end
   end
 
-  def handle_error_in_development(e)
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+  def handle_error_in_development(exception)
+    logger.error(exception.message)
+    logger.error(exception.backtrace.join("\n"))
 
-    render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: :internal_server_error
+    response = {
+      data:   {},
+      errors: [{ message: exception.message, backtrace: exception.backtrace }]
+    }
+
+    render json: response, status: :internal_server_error
   end
 end

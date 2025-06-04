@@ -4,7 +4,7 @@ module PublicGraphqlApi
   module Mutations
     class BaseMutation < GraphQL::Schema::RelayClassicMutation
       include Helpers::AuthorizationHelpers
-      include Errors
+      include ErrorHandlers::Errors
 
       argument_class Types::BaseArgument
       field_class Types::BaseField

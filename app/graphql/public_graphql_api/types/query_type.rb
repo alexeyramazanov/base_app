@@ -4,7 +4,7 @@ module PublicGraphqlApi
   module Types
     class QueryType < Types::BaseObject
       include Helpers::AuthorizationHelpers
-      include Errors
+      include ErrorHandlers::Errors
 
       include Queries::DocumentsQueries
     end
