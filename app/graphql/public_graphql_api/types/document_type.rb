@@ -2,8 +2,7 @@
 
 module PublicGraphqlApi
   module Types
-    class DocumentType < Types::BaseObject
-      field :id, ID, null: false
+    class DocumentType < ActiveRecordType
       field :user_id, ID, null: false # TODO: relation
       field :file_name, String, null: false
       field :file_size, String, null: false

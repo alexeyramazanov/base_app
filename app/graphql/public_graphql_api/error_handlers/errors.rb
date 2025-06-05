@@ -25,6 +25,15 @@ module PublicGraphqlApi
         raise_validation_error!(details)
       end
 
+      def raise_unauthenticated_error!
+        raise GraphQL::ExecutionError.new(
+          'Unauthenticated',
+          extensions: {
+            code: 'UNAUTHENTICATED'
+          }
+        )
+      end
+
       private
 
       def raise_validation_error!(details)

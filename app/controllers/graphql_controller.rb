@@ -11,15 +11,10 @@ class GraphqlController < ActionController::Base # rubocop:disable Rails/Applica
       current_user:
     }
 
-    result = PublicGraphqlApi::BaseAppSchema.execute(
-      query, variables: variables, context: context, operation_name: operation_name
-    )
+    # All exceptions are caught by the `rescue_from` block and wrapped into a valid GraphQL response
+    result = PublicGraphqlApi::BaseAppSchema.execute(query, variables:, context:, operation_name:)
 
     render json: result
-  rescue StandardError => e
-    raise e unless Rails.env.development?
-
-    handle_error_in_development(e)
   end
 
   private
@@ -42,17 +37,5 @@ class GraphqlController < ActionController::Base # rubocop:disable Rails/Applica
     else
       raise ArgumentError, "Unexpected parameter: #{variables_param}"
     end
-  end
-
-  def handle_error_in_development(exception)
-    logger.error(exception.message)
-    logger.error(exception.backtrace.join("\n"))
-
-    response = {
-      data:   {},
-      errors: [{ message: exception.message, backtrace: exception.backtrace }]
-    }
-
-    render json: response, status: :internal_server_error
   end
 end
