@@ -3,7 +3,8 @@
 module PublicGraphqlApi
   module Types
     class ActiveRecordType < BaseObject
-      field :id, GraphQL::Types::ID, null: false
+      implements NodeType
+
       field :created_at, GraphQL::Types::ISO8601DateTime, null: true
       field :updated_at, GraphQL::Types::ISO8601DateTime, null: true
 

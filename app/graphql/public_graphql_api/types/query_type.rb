@@ -6,6 +6,7 @@ module PublicGraphqlApi
       include Helpers::AuthorizationHelpers
       include ErrorHandlers::Errors
 
+      include Queries::NodesQueries
       include Queries::DocumentsQueries
     end
   end
