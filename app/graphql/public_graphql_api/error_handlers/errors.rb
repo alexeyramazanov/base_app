@@ -25,25 +25,27 @@ module PublicGraphqlApi
         raise_validation_error!(details)
       end
 
+      def raise_record_not_found_error!
+        raise GraphQL::ExecutionError.new('Not Found', extensions: { code: 'NOT_FOUND' })
+      end
+
       def raise_unauthenticated_error!
-        raise GraphQL::ExecutionError.new(
-          'Unauthenticated',
-          extensions: {
-            code: 'UNAUTHENTICATED'
-          }
-        )
+        raise GraphQL::ExecutionError.new('Unauthenticated', extensions: { code: 'UNAUTHENTICATED' })
+      end
+
+      def raise_unauthorized_error!
+        raise GraphQL::ExecutionError.new('Unauthorized', extensions: { code: 'UNAUTHORIZED' })
+      end
+
+      def raise_internal_server_error!
+        raise GraphQL::ExecutionError.new('Internal Server Error', extensions: { code: 'INTERNAL_SERVER_ERROR' })
       end
 
       private
 
       def raise_validation_error!(details)
-        raise GraphQL::ExecutionError.new(
-          'Validation Error',
-          extensions: {
-            code:    'VALIDATION_ERROR',
-            details: details
-          }
-        )
+        raise GraphQL::ExecutionError.new('Validation Error',
+                                          extensions: { code: 'VALIDATION_ERROR', details: details })
       end
     end
   end

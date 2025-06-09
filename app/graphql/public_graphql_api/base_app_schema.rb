@@ -2,7 +2,7 @@
 
 module PublicGraphqlApi
   class BaseAppSchema < GraphQL::Schema
-    include PublicGraphqlApi::ErrorHandlers::Rescue
+    include ErrorHandlers::Rescue
 
     use GraphQL::Dataloader
     query Types::QueryType
@@ -20,8 +20,14 @@ module PublicGraphqlApi
     end
 
     # Given a string UUID, find the `object`
-    def self.object_from_id(object_id, _context)
-      GlobalID.find(object_id)
+    def self.object_from_id(object_id, context)
+      gid = GlobalID.parse(object_id)
+      raise_simple_validation_error!(['Invalid ID format']) unless gid
+
+      object = GlobalID::Locator.locate(gid)
+      Pundit.authorize(context[:current_user], object, :show?)
+
+      object
     end
 
     # Union and Interface Resolution
@@ -30,6 +36,8 @@ module PublicGraphqlApi
       when Document
         Types::DocumentType
       else
+        # TODO: change exception to standard one
+        # TODO: write spec
         raise("Unexpected object: #{application_object}")
       end
     end

@@ -9,9 +9,8 @@ module PublicGraphqlApi
         field :documents, Types::DocumentType.connection_type,
               null: false, description: 'Returns a list of documents'
 
-        field :document, Types::DocumentType, null: true, description: 'Returns a document' do
-          argument :id, GraphQL::Schema::Member::GraphQLTypeNames::ID,
-                   required: true, description: 'The ID of the document'
+        field :document, Types::DocumentType, null: false, description: 'Returns a document' do
+          argument :id, GraphQL::Types::ID, required: true, description: 'The ID of the document'
         end
       end
 
@@ -20,7 +19,7 @@ module PublicGraphqlApi
       end
 
       def document(id:)
-        policy_scope(Document).find(id)
+        context.schema.object_from_id(id, context)
       end
     end
   end

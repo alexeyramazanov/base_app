@@ -6,12 +6,14 @@ module PublicGraphqlApi
       extend ActiveSupport::Concern
 
       included do
+        extend ErrorHandlers::Errors
+
         rescue_from ActiveRecord::RecordNotFound do |_err, _obj, _args, _ctx, _field|
-          raise GraphQL::ExecutionError.new('Not Found', extensions: { code: 'NOT_FOUND' })
+          raise_record_not_found_error!
         end
 
         rescue_from Pundit::NotAuthorizedError do |_err, _obj, _args, _ctx, _field|
-          raise GraphQL::ExecutionError.new('Unauthorized', extensions: { code: 'UNAUTHORIZED' })
+          raise_unauthorized_error!
         end
 
         rescue_from Exception do |err, _obj, _args, _ctx, _field|
@@ -20,12 +22,12 @@ module PublicGraphqlApi
             Rails.logger.error(err.backtrace.join("\n"))
           end
 
-          raise GraphQL::ExecutionError.new('Internal Server Error', extensions: { code: 'INTERNAL_SERVER_ERROR' })
+          raise_internal_server_error!
         end
 
         # called when default GraphQL object authorization fails
         def self.unauthorized_object(_error)
-          raise GraphQL::ExecutionError.new('Unauthorized', extensions: { code: 'UNAUTHORIZED' })
+          raise_unauthorized_error!
         end
 
         # called when default GraphQL field authorization fails

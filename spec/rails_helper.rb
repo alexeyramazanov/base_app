@@ -68,6 +68,10 @@ RSpec.configure do |config|
     metadata[:type] = :component if metadata[:type].blank?
   end
 
+  config.define_derived_metadata(file_path: Regexp.new('/spec/graphql/')) do |metadata|
+    metadata[:type] = :graphql if metadata[:type].blank?
+  end
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 

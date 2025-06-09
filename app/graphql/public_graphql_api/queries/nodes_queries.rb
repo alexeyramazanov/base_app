@@ -6,18 +6,19 @@ module PublicGraphqlApi
       extend ActiveSupport::Concern
 
       included do
-        field :nodes, [Types::NodeType, { null: true }],
-              null: true, description: 'Fetches a list of objects given a list of IDs.' do
+        field :nodes, [Types::NodeType, { null: false }],
+              null: false, description: 'Fetches a list of objects given a list of IDs.' do
           argument :ids, [GraphQL::Types::ID], required: true, description: 'IDs of the objects.'
         end
 
         field :node, Types::NodeType,
-              null: true, description: 'Fetches an object given its ID.' do
+              null: false, description: 'Fetches an object given its ID.' do
           argument :id, GraphQL::Types::ID, required: true, description: 'ID of the object.'
         end
       end
 
       def nodes(ids:)
+        # returns error response even if just one ID on the list is invalid
         ids.map { |id| context.schema.object_from_id(id, context) }
       end
 
