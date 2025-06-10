@@ -80,11 +80,27 @@ RSpec.describe PublicGraphqlApi::ErrorHandlers::Errors do
   end
 
   describe '#raise_internal_server_error!' do
+    let(:error) do
+      err = StandardError.new('error')
+      err.set_backtrace(['line 1', 'line 2'])
+      err
+    end
+
     it 'raises GraphQL::ExecutionError with INTERNAL_SERVER_ERROR code' do
-      expect { test_class.raise_internal_server_error! }.to raise_error(GraphQL::ExecutionError) do |error|
+      expect { test_class.raise_internal_server_error!(error) }.to raise_error(GraphQL::ExecutionError) do |error|
         expect(error.message).to eq('Internal Server Error')
         expect(error.extensions[:code]).to eq('INTERNAL_SERVER_ERROR')
       end
+    end
+
+    it 'logs the error in development environment' do
+      allow(Rails.env).to receive(:development?).and_return(true)
+      allow(Rails.logger).to receive(:error)
+
+      expect { test_class.raise_internal_server_error!(error) }.to raise_error(GraphQL::ExecutionError)
+
+      expect(Rails.logger).to have_received(:error).with('error')
+      expect(Rails.logger).to have_received(:error).with("line 1\nline 2")
     end
   end
 end

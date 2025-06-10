@@ -36,9 +36,8 @@ module PublicGraphqlApi
       when Document
         Types::DocumentType
       else
-        # TODO: change exception to standard one
-        # TODO: write spec
-        raise("Unexpected object: #{application_object}")
+        ex = StandardError.new("Unexpected object: #{application_object}")
+        raise_internal_server_error!(ex)
       end
     end
   end

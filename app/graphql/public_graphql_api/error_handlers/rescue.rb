@@ -17,12 +17,7 @@ module PublicGraphqlApi
         end
 
         rescue_from Exception do |err, _obj, _args, _ctx, _field|
-          if Rails.env.development?
-            Rails.logger.error(err.message)
-            Rails.logger.error(err.backtrace.join("\n"))
-          end
-
-          raise_internal_server_error!
+          raise_internal_server_error!(err)
         end
 
         # called when default GraphQL object authorization fails

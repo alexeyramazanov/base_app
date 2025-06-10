@@ -56,7 +56,7 @@ RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
       execute_graphql('query { specRescueRecordNotFoundTest }')
 
       expect(success?).to be(false)
-      expect(data['specRescueRecordNotFoundTest']).to be_nil
+      expect_data_in_empty
       expect_error_code('NOT_FOUND')
       expect_error_message('Not Found')
     end
@@ -67,7 +67,7 @@ RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
       execute_graphql('query { specRescuePunditAuthorizationTest }')
 
       expect(success?).to be(false)
-      expect(data['specRescuePunditAuthorizationTest']).to be_nil
+      expect_data_in_empty
       expect_error_code('UNAUTHORIZED')
       expect_error_message('Unauthorized')
     end
@@ -78,7 +78,7 @@ RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
       execute_graphql('query { specRescueGenericExceptionTest }')
 
       expect(success?).to be(false)
-      expect(data['specRescueGenericExceptionTest']).to be_nil
+      expect_data_in_empty
       expect_error_code('INTERNAL_SERVER_ERROR')
       expect_error_message('Internal Server Error')
     end
@@ -89,7 +89,7 @@ RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
       execute_graphql('query { specUnauthorizedObjectTest { status } }')
 
       expect(success?).to be(false)
-      expect(data['specUnauthorizedObjectTest']).to be_nil
+      expect_data_in_empty
       expect_error_code('UNAUTHORIZED')
       expect_error_message('Unauthorized')
     end

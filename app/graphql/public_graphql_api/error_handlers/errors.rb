@@ -37,7 +37,12 @@ module PublicGraphqlApi
         raise GraphQL::ExecutionError.new('Unauthorized', extensions: { code: 'UNAUTHORIZED' })
       end
 
-      def raise_internal_server_error!
+      def raise_internal_server_error!(exception)
+        if Rails.env.development?
+          Rails.logger.error(exception.message)
+          Rails.logger.error(exception.backtrace&.join("\n"))
+        end
+
         raise GraphQL::ExecutionError.new('Internal Server Error', extensions: { code: 'INTERNAL_SERVER_ERROR' })
       end
 

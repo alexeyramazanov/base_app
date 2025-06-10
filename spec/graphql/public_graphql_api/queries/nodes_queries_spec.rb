@@ -3,6 +3,29 @@
 require 'rails_helper'
 require 'shared/graphql'
 
+class PublicGraphqlApiTypeResolutionUnsupportedModel
+end
+
+module PublicGraphqlApiTypeResolutionTest
+  extend ActiveSupport::Concern
+
+  included do
+    field :spec_type_resolution_test, PublicGraphqlApi::Types::NodeType, authenticate: false
+  end
+
+  def spec_type_resolution_test
+    PublicGraphqlApiTypeResolutionUnsupportedModel.new
+  end
+end
+
+module PublicGraphqlApi
+  module Types
+    class QueryType
+      include PublicGraphqlApiTypeResolutionTest
+    end
+  end
+end
+
 RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
   let(:user) { create(:user) }
 
@@ -144,6 +167,17 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
         expected_document = { 'id' => document.to_gid_param, 'userId' => document.user_id }
         expect(data['node']).to eq(expected_document)
       end
+    end
+  end
+
+  describe 'type resolution' do
+    it 'returns GraphQL error response for unsupported type' do
+      execute_graphql('query { specTypeResolutionTest { id } }')
+
+      expect(success?).to be(false)
+      expect_data_in_empty
+      expect_error_code('INTERNAL_SERVER_ERROR')
+      expect_error_message('Internal Server Error')
     end
   end
 end
