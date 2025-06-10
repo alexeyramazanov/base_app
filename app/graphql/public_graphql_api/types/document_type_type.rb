@@ -2,8 +2,8 @@
 
 module PublicGraphqlApi
   module Types
-    class BaseEnum < GraphQL::Schema::Enum
-      value_methods true
+    class DocumentTypeType < BaseEnum
+      value 'IMAGE', 'Image'
     end
   end
 end

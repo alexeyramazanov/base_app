@@ -98,6 +98,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
         query($id: ID!) {
           document(id: $id) {
             id
+            type
             userId
             url
           }
@@ -134,6 +135,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
 
       expected_data = {
         'id'     => document.to_gid_param,
+        'type'   => PublicGraphqlApi::Types::DocumentTypeType.image,
         'userId' => user.id,
         'url'    => document.file.url
       }
