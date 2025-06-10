@@ -99,6 +99,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
           document(id: $id) {
             id
             userId
+            url
           }
         }
       GQL
@@ -133,7 +134,8 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
 
       expected_data = {
         'id'     => document.to_gid_param,
-        'userId' => user.id
+        'userId' => user.id,
+        'url'    => document.file.url
       }
       expect(data['document']).to eq(expected_data)
     end
