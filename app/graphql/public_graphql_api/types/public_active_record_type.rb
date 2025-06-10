@@ -3,9 +3,10 @@
 module PublicGraphqlApi
   module Types
     class PublicActiveRecordType < BaseObject
-      def self.authorized?(_object, _context)
-        true
-      end
+      implements NodeType
+
+      field :created_at, GraphQL::Types::ISO8601DateTime, null: true
+      field :updated_at, GraphQL::Types::ISO8601DateTime, null: true
     end
   end
 end

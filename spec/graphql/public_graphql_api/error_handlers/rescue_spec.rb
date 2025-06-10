@@ -14,11 +14,11 @@ module PublicGraphqlApiErrorHandlersRescueTest
   extend ActiveSupport::Concern
 
   included do
-    field :spec_rescue_record_not_found_test, GraphQL::Types::Boolean, authenticate: false
-    field :spec_rescue_pundit_authorization_test, GraphQL::Types::Boolean, authenticate: false
-    field :spec_rescue_generic_exception_test, GraphQL::Types::Boolean, authenticate: false
-    field :spec_unauthorized_object_test, PublicGraphqlApiErrorHandlersRescueAuthorizationTestType, authenticate: false
-    field :spec_unauthorized_field_test, Integer, authenticate: false do
+    field :spec_rescue_record_not_found_test, GraphQL::Types::Boolean
+    field :spec_rescue_pundit_authorization_test, GraphQL::Types::Boolean
+    field :spec_rescue_generic_exception_test, GraphQL::Types::Boolean
+    field :spec_unauthorized_object_test, PublicGraphqlApiErrorHandlersRescueAuthorizationTestType
+    field :spec_unauthorized_field_test, Integer do
       def authorized?(_object, _args, _context)
         false
       end

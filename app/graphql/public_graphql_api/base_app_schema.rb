@@ -35,8 +35,11 @@ module PublicGraphqlApi
       case application_object
       when Document
         Types::DocumentType
+      when PublicGraphqlApi::Version
+        Types::VersionType
       else
         ex = StandardError.new("Unexpected object: #{application_object}")
+        ex.set_backtrace(caller_locations(0))
         raise_internal_server_error!(ex)
       end
     end

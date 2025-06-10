@@ -60,6 +60,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
       execute_graphql(query, user)
 
       expect(success?).to be(true)
+
       expected_document_ids = user.documents.order(id: :desc).map(&:to_gid_param)
       received_document_ids = data['documents']['nodes'].map { |d| d['id'] }
       expect(received_document_ids).to eq(expected_document_ids)
@@ -77,6 +78,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
       execute_graphql(edges_query, user)
 
       expect(success?).to be(true)
+
       expected_document_ids = documents.map(&:to_gid_param)
       received_document_ids = data['documents']['edges'].map { |d| d['node']['id'] }
       expect(received_document_ids).to match_array(expected_document_ids)

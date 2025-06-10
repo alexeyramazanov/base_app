@@ -2,8 +2,12 @@
 
 module PublicGraphqlApi
   module Helpers
-    module AuthorizationHelpers
+    module AuthHelpers
       include Pundit::Authorization
+
+      def authenticate!
+        raise_unauthenticated_error! unless current_user
+      end
 
       def current_user
         context[:current_user]

@@ -10,6 +10,8 @@ module PublicGraphqlApi
         field :document, Types::DocumentType, null: false, description: 'Created document'
 
         def resolve(file_name:, data:)
+          authenticate!
+
           file = Shrine.data_uri(data, filename: file_name)
           document = current_user.documents.new(file:)
           authorize document, :create?

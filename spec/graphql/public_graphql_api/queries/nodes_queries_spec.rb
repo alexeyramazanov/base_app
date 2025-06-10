@@ -10,7 +10,7 @@ module PublicGraphqlApiTypeResolutionTest
   extend ActiveSupport::Concern
 
   included do
-    field :spec_type_resolution_test, PublicGraphqlApi::Types::NodeType, authenticate: false
+    field :spec_type_resolution_test, PublicGraphqlApi::Types::NodeType
   end
 
   def spec_type_resolution_test
@@ -144,7 +144,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
       expect(data['node']['id']).to eq(document.to_gid_param)
     end
 
-    context 'with specified type' do
+    context 'with Document type' do
       let(:query) do
         <<~GQL
           query($id: ID!) {
@@ -158,6 +158,11 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
           }
         GQL
       end
+      let(:variables) do
+        {
+          id: document.to_gid_param
+        }
+      end
 
       it 'returns fields for specified types' do
         execute_graphql(query, user, variables)
@@ -165,6 +170,45 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
         expect(success?).to be(true)
 
         expected_document = { 'id' => document.to_gid_param, 'userId' => document.user_id }
+        expect(data['node']).to eq(expected_document)
+      end
+    end
+
+    context 'with Version type' do
+      let(:current_version) { PublicGraphqlApi::Version.new }
+
+      let(:query) do
+        <<~GQL
+          query($id: ID!) {
+            node(id: $id) {
+              id
+              ... on Version {
+                id
+                version
+                createdAt
+                updatedAt
+              }
+            }
+          }
+        GQL
+      end
+      let(:variables) do
+        {
+          id: current_version.to_gid_param
+        }
+      end
+
+      it 'returns fields for specified types' do
+        execute_graphql(query, user, variables)
+
+        expect(success?).to be(true)
+
+        expected_document = {
+          'id'        => current_version.to_gid_param,
+          'version'   => current_version.version,
+          'createdAt' => current_version.created_at.iso8601,
+          'updatedAt' => current_version.updated_at.iso8601
+        }
         expect(data['node']).to eq(expected_document)
       end
     end

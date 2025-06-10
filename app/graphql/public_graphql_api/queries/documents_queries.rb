@@ -15,10 +15,14 @@ module PublicGraphqlApi
       end
 
       def documents
+        authenticate!
+
         policy_scope(Document).order(id: :desc)
       end
 
       def document(id:)
+        authenticate!
+
         context.schema.object_from_id(id, context)
       end
     end
