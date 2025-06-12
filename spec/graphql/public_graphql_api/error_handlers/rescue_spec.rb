@@ -55,7 +55,7 @@ RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
     # Since GraphQL schema is not dynamic - it builds structure on the 1st call (in dev)/application load (in prod),
     # and since we are basically monkey patching existing schema by including new module for testing,
     # we have to add missing references manually.
-    # Otherwise, we'll get `Field '...' doesn't exist on type 'Query'`
+    # Otherwise, in envs with enabled `eager_load` (prod, CI test) we'll get "Field '...' doesn't exist on type 'Query'"
     # because GraphQL won't be able to find referenced response field.
     PublicGraphqlApi::BaseAppSchema.send(:own_references_to)[PublicGraphqlApiErrorHandlersRescueAuthorizationTestType] =
       [PublicGraphqlApi::BaseAppSchema.query.fields['specUnauthorizedObjectTest']]
