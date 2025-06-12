@@ -26,6 +26,8 @@ Stop wasting time on creating basic Ruby on Rails applications.
 * Admin panel
 * Chat example (AnyCable + Hotwire) 
 * File upload example (Direct S3 upload via Uppy)
+* REST API example (Grape)
+* GraphQL API example (GraphQL Ruby)
 
 ## How To Use
 

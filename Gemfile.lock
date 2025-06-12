@@ -192,6 +192,7 @@ GEM
     ffi (1.17.2-x86_64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
     ffi (1.17.2-x86_64-linux-musl)
+    fiber-storage (1.0.1)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -235,6 +236,10 @@ GEM
     grape-swagger-entity (0.6.2)
       grape-entity (~> 1)
       grape-swagger (~> 2)
+    graphql (2.5.8)
+      base64
+      fiber-storage
+      logger
     grpc (1.72.0)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
@@ -557,6 +562,7 @@ DEPENDENCIES
   grape-entity (~> 1.0.1)
   grape-swagger (~> 2.1.2)
   grape-swagger-entity (~> 0.6.2)
+  graphql (~> 2.5.8)
   image_processing (~> 1.14.0)
   letter_opener (~> 1.10.0)
   marcel (~> 1.0.4)

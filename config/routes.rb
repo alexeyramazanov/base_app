@@ -9,6 +9,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   mount PublicApi::Root => '/public_api'
   get 'public_api/swagger', to: 'pages#swagger'
 
+  post '/graphql', to: 'graphql#execute'
+
   get 'up', to: 'rails/health#show', as: :rails_health_check
 
   get  'signup', to: 'signup#new'
