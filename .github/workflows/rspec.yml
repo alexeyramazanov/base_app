@@ -14,7 +14,7 @@ env:
   REDIS_CACHE_URL: redis://localhost:6379/0
   AWS_EC2_METADATA_DISABLED: true
   SIDEKIQ_REDIS_URL: redis://localhost:6379/0
-  ANYCABLE_BINARY: https://github.com/anycable/anycable/releases/download/v1.6.1/anycable-go-linux-amd64
+  ANYCABLE_BINARY: https://github.com/anycable/anycable/releases/download/v1.6.2/anycable-go-linux-amd64
   ANYCABLE_RPC_POOL_SIZE: 5
   ANYCABLE_REDIS_URL: redis://localhost:6379/0
   ANYCABLE_SECRET: 6bd541cde3eaef4346468ffa2271fa00
@@ -62,7 +62,7 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: 23
+          node-version: 24
 
       - name: Install packages
         run: npm ci
