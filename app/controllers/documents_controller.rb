@@ -2,7 +2,8 @@
 
 class DocumentsController < ApplicationController
   def index
-    @documents = policy_scope(Document).order(created_at: :desc)
+    scope = policy_scope(Document).order(created_at: :desc)
+    @pagy, @documents = pagy(scope)
   end
 
   def create

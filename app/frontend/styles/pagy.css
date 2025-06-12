@@ -1,0 +1,27 @@
+.pagy {
+  @apply flex justify-center items-center space-x-2;
+
+  a:not(.gap) {
+    @apply block rounded px-3 py-1 bg-indigo-100 text-indigo-600 hover:bg-indigo-50 hover:text-indigo-500 font-medium text-lg;
+
+    &:not([href]) { /* disabled links */
+      @apply text-gray-300 bg-gray-100 cursor-default;
+    }
+
+    &.current {
+      @apply text-white bg-indigo-500;
+    }
+  }
+
+  a.gap {
+    @apply block rounded px-3 py-1 text-gray-300 bg-gray-100 font-medium text-lg cursor-default;
+  }
+
+  label {
+    @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-3 py-0.5;
+
+    input {
+      @apply bg-gray-100 border-none rounded-md;
+    }
+  }
+}
