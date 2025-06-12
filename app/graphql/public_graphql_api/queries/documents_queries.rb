@@ -7,10 +7,10 @@ module PublicGraphqlApi
 
       included do
         field :documents, Types::DocumentType.connection_type,
-              null: false, description: 'Returns a list of documents'
+              null: false, description: 'Fetches user documents.'
 
-        field :document, Types::DocumentType, null: false, description: 'Returns a document' do
-          argument :id, GraphQL::Types::ID, required: true, description: 'The ID of the document'
+        field :document, Types::DocumentType, null: false, description: 'Fetches a user document by ID.' do
+          argument :id, GraphQL::Types::ID, required: true, description: 'The ID of the document.'
         end
       end
 

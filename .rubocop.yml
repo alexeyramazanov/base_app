@@ -7,8 +7,12 @@ AllCops:
 
 plugins:
   - rubocop-rails
-  - rubocop-rspec
   - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-factory_bot
+  - rubocop-capybara
+  - rubocop-graphql
 
 Style/Documentation:
   Enabled: false
@@ -43,7 +47,7 @@ RSpec/ExampleLength:
 
 RSpec/SpecFilePathFormat:
   Exclude:
-    - spec/features/**/*.rb
+    - 'spec/features/**/*.rb'
 
 RSpec/MultipleMemoizedHelpers:
   Max: 10
@@ -53,3 +57,14 @@ RSpec/NestedGroups:
 
 RSpec/IndexedLet:
   Enabled: false
+
+GraphQL/ObjectDescription:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/graphql/*/*_schema.rb'
+    - 'app/graphql/*/types/base_*.rb'
+    - 'app/graphql/*/types/mutation_type.rb'
+    - 'app/graphql/*/types/query_type.rb'
+    - 'app/graphql/*/mutations/base_*.rb'
+    - 'app/graphql/*/mutations/*/*.rb'
+    - 'app/graphql/*/helpers/*.rb'

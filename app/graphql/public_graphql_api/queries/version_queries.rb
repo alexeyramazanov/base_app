@@ -6,7 +6,7 @@ module PublicGraphqlApi
       extend ActiveSupport::Concern
 
       included do
-        field :version, Types::VersionType, null: false, description: 'Fetches GraphQL API version information'
+        field :version, Types::VersionType, null: false, description: 'Fetches GraphQL API version information.'
       end
 
       def version

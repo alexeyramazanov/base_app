@@ -3,7 +3,9 @@
 module PublicGraphqlApi
   module Types
     class VersionType < PublicActiveRecordType
-      field :version, String, null: false
+      description 'GraphQL API version information.'
+
+      field :version, String, null: false, description: 'The GraphQL API version.'
     end
   end
 end

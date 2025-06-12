@@ -4,10 +4,10 @@ module PublicGraphqlApi
   module Mutations
     module DocumentsMutations
       class CreateDocument < BaseMutation
-        argument :file_name, String, required: true, description: 'Document file name'
-        argument :data, String, required: true, description: 'Document base64 encoded file content'
+        argument :data, String, required: true, description: 'The document base64 encoded file content.'
+        argument :file_name, String, required: true, description: 'The document file name.'
 
-        field :document, Types::DocumentType, null: false, description: 'Created document'
+        field :document, Types::DocumentType, null: false, description: 'The newly created document.'
 
         def resolve(file_name:, data:)
           authenticate!

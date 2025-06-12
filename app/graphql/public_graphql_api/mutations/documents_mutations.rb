@@ -6,7 +6,9 @@ module PublicGraphqlApi
       extend ActiveSupport::Concern
 
       included do
-        field :create_document, mutation: Mutations::DocumentsMutations::CreateDocument
+        field :create_document,
+              mutation:    Mutations::DocumentsMutations::CreateDocument,
+              description: 'Creates a new user document.'
       end
     end
   end

@@ -151,7 +151,23 @@ group :development, :test do
 
   # Code style checking for RSpec files
   # https://github.com/rubocop/rubocop-rspec
-  gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec', '~> 3.6.0', require: false
+
+  # Code style checking for Rails-related RSpec files
+  # https://github.com/rubocop/rubocop-rspec_rails
+  gem 'rubocop-rspec_rails', '~> 2.31.0', require: false
+
+  # Code style checking for factory_bot files.
+  # https://github.com/rubocop/rubocop-factory_bot
+  gem 'rubocop-factory_bot', '~> 2.27.1', require: false
+
+  # Code style checking for Capybara files
+  # https://github.com/rubocop/rubocop-capybara
+  gem 'rubocop-capybara', '~> 2.22.1', require: false
+
+  # Rubocop extension for enforcing graphql-ruby best practices
+  # https://github.com/DmitryTsepelev/rubocop-graphql
+  gem 'rubocop-graphql', '~> 1.5.6', require: false
 end
 
 group :development do
