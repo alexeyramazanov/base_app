@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module PublicGraphqlApi
-  class Version
+  class Version # rubocop:disable GraphQL/ObjectDescription
     include GlobalID::Identification
 
     # required by GlobalID

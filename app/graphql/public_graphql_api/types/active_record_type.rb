@@ -4,9 +4,12 @@ module PublicGraphqlApi
   module Types
     class ActiveRecordType < BaseObject
       implements NodeType
+      description 'The object representing an ApplicationRecord.'
 
-      field :created_at, GraphQL::Types::ISO8601DateTime, null: true
-      field :updated_at, GraphQL::Types::ISO8601DateTime, null: true
+      field :created_at, GraphQL::Types::ISO8601DateTime,
+            null: true, description: 'The date and time when the object was created.'
+      field :updated_at, GraphQL::Types::ISO8601DateTime,
+            null: true, description: 'The date and time when the object was last updated.'
 
       # object authorization
       # by default, all objects are authorized by calling `show?` for appropriate policy
