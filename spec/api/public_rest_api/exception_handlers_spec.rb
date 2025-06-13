@@ -2,35 +2,33 @@
 
 require 'rails_helper'
 
-class PublicApiTestExceptionHandlersEndpoints < Grape::API
-  namespace :test do
-    get :validation_error do
-      errors = [Grape::Exceptions::Validation.new(params: ['name'], message: 'is missing')]
-      raise Grape::Exceptions::ValidationErrors.new(errors:)
-    end
-
-    get :record_not_found do
-      raise ActiveRecord::RecordNotFound
-    end
-
-    get :pagination_error do
-      Pagy.new # without params will trigger an exception
-    end
-
-    get :error do
-      raise StandardError, 'error'
-    end
-  end
-end
-
-module PublicRestApi
-  class Root
-    mount PublicApiTestExceptionHandlersEndpoints
-  end
-end
-
 RSpec.describe PublicRestApi::ExceptionHandlers do
   let(:api_token) { create(:api_token) }
+
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_endpoints = Class.new(Grape::API) do
+      namespace :test do
+        get :validation_error do
+          errors = [Grape::Exceptions::Validation.new(params: ['name'], message: 'is missing')]
+          raise Grape::Exceptions::ValidationErrors.new(errors:)
+        end
+
+        get :record_not_found do
+          raise ActiveRecord::RecordNotFound
+        end
+
+        get :pagination_error do
+          Pagy.new # without params will trigger an exception
+        end
+
+        get :error do
+          raise StandardError, 'error'
+        end
+      end
+    end
+
+    PublicRestApi::Root.class_eval { mount test_endpoints }
+  end
 
   describe 'validation errors' do
     it 'returns 422 status code with appropriate response' do

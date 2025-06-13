@@ -2,62 +2,59 @@
 
 require 'rails_helper'
 
-class PublicGraphqlApiErrorHandlersRescueAuthorizationTestType < PublicGraphqlApi::Types::BaseObject
-  field :status, GraphQL::Types::Boolean
+RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_type = Class.new(PublicGraphqlApi::Types::BaseObject) do
+      graphql_name 'PublicGraphqlApiErrorHandlersRescueAuthorizationTestType'
 
-  def self.authorized?(_object, _context)
-    false
-  end
-end
+      field :status, GraphQL::Types::Boolean
 
-module PublicGraphqlApiErrorHandlersRescueTest
-  extend ActiveSupport::Concern
-
-  included do
-    field :spec_rescue_record_not_found_test, GraphQL::Types::Boolean
-    field :spec_rescue_pundit_authorization_test, GraphQL::Types::Boolean
-    field :spec_rescue_generic_exception_test, GraphQL::Types::Boolean
-    field :spec_unauthorized_object_test, PublicGraphqlApiErrorHandlersRescueAuthorizationTestType
-    field :spec_unauthorized_field_test, Integer do
-      def authorized?(_object, _args, _context)
+      def self.authorized?(_object, _context)
         false
       end
     end
-  end
 
-  def spec_rescue_record_not_found_test
-    raise ActiveRecord::RecordNotFound, 'not found'
-  end
+    test_queries = Module.new do
+      extend ActiveSupport::Concern
 
-  def spec_rescue_pundit_authorization_test
-    raise Pundit::NotAuthorizedError, 'error'
-  end
+      included do
+        field :spec_rescue_record_not_found_test, GraphQL::Types::Boolean
+        field :spec_rescue_pundit_authorization_test, GraphQL::Types::Boolean
+        field :spec_rescue_generic_exception_test, GraphQL::Types::Boolean
+        field :spec_unauthorized_object_test, test_type
+        field :spec_unauthorized_field_test, Integer do
+          def authorized?(_object, _args, _context)
+            false
+          end
+        end
+      end
 
-  def spec_rescue_generic_exception_test
-    raise StandardError, 'error'
-  end
+      def spec_rescue_record_not_found_test
+        raise ActiveRecord::RecordNotFound, 'not found'
+      end
 
-  def spec_unauthorized_object_test
-    { status: true }
-  end
-end
+      def spec_rescue_pundit_authorization_test
+        raise Pundit::NotAuthorizedError, 'error'
+      end
 
-module PublicGraphqlApi
-  module Types
-    class QueryType
-      include PublicGraphqlApiErrorHandlersRescueTest
+      def spec_rescue_generic_exception_test
+        raise StandardError, 'error'
+      end
+
+      def spec_unauthorized_object_test
+        { status: true }
+      end
     end
-  end
-end
 
-RSpec.describe PublicGraphqlApi::ErrorHandlers::Rescue do
-  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    PublicGraphqlApi::Types::QueryType.include(test_queries)
+
     # Since GraphQL schema is not dynamic - it builds structure on the 1st call (in dev)/application load (in prod),
-    # and since we are basically monkey patching existing schema by including new module for testing,
+    # and since we are basically monkey patching the existing schema by including new module for testing,
     # we have to add missing references manually.
     # Otherwise, in envs with enabled `eager_load` (prod, CI test) we'll get "Field '...' doesn't exist on type 'Query'"
     # because GraphQL won't be able to find referenced response field.
-    PublicGraphqlApi::BaseAppSchema.send(:own_references_to)[PublicGraphqlApiErrorHandlersRescueAuthorizationTestType] =
+    # ap PublicGraphqlApi::BaseAppSchema.send(:own_references_to)
+    PublicGraphqlApi::BaseAppSchema.send(:own_references_to)[test_type] =
       [PublicGraphqlApi::BaseAppSchema.query.fields['specUnauthorizedObjectTest']]
   end
 

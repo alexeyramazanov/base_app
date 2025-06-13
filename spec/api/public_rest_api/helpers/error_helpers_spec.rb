@@ -2,32 +2,32 @@
 
 require 'rails_helper'
 
-class PublicApiTestErrorHelpersEndpoints < Grape::API
-  namespace :test do
-    params do
-      requires :code, type: Integer
-    end
-    get :common_errors do
-      case params[:code]
-      when 401 then error_unauthorized!
-      when 403 then error_forbidden!
-      when 404 then error_not_found!
-      when 422 then error_unprocessable_entity!('error')
-      when 500 then internal_server_error!
-      else internal_server_error!
-      end
-    end
-  end
-end
-
-module PublicRestApi
-  class Root
-    mount PublicApiTestErrorHelpersEndpoints
-  end
-end
-
 RSpec.describe PublicRestApi::Helpers::ErrorHelpers do
   let(:api_token) { create(:api_token) }
+
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_endpoints = Class.new(Grape::API) do
+      helpers PublicRestApi::Helpers::PaginationHelpers
+
+      namespace :test do
+        params do
+          requires :code, type: Integer
+        end
+        get :common_errors do
+          case params[:code]
+          when 401 then error_unauthorized!
+          when 403 then error_forbidden!
+          when 404 then error_not_found!
+          when 422 then error_unprocessable_entity!('error')
+          when 500 then internal_server_error!
+          else internal_server_error!
+          end
+        end
+      end
+    end
+
+    PublicRestApi::Root.class_eval { mount test_endpoints }
+  end
 
   describe 'error_unauthorized!' do
     it 'returns 401 status code with appropriate response' do

@@ -2,30 +2,28 @@
 
 require 'rails_helper'
 
-class PublicApiTestPaginationHelpersEndpoints < Grape::API
-  helpers PublicRestApi::Helpers::PaginationHelpers
-
-  namespace :test do
-    params do
-      use :pagination
-    end
-    get :paginate_users do
-      authorize :dashboard, :show?
-
-      paginated_data = paginate(User.order(id: :desc))
-
-      present paginated_data, with: PublicRestApi::Entities::V2::PaginatedEntity
-    end
-  end
-end
-
-module PublicRestApi
-  class Root
-    mount PublicApiTestPaginationHelpersEndpoints
-  end
-end
-
 RSpec.describe PublicRestApi::Helpers::PaginationHelpers do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_endpoints = Class.new(Grape::API) do
+      helpers PublicRestApi::Helpers::PaginationHelpers
+
+      namespace :test do
+        params do
+          use :pagination
+        end
+        get :paginate_users do
+          authorize :dashboard, :show?
+
+          paginated_data = paginate(User.order(id: :desc))
+
+          present paginated_data, with: PublicRestApi::Entities::V2::PaginatedEntity
+        end
+      end
+    end
+
+    PublicRestApi::Root.class_eval { mount test_endpoints }
+  end
+
   describe 'paginate' do
     let(:user) { create(:user) }
     let(:api_token) { create(:api_token, user:) }
