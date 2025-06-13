@@ -2,39 +2,37 @@
 
 require 'rails_helper'
 
-class PublicApiTestEndpoints < Grape::API
-  namespace :test do
-    get :auth do
-      authorize :dashboard, :show?
-
-      { success: true }
-    end
-
-    get :auth_scope do
-      policy_scope(Document)
-
-      { success: true }
-    end
-
-    get :forbidden do
-      # fails, because `authorize` or `policy_scope` are missing
-      { success: true }
-    end
-
-    get :public_route do
-      { success: true }
-    end
-  end
-end
-
-module PublicRestApi
-  class Root
-    mount PublicApiTestEndpoints
-  end
-end
-
 RSpec.describe PublicRestApi::Root do
   let(:api_token) { create(:api_token) }
+
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_endpoints = Class.new(Grape::API) do
+      namespace :test do
+        get :auth do
+          authorize :dashboard, :show?
+
+          { success: true }
+        end
+
+        get :auth_scope do
+          policy_scope(Document)
+
+          { success: true }
+        end
+
+        get :forbidden do
+          # fails, because `authorize` or `policy_scope` are missing
+          { success: true }
+        end
+
+        get :public_route do
+          { success: true }
+        end
+      end
+    end
+
+    described_class.class_eval { mount test_endpoints }
+  end
 
   describe 'swagger documentation' do
     it 'is present' do

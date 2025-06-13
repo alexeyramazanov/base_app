@@ -2,16 +2,21 @@
 
 require 'rails_helper'
 
-class ErrorMessagesComponentModel
-  include ActiveModel::API
-
-  attr_accessor :name
-
-  validates :name, presence: true
-end
-
 RSpec.describe ErrorMessagesComponent do
-  let(:model) { ErrorMessagesComponentModel.new }
+  let(:model_definition) do
+    Class.new do
+      include ActiveModel::API
+
+      attr_accessor :name
+
+      validates :name, presence: true
+
+      def self.model_name
+        ActiveModel::Name.new(self, nil, 'ErrorMessagesComponentModel')
+      end
+    end
+  end
+  let(:model) { model_definition.new }
   let(:component) { described_class.new(model: model) }
   let(:rendered_component) { render_inline(component) }
 
@@ -26,7 +31,7 @@ RSpec.describe ErrorMessagesComponent do
   end
 
   context 'when model has no errors' do
-    let(:model) { ErrorMessagesComponentModel.new(name: 'John') }
+    let(:model) { model_definition.new(name: 'John') }
 
     it 'does not render anything' do
       expect(rendered_component.inner_html).to eq('')

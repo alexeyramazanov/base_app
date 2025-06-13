@@ -2,39 +2,35 @@
 
 require 'rails_helper'
 
-module PublicGraphqlApiTypesUrlTest
-  extend ActiveSupport::Concern
-
-  included do
-    field :spec_types_url_string_test, PublicGraphqlApi::Types::UrlType
-    field :spec_types_uri_object_test, PublicGraphqlApi::Types::UrlType
-    field :spec_types_url_argument_test, PublicGraphqlApi::Types::UrlType do
-      argument :url, PublicGraphqlApi::Types::UrlType, required: true
-    end
-  end
-
-  def spec_types_url_string_test
-    'https://example.com'
-  end
-
-  def spec_types_uri_object_test
-    URI.parse('https://example.com')
-  end
-
-  def spec_types_url_argument_test(url:)
-    url
-  end
-end
-
-module PublicGraphqlApi
-  module Types
-    class QueryType
-      include PublicGraphqlApiTypesUrlTest
-    end
-  end
-end
-
 RSpec.describe PublicGraphqlApi::Types::UrlType do
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_queries = Module.new do
+      extend ActiveSupport::Concern
+
+      included do
+        field :spec_types_url_string_test, PublicGraphqlApi::Types::UrlType
+        field :spec_types_uri_object_test, PublicGraphqlApi::Types::UrlType
+        field :spec_types_url_argument_test, PublicGraphqlApi::Types::UrlType do
+          argument :url, PublicGraphqlApi::Types::UrlType, required: true
+        end
+      end
+
+      def spec_types_url_string_test
+        'https://example.com'
+      end
+
+      def spec_types_uri_object_test
+        URI.parse('https://example.com')
+      end
+
+      def spec_types_url_argument_test(url:)
+        url
+      end
+    end
+
+    PublicGraphqlApi::Types::QueryType.include(test_queries)
+  end
+
   describe 'as a result' do
     context 'with a regular string' do
       let(:query) { 'query { specTypesUrlStringTest }' }

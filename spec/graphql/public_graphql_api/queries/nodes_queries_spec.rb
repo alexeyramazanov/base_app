@@ -3,31 +3,24 @@
 require 'rails_helper'
 require 'shared/graphql'
 
-class PublicGraphqlApiTypeResolutionUnsupportedModel
-end
-
-module PublicGraphqlApiTypeResolutionTest
-  extend ActiveSupport::Concern
-
-  included do
-    field :spec_type_resolution_test, PublicGraphqlApi::Types::NodeType
-  end
-
-  def spec_type_resolution_test
-    PublicGraphqlApiTypeResolutionUnsupportedModel.new
-  end
-end
-
-module PublicGraphqlApi
-  module Types
-    class QueryType
-      include PublicGraphqlApiTypeResolutionTest
-    end
-  end
-end
-
 RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
   let(:user) { create(:user) }
+
+  before(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    test_queries = Module.new do
+      extend ActiveSupport::Concern
+
+      included do
+        field :spec_type_resolution_test, PublicGraphqlApi::Types::NodeType
+      end
+
+      def spec_type_resolution_test
+        Class.new.new
+      end
+    end
+
+    PublicGraphqlApi::Types::QueryType.include(test_queries)
+  end
 
   describe 'nodes query' do
     let!(:documents) { create_list(:document, 2, user:) }

@@ -2,25 +2,33 @@
 
 require 'rails_helper'
 
-class PublicGraphqlApiErrorHandlersErrorsTest
-  include PublicGraphqlApi::ErrorHandlers::Errors
-end
-
-class PublicGraphqlApiErrorHandlersErrorsTestModel
-  include ActiveModel::API
-
-  attr_accessor :email, :password
-
-  validates :email, presence: true
-  validates :password, length: { minimum: 6 }
-end
-
 RSpec.describe PublicGraphqlApi::ErrorHandlers::Errors do
-  subject(:test_class) { PublicGraphqlApiErrorHandlersErrorsTest.new }
+  subject(:test_class) { test_class_definition.new }
+
+  let(:test_class_definition) do
+    Class.new do
+      include PublicGraphqlApi::ErrorHandlers::Errors
+    end
+  end
+
+  let(:test_model) do
+    Class.new do
+      include ActiveModel::API
+
+      attr_accessor :email, :password
+
+      validates :email, presence: true
+      validates :password, length: { minimum: 6 }
+
+      def self.model_name
+        ActiveModel::Name.new(self, nil, 'PublicGraphqlApiErrorHandlersErrorsTestModel')
+      end
+    end
+  end
 
   describe '#raise_model_validation_error!' do
     let(:record) do
-      record = PublicGraphqlApiErrorHandlersErrorsTestModel.new
+      record = test_model.new
       record.valid?
       record
     end
