@@ -119,7 +119,7 @@ group :development, :test do
 
   # A library for setting up Ruby objects as test data
   # https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails', '~> 6.4.4'
+  gem 'factory_bot_rails', '~> 6.5.0'
 
   # Acceptance test framework for web applications
   # https://github.com/teamcapybara/capybara
