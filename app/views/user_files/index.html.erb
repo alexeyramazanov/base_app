@@ -1,0 +1,54 @@
+<h1 class="font-semibold text-xl text-gray-700 pb-4">Files</h1>
+
+<div class="flex items-start gap-4">
+  <div class="card w-3/4">
+    <table class="w-full text-left table-auto">
+      <thead>
+      <tr class="border-b border-slate-300 bg-slate-50">
+        <th class="w-auto whitespace-nowrap p-2 pr-6 text-sm font-normal leading-none text-slate-500">ID</th>
+        <th class="w-full p-2 text-sm font-normal leading-none text-slate-500">Name</th>
+        <th class="w-auto whitespace-nowrap p-2 pl-6 text-sm font-normal leading-none text-slate-500">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @user_files.each do |user_file| %>
+        <tr>
+          <td class="w-auto whitespace-nowrap p-2 pr-6 border-b border-slate-200">
+            <%= user_file.id %>
+          </td>
+          <td class="w-full p-2 border-b border-slate-200">
+            <%= user_file.attachment.original_filename %>
+          </td>
+          <td class="w-auto whitespace-nowrap p-2 pl-6 border-b border-slate-200">
+            <%= link_to 'Download', download_file_path(user_file),
+                        class: "text-indigo-600 hover:text-gray-900 #{user_file.ready? ? '' : 'pointer-events-none opacity-50'}",
+                        target: '_blank', data: { turbo_prefetch: false } %>
+            |
+            <%= link_to 'Delete', file_path(user_file), class: 'text-indigo-600 hover:text-gray-900',
+                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <div class="flex justify-center pt-4">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  </div>
+
+  <div class="card w-1/4">
+    <!-- `files_path` is correct here, as Uppy always adds hard-coded `s3/params` to the specified url -->
+    <div data-controller="user-files"
+         data-user-files-presign-url-value="<%= files_path %>"
+         data-user-files-max-file-size-value="<%= UserFile::MAX_FILE_SIZE %>"
+         data-user-files-allowed-mime-types-value="<%= JSON.generate(UserFile::SUPPORTED_MIME_TYPES) %>">
+      <%= form_with url: files_path, data: {user_files_target: 'submitForm'} do |form| %>
+        <%= form.hidden_field :file, data: {user_files_target: 'submitFormInput'} %>
+      <% end %>
+
+      <div id="upload_dropzone"></div>
+      <div id="status_bar"></div>
+    </div>
+  </div>
+</div>

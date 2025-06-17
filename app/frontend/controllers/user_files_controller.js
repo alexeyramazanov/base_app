@@ -5,12 +5,12 @@ import StatusBar from '@uppy/status-bar';
 import AwsS3 from '@uppy/aws-s3';
 
 import '@uppy/core/dist/style.css';
-import '~/styles/documents/uppy_drag_drop.css';
-import '~/styles/documents/uppy_status_bar.css';
+import '~/styles/user_files/uppy_drag_drop.css';
+import '~/styles/user_files/uppy_status_bar.css';
 
 export default class extends Controller {
   static targets = ['submitForm', 'submitFormInput']
-  static values = { presignUrl: String }
+  static values = { presignUrl: String, maxFileSize: Number, allowedMimeTypes: Array }
 
   connect() {
     this.initializeUppy();
@@ -25,8 +25,8 @@ export default class extends Controller {
       autoProceed: true,
       restrictions: {
         maxNumberOfFiles: 1,
-        maxFileSize: 10 * 1024 * 1024, // 10MB
-        allowedFileTypes: ['image/jpg', 'image/jpeg', 'image/png']
+        maxFileSize: this.maxFileSizeValue,
+        allowedFileTypes: this.allowedMimeTypesValue
       }
     })
       .use(DragDrop, {

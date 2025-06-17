@@ -29,9 +29,11 @@ end
 Shrine.plugin :activerecord
 Shrine.plugin :validation_helpers
 Shrine.plugin :determine_mime_type, analyzer: :marcel
+Shrine.plugin :refresh_metadata
 Shrine.plugin :default_url
 Shrine.plugin :derivatives
 Shrine.plugin :backgrounding
+Shrine.plugin :tempfile
 Shrine.plugin :data_uri
 Shrine.plugin :upload_options,
               cache: { acl: 'private', cache_control: "public, max-age=#{365.days.to_i}" },

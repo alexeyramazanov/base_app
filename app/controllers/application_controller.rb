@@ -2,8 +2,8 @@
 
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  include Pundit::Authorization
   include ControllerAuthentication
+  include ControllerAuthorization
 
   allow_browser versions: :modern
 

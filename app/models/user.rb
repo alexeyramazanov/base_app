@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Authentication
 
   has_many :chat_messages, dependent: :delete_all
-  has_many :documents, dependent: :destroy
+  has_many :user_files, dependent: :destroy
   has_many :api_tokens, dependent: :delete_all
 
   after_create_commit lambda {

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DocumentPolicy < ApplicationPolicy
+class UserFilePolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
     def resolve
       scope.where(user:)
@@ -40,7 +40,7 @@ class DocumentPolicy < ApplicationPolicy
   end
 
   def download?
-    belongs_to_user?
+    belongs_to_user? && record.ready?
   end
 
   private
