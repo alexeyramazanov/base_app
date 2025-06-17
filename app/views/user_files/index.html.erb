@@ -18,14 +18,23 @@
           </td>
           <td class="w-full p-2 border-b border-slate-200">
             <%= user_file.attachment.original_filename %>
+            <% if user_file.processing? %>
+              <i class="fa-solid fa-spinner animate-spin fa-sm"></i>
+            <% end %>
           </td>
           <td class="w-auto whitespace-nowrap p-2 pl-6 border-b border-slate-200">
-            <%= link_to 'Download', download_file_path(user_file),
+            <%= link_to '#', class: "text-indigo-600 hover:text-gray-900 #{user_file.ready? ? '' : 'pointer-events-none opacity-50'}" do %>
+              <i class="fa-solid fa-magnifying-glass fa-lg pr-2"></i>
+            <% end %>
+            <%= link_to download_file_path(user_file),
                         class: "text-indigo-600 hover:text-gray-900 #{user_file.ready? ? '' : 'pointer-events-none opacity-50'}",
-                        target: '_blank', data: { turbo_prefetch: false } %>
-            |
-            <%= link_to 'Delete', file_path(user_file), class: 'text-indigo-600 hover:text-gray-900',
-                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+                        target: '_blank', data: { turbo_prefetch: false } do %>
+              <i class="fa-solid fa-download fa-lg pr-2"></i>
+            <% end %>
+            <%= link_to file_path(user_file), class: 'text-indigo-600 hover:text-gray-900',
+                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <i class="fa-solid fa-trash fa-lg"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>

@@ -3,6 +3,7 @@
 class UserFile < ApplicationRecord
   self.inheritance_column = nil # disable STI for `type` column
 
+  include AASM
   include UserFileUploader::Attachment(:attachment)
 
   MAX_FILE_SIZE = 10.megabytes
@@ -14,14 +15,25 @@ class UserFile < ApplicationRecord
   SUPPORTED_EXTENSIONS = (IMAGE_EXTENSIONS + DOCUMENT_EXTENSIONS).freeze
 
   enum :type, { image: 'image', document: 'document', unknown: 'unknown' }, default: :unknown, validate: true
-  # TODO: aasm
-  enum :status, { processing: 'processing', ready: 'ready', failed: 'failed' }, default: :processing, validate: true
 
   belongs_to :user
 
   validates :attachment, presence: true
 
   before_create :set_type
+
+  aasm column: :status do
+    state :processing, initial: true
+    state :ready, :failed
+
+    event :ready do
+      transitions from: :processing, to: :ready
+    end
+
+    event :failed do
+      transitions from: :processing, to: :failed
+    end
+  end
 
   def refresh_type!
     update_column(:type, detect_type) # rubocop:disable Rails/SkipsModelValidations

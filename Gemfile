@@ -28,6 +28,14 @@ gem 'vite_rails', '~> 3.0.19'
 # https://github.com/varvet/pundit
 gem 'pundit', '~> 2.5.0'
 
+# AASM - State machines for Ruby classes (plain Ruby, ActiveRecord, Mongoid, NoBrainer, Dynamoid)
+# https://github.com/aasm/aasm
+gem 'aasm', '~> 5.5.1'
+
+# Use ActiveRecord transactional callbacks outside of models, literally everywhere in your application. (used by aasm)
+# https://github.com/Envek/after_commit_everywhere
+gem 'after_commit_everywhere', '~> 1.6.0'
+
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
 gem 'view_component', '~> 3.23.2'
@@ -119,7 +127,7 @@ group :development, :test do
 
   # A library for setting up Ruby objects as test data
   # https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails', '~> 6.4.4'
+  gem 'factory_bot_rails', '~> 6.5.0'
 
   # Acceptance test framework for web applications
   # https://github.com/teamcapybara/capybara

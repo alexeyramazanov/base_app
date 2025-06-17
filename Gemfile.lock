@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.5.1)
+      concurrent-ruby (~> 1.0)
     actioncable (8.0.2)
       actionpack (= 8.0.2)
       activesupport (= 8.0.2)
@@ -74,6 +76,9 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    after_commit_everywhere (1.6.0)
+      activerecord (>= 4.2)
+      activesupport
     amazing_print (1.8.1)
     anycable (1.6.0)
       anycable-core (= 1.6.0)
@@ -102,7 +107,7 @@ GEM
       base64
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.104.0)
+    aws-sdk-kms (1.105.0)
       aws-sdk-core (~> 3, >= 3.225.0)
       aws-sigv4 (~> 1.5)
     aws-sdk-s3 (1.189.1)
@@ -181,11 +186,11 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
-    factory_bot (6.5.3)
+    factory_bot (6.5.4)
       activesupport (>= 6.1.0)
-    factory_bot_rails (6.4.4)
+    factory_bot_rails (6.5.0)
       factory_bot (~> 6.5)
-      railties (>= 5.0.0)
+      railties (>= 6.1.0)
     ffi (1.17.2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -241,19 +246,19 @@ GEM
       base64
       fiber-storage
       logger
-    grpc (1.72.0)
+    grpc (1.73.0)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
-    grpc (1.72.0-aarch64-linux)
+    grpc (1.73.0-aarch64-linux)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
-    grpc (1.72.0-arm64-darwin)
+    grpc (1.73.0-arm64-darwin)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
-    grpc (1.72.0-x86_64-darwin)
+    grpc (1.73.0-x86_64-darwin)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
-    grpc (1.72.0-x86_64-linux)
+    grpc (1.73.0-x86_64-linux)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
     i18n (1.14.7)
@@ -396,7 +401,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.0)
       redis-client (>= 0.22.0)
-    redis-client (0.24.0)
+    redis-client (0.25.0)
       connection_pool
     regexp_parser (2.10.0)
     reline (0.6.1)
@@ -424,7 +429,7 @@ GEM
       rspec-mocks (~> 3.0)
       sidekiq (>= 5, < 9)
     rspec-support (3.13.4)
-    rubocop (1.76.1)
+    rubocop (1.76.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -432,7 +437,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.45.0, < 2.0)
+      rubocop-ast (>= 1.45.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.45.1)
@@ -565,6 +570,8 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  aasm (~> 5.5.1)
+  after_commit_everywhere (~> 1.6.0)
   amazing_print (~> 1.8.1)
   anycable-rails (~> 1.6.0)
   aws-sdk-s3 (~> 1.189.1)
@@ -577,7 +584,7 @@ DEPENDENCIES
   database_cleaner-redis (~> 2.0.0)
   debug (~> 1.10.0)
   dotenv (~> 3.1.8)
-  factory_bot_rails (~> 6.4.4)
+  factory_bot_rails (~> 6.5.0)
   grape (~> 2.3.0)
   grape-entity (~> 1.0.1)
   grape-swagger (~> 2.1.2)
