@@ -1,0 +1,16 @@
+<tr id="<%= dom_id(user_file) %>" class="border-b border-slate-200">
+  <td class="w-auto whitespace-nowrap p-2 pr-6">
+    <%= user_file.id %>
+  </td>
+  <td class="w-full p-2 pr-6">
+    <%= user_file.attachment.original_filename %>
+    <% if user_file.processing? %>
+      <span data-controller="shared--tooltip" data-shared--tooltip-content-value="Processing...">
+        <i class="fa-solid fa-spinner animate-spin fa-sm"></i>
+      </span>
+    <% end %>
+  </td>
+  <td class="w-auto whitespace-nowrap p-2">
+    <%= render Files::ActionButtonsComponent.new(user_file:) %>
+  </td>
+</tr>

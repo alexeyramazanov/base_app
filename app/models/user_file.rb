@@ -26,11 +26,11 @@ class UserFile < ApplicationRecord
     state :processing, initial: true
     state :ready, :failed
 
-    event :ready do
+    event :ready, after_commit: :broadcast_status_change do
       transitions from: :processing, to: :ready
     end
 
-    event :failed do
+    event :failed, after_commit: :broadcast_status_change do
       transitions from: :processing, to: :failed
     end
   end
@@ -54,5 +54,10 @@ class UserFile < ApplicationRecord
     else
       'unknown'
     end
+  end
+
+  def broadcast_status_change
+    broadcast_replace_to([user, 'user_files'], target: self,
+                         partial: 'user_files/user_file_row', locals: { user_file: self })
   end
 end
