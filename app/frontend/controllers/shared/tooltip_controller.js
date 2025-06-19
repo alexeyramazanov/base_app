@@ -29,6 +29,8 @@ export default class extends Controller {
     this.arrowElement = document.createElement('div');
     this.arrowElement.classList.add('tooltip-arrow');
     this.tooltipElement.appendChild(this.arrowElement);
+
+    this.isVisible = false;
   }
 
   setupEvents() {
@@ -60,16 +62,22 @@ export default class extends Controller {
       this.tooltipElement,
       this.updatePosition.bind(this)
     );
+
+    this.isVisible = true;
   }
 
+  // safety checks are present because this method is called when the controller is disconnected
   hide() {
     if (this.cleanup) {
       this.cleanup();
       this.cleanup = null;
     }
 
-    this.tooltipElement.style.display = 'none';
-    document.body.removeChild(this.tooltipElement);
+    if (this.isVisible) {
+      this.isVisible = false;
+      this.tooltipElement.style.display = 'none';
+      document.body.removeChild(this.tooltipElement);
+    }
   }
 
   updatePosition() {
