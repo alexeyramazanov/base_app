@@ -35,6 +35,11 @@ class UserFilesController < ApplicationController
     self.response_body = response[2]
   end
 
+  def preview
+    @user_file = Current.user.user_files.find(params[:id])
+    authorize @user_file
+  end
+
   def download
     user_file = Current.user.user_files.find(params[:id])
     authorize user_file

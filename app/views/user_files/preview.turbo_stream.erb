@@ -1,0 +1,13 @@
+<%= turbo_stream.update 'modal' do %>
+  <%= render ModalComponent.new(title: 'Preview', width_class: 'max-w-xl') do |component| %>
+    <% component.with_footer do %>
+      <button class="button w-auto text-sm bg-gray-200 hover:bg-gray-300 text-gray-700" data-action="click->modal-component#close">
+        Close
+      </button>
+    <% end %>
+
+    <div class="flex justify-center">
+      <%= image_tag @user_file.attachment_url(:preview), class: 'max-w-[300px] max-h-[300px]' %>
+    </div>
+  <% end %>
+<% end %>

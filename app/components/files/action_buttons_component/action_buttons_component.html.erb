@@ -1,0 +1,61 @@
+<div class="inline-flex items-center gap-3">
+  <!-- preview button -->
+  <div>
+    <% case @user_file.status %>
+    <% when 'processing' %>
+      <i class="<%= preview_disabled_classes %>"
+         data-controller="shared--tooltip"
+         data-shared--tooltip-content-value="Preview is not available while file is being processed">
+      </i>
+    <% when 'ready' %>
+      <% if @user_file.image? %>
+        <%= link_to preview_file_path(@user_file),
+                    data: { turbo_prefetch: false, turbo_stream: true,
+                            controller: 'shared--tooltip', shared__tooltip_content_value: 'Preview' } do %>
+          <i class="<%= preview_enabled_classes %>">
+          </i>
+        <% end %>
+      <% else %>
+        <i class="<%= preview_disabled_classes %>"
+           data-controller="shared--tooltip"
+           data-shared--tooltip-content-value="Preview is not available for non-image files">
+        </i>
+      <% end %>
+    <% else %>
+      <i class="<%= preview_disabled_classes %>"
+         data-controller="shared--tooltip"
+         data-shared--tooltip-content-value="Unsupported file">
+      </i>
+    <% end %>
+  </div>
+
+  <!-- download button -->
+  <div>
+    <% case @user_file.status %>
+    <% when 'processing' %>
+      <i class="<%= download_disabled_classes %>"
+         data-controller="shared--tooltip"
+         data-shared--tooltip-content-value="Download is not available while file is being processed">
+      </i>
+    <% when 'ready' %>
+      <%= link_to download_file_path(@user_file), target: '_blank',
+                  data: { turbo_prefetch: false, controller: 'shared--tooltip', shared__tooltip_content_value: 'Download' } do %>
+        <i class="<%= download_enabled_classes %>"></i>
+      <% end %>
+    <% else %>
+      <i class="<%= download_disabled_classes %>"
+         data-controller="shared--tooltip"
+         data-shared--tooltip-content-value="Unsupported file">
+      </i>
+    <% end %>
+  </div>
+
+  <!-- delete button -->
+  <div>
+    <%= link_to file_path(@user_file),
+                data: { turbo_method: :delete, turbo_confirm: 'Are you sure?',
+                        controller: 'shared--tooltip', shared__tooltip_content_value: 'Delete' } do %>
+      <i class="<%= delete_enabled_classes %>"></i>
+    <% end %>
+  </div>
+</div>

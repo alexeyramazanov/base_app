@@ -13,7 +13,7 @@ class UserFileUploader < Shrine
     vips = ImageProcessing::Vips.source(original)
 
     {
-      thumb: vips.resize_to_limit!(100, 100)
+      preview: vips.resize_to_limit!(300, 300)
     }
   end
 

@@ -1,0 +1,20 @@
+.tooltip {
+    display: none;
+    max-width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #222;
+    color: #FFF;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 70%;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    background: #222;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+}

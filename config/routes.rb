@@ -38,6 +38,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     end
 
     member do
+      get :preview
       get :download
     end
   end

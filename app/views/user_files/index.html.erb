@@ -4,37 +4,28 @@
   <div class="card w-3/4">
     <table class="w-full text-left table-auto">
       <thead>
-      <tr class="border-b border-slate-300 bg-slate-50">
-        <th class="w-auto whitespace-nowrap p-2 pr-6 text-sm font-normal leading-none text-slate-500">ID</th>
-        <th class="w-full p-2 text-sm font-normal leading-none text-slate-500">Name</th>
-        <th class="w-auto whitespace-nowrap p-2 pl-6 text-sm font-normal leading-none text-slate-500">Actions</th>
+      <tr class="border-b border-slate-300 bg-slate-50 text-slate-500">
+        <th class="w-auto whitespace-nowrap p-2 pr-6 text-sm font-normal leading-none">ID</th>
+        <th class="w-full p-2 pr-6 text-sm font-normal leading-none">Name</th>
+        <th class="w-auto whitespace-nowrap p-2 text-sm font-normal leading-none text-center">Actions</th>
       </tr>
       </thead>
       <tbody>
       <% @user_files.each do |user_file| %>
-        <tr>
-          <td class="w-auto whitespace-nowrap p-2 pr-6 border-b border-slate-200">
+        <tr class="border-b border-slate-200">
+          <td class="w-auto whitespace-nowrap p-2 pr-6">
             <%= user_file.id %>
           </td>
-          <td class="w-full p-2 border-b border-slate-200">
+          <td class="w-full p-2 pr-6">
             <%= user_file.attachment.original_filename %>
             <% if user_file.processing? %>
-              <i class="fa-solid fa-spinner animate-spin fa-sm"></i>
+              <span data-controller="shared--tooltip" data-shared--tooltip-content-value="Processing...">
+                <i class="fa-solid fa-spinner animate-spin fa-sm"></i>
+              </span>
             <% end %>
           </td>
-          <td class="w-auto whitespace-nowrap p-2 pl-6 border-b border-slate-200">
-            <%= link_to '#', class: "text-indigo-600 hover:text-gray-900 #{user_file.ready? ? '' : 'pointer-events-none opacity-50'}" do %>
-              <i class="fa-solid fa-magnifying-glass fa-lg pr-2"></i>
-            <% end %>
-            <%= link_to download_file_path(user_file),
-                        class: "text-indigo-600 hover:text-gray-900 #{user_file.ready? ? '' : 'pointer-events-none opacity-50'}",
-                        target: '_blank', data: { turbo_prefetch: false } do %>
-              <i class="fa-solid fa-download fa-lg pr-2"></i>
-            <% end %>
-            <%= link_to file_path(user_file), class: 'text-indigo-600 hover:text-gray-900',
-                        data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-              <i class="fa-solid fa-trash fa-lg"></i>
-            <% end %>
+          <td class="w-auto whitespace-nowrap p-2">
+            <%= render Files::ActionButtonsComponent.new(user_file:) %>
           </td>
         </tr>
       <% end %>

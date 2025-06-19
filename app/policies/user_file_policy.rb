@@ -39,6 +39,10 @@ class UserFilePolicy < ApplicationPolicy
     true
   end
 
+  def preview?
+    belongs_to_user? && record.ready?
+  end
+
   def download?
     belongs_to_user? && record.ready?
   end
