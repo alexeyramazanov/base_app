@@ -38,9 +38,16 @@
          data-shared--tooltip-content-value="Download is not available while file is being processed">
       </i>
     <% when 'ready' %>
-      <%= link_to download_file_path(@user_file), target: '_blank',
-                  data: { turbo_prefetch: false, controller: 'shared--tooltip', shared__tooltip_content_value: 'Download' } do %>
-        <i class="<%= download_enabled_classes %>"></i>
+      <% if @user_file.unknown? %>
+        <i class="<%= download_disabled_classes %>"
+           data-controller="shared--tooltip"
+           data-shared--tooltip-content-value="Downloading unknown files is not supported">
+        </i>
+      <% else %>
+        <%= link_to download_file_path(@user_file), target: '_blank',
+                    data: { turbo_prefetch: false, controller: 'shared--tooltip', shared__tooltip_content_value: 'Download' } do %>
+          <i class="<%= download_enabled_classes %>"></i>
+        <% end %>
       <% end %>
     <% else %>
       <i class="<%= download_disabled_classes %>"
