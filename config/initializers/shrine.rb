@@ -7,8 +7,8 @@ require 'image_processing/vips'
 
 if Rails.env.test?
   Shrine.storages = {
-    cache: Shrine::Storage::FileSystem.new('tmp/storage', prefix: 'cache'),
-    store: Shrine::Storage::FileSystem.new('tmp/storage', prefix: 'store')
+    cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/test/cache'),
+    store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/test/store')
   }
 else
   s3_options = {

@@ -18,6 +18,9 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore uploaded files.
+/public/uploads/*
+
 # Ignore temp storage.
 /tmp/storage/*
 !/tmp/storage/

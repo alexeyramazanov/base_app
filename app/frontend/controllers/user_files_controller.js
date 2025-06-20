@@ -55,10 +55,10 @@ export default class extends Controller {
   }
 
   uploadedFileData(file, _response) {
-    const id = file.s3Multipart['key'].match(/^cache\/(.+)/)[1]; // object key without prefix
+    const id = file.s3Multipart['key'].split('/').at(-1); // object key without prefix
     const data = {
       id: id,
-      storage: 'cache',
+      storage: 'cache', // should match the storage which was used to generate presigned url
       metadata: {
         size:      file.size,
         filename:  file.name,

@@ -44,7 +44,7 @@
            data-shared--tooltip-content-value="Downloading unknown files is not supported">
         </i>
       <% else %>
-        <%= link_to download_file_path(@user_file), target: '_blank',
+        <%= link_to download_file_path(@user_file), target: '_blank', download: @user_file.attachment.original_filename,
                     data: { turbo_prefetch: false, controller: 'shared--tooltip', shared__tooltip_content_value: 'Download' } do %>
           <i class="<%= download_enabled_classes %>"></i>
         <% end %>
