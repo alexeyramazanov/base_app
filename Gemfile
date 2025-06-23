@@ -46,7 +46,7 @@ gem 'stimulus-rails', '~> 1.3.4'
 
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
-gem 'solid_cable', '~> 3.0.8'
+gem 'solid_cable', '~> 3.0.10'
 
 # AnyCable for Ruby on Rails applications
 # https://github.com/anycable/anycable-rails
@@ -66,7 +66,7 @@ gem 'shrine', '~> 3.6.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.189.1'
+gem 'aws-sdk-s3', '~> 1.190.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -82,11 +82,11 @@ gem 'bootsnap', '~> 1.18.6', require: false
 
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
-gem 'thruster', '~> 0.1.13', require: false
+gem 'thruster', '~> 0.1.14', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
-gem 'grape', '~> 2.3.0'
+gem 'grape', '~> 2.4.0'
 
 # An API focused facade that sits on top of an object model.
 # https://github.com/ruby-grape/grape-entity
@@ -115,11 +115,11 @@ group :development, :test do
 
   # RSpec for Rails 7+
   # https://github.com/rspec/rspec-rails
-  gem 'rspec-rails', '~> 8.0.0'
+  gem 'rspec-rails', '~> 8.0.1'
 
   # A library for setting up Ruby objects as test data
   # https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails', '~> 6.4.4'
+  gem 'factory_bot_rails', '~> 6.5.0'
 
   # Acceptance test framework for web applications
   # https://github.com/teamcapybara/capybara
@@ -135,7 +135,7 @@ group :development, :test do
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
-  gem 'debug', '~> 1.10.0'
+  gem 'debug', '~> 1.11.0'
 
   # A static analysis security vulnerability scanner for Ruby on Rails applications
   # https://github.com/presidentbeef/brakeman
