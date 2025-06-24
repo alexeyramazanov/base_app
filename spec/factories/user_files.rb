@@ -2,12 +2,18 @@
 
 FactoryBot.define do
   factory :user_file do
+    transient do
+      skip_promotion { false }
+    end
+
     user
 
     attachment { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/sample.jpg')) }
 
     # based on code from sidekiq/lib/sidekiq/testing.rb
-    after(:create) do |user_file, _evaluator|
+    after(:create) do |user_file, evaluator|
+      next if evaluator.skip_promotion
+
       job_class = ShrineJobs::PromoteUserFileJob
 
       job = job_class.jobs.find do |j|

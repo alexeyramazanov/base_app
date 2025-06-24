@@ -34,7 +34,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   resource :profile, only: %i[show update], controller: 'profile'
   resources :files, only: %i[index create destroy], controller: 'user_files' do
     collection do
-      match 's3/params', to: 'user_files#s3_params', via: %i[get]
+      get 's3/params', to: 's3_params'
     end
 
     member do

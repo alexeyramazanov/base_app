@@ -17,7 +17,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.uppy.destroy();
+    this.destroyUppy();
   }
 
   initializeUppy() {
@@ -52,6 +52,10 @@ export default class extends Controller {
         this.submitFormInputTarget.value = this.uploadedFileData(file, response);
         this.submitFormTarget.requestSubmit();
       })
+  }
+
+  destroyUppy() {
+    this.uppy.destroy();
   }
 
   uploadedFileData(file, _response) {

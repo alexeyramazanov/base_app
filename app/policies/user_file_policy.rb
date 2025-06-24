@@ -14,26 +14,11 @@ class UserFilePolicy < ApplicationPolicy
   def show?
     belongs_to_user?
   end
-
-  def new?
-    belongs_to_user?
-  end
-
-  def create?
-    belongs_to_user?
-  end
-
-  def edit?
-    belongs_to_user?
-  end
-
-  def update?
-    belongs_to_user?
-  end
-
-  def destroy?
-    belongs_to_user?
-  end
+  alias new? show?
+  alias create? show?
+  alias edit? show?
+  alias update? show?
+  alias destroy? show?
 
   def s3_params?
     true
@@ -42,10 +27,7 @@ class UserFilePolicy < ApplicationPolicy
   def preview?
     belongs_to_user? && record.ready?
   end
-
-  def download?
-    belongs_to_user? && record.ready?
-  end
+  alias download? preview?
 
   private
 

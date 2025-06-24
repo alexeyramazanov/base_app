@@ -27,6 +27,7 @@ else
 end
 
 Shrine.plugin :activerecord
+Shrine.plugin :validation
 Shrine.plugin :validation_helpers
 Shrine.plugin :determine_mime_type, analyzer: :marcel
 Shrine.plugin :refresh_metadata

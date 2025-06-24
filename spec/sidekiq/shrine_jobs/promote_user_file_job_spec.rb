@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ShrineJobs::PromoteJob do
+RSpec.describe ShrineJobs::PromoteUserFileJob do
   subject(:job) { described_class.new }
 
   let(:attachment) { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/sample.jpg').to_s) }
@@ -28,6 +28,15 @@ RSpec.describe ShrineJobs::PromoteJob do
     expect(record.attachment.metadata).to eq({ 'filename' => 'sample.jpg', 'mime_type' => 'image/jpeg', 'size' => 491 })
   end
 
+  it 'refreshes type' do
+    record.update!(type: 'document')
+
+    job.perform(attacher_class, record_class, record_id, name, file_data)
+
+    record.reload
+    expect(record.type).to eq('image')
+  end
+
   it 'creates derivatives' do
     expect(record.attachment_derivatives).to eq({})
 
@@ -48,6 +57,42 @@ RSpec.describe ShrineJobs::PromoteJob do
     record.reload
 
     expect(record.attachment.storage).to eq(Shrine.storages[:store])
+  end
+
+  it 'marks record as ready' do
+    expect(record.ready?).to be(false)
+
+    job.perform(attacher_class, record_class, record_id, name, file_data)
+
+    record.reload
+    expect(record.ready?).to be(true)
+  end
+
+  context 'when file type is unknown' do
+    let(:fake_attachment) do
+      file = Tempfile.new(%w[fake_image .png]).tap do |file|
+        file.write('hello world')
+      end
+
+      Rack::Test::UploadedFile.new(file.path)
+    end
+    let(:record) do
+      r = build(:user_file, attachment: fake_attachment, skip_promotion: true)
+      r.attachment_data['metadata']['mime_type'] = 'image/png'
+      r.save!(validate: false)
+      r.reload
+      r
+    end
+
+    it 'marks record as failed' do
+      expect(record.attachment.mime_type).to eq('image/png')
+
+      job.perform(attacher_class, record_class, record_id, name, file_data)
+
+      record.reload
+      expect(record.failed?).to be(true)
+      expect(record.attachment.mime_type).to be_nil
+    end
   end
 
   context 'when record is not found' do
