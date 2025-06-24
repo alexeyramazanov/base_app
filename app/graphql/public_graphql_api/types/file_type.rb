@@ -13,8 +13,14 @@ module PublicGraphqlApi
       field :url, UrlType, null: false, description: 'The URL for downloading the file.'
 
       def type
-        # TODO: fix
-        FileTypeType.image
+        case object.type
+        when 'image'
+          PublicGraphqlApi::Types::FileTypeType.image
+        when 'document'
+          PublicGraphqlApi::Types::FileTypeType.document
+        else
+          PublicGraphqlApi::Types::FileTypeType.unknown
+        end
       end
 
       def file_name

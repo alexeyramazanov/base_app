@@ -6,6 +6,8 @@ module PublicGraphqlApi
       description 'The type of a file.'
 
       value 'IMAGE', 'Image', description: 'Image.'
+      value 'DOCUMENT', 'Document', description: 'Document.'
+      value 'UNKNOWN', 'Unknown', description: 'Unknown.'
     end
   end
 end
