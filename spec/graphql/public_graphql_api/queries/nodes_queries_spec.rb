@@ -23,8 +23,8 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
   end
 
   describe 'nodes query' do
-    let!(:documents) { create_list(:document, 2, user:) }
-    let!(:other_document) { create(:document) }
+    let!(:user_files) { create_list(:user_file, 2, user:) }
+    let!(:other_user_file) { create(:user_file) }
 
     let(:query) do
       <<~GQL
@@ -38,7 +38,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
 
     let(:variables) do
       {
-        ids: documents.map(&:to_gid_param)
+        ids: user_files.map(&:to_gid_param)
       }
     end
 
@@ -50,13 +50,13 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
     it_behaves_like 'authorized graphql endpoint' do
       let(:query) { super() }
       let(:user) { super() }
-      let(:variables) { { ids: [documents.first.to_gid_param, other_document.to_gid_param] } }
+      let(:variables) { { ids: [user_files.first.to_gid_param, other_user_file.to_gid_param] } }
     end
 
     it_behaves_like 'graphql endpoint validating ID format' do
       let(:query) { super() }
       let(:user) { super() }
-      let(:variables) { { ids: [documents.first.to_gid_param, 'invalid'] } }
+      let(:variables) { { ids: [user_files.first.to_gid_param, 'invalid'] } }
     end
 
     it 'returns the correct nodes for given IDs' do
@@ -74,7 +74,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
           query($ids: [ID!]!) {
             nodes(ids: $ids) {
               id
-              ... on Document {
+              ... on File {
                 id
                 userId
               }
@@ -88,15 +88,15 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
 
         expect(success?).to be(true)
 
-        expected_documents = documents.map { |d| { 'id' => d.to_gid_param, 'userId' => d.user_id } }
-        expect(data['nodes']).to match_array(expected_documents)
+        expected_user_files = user_files.map { |d| { 'id' => d.to_gid_param, 'userId' => d.user_id } }
+        expect(data['nodes']).to match_array(expected_user_files)
       end
     end
   end
 
   describe 'node query' do
-    let!(:document) { create(:document, user:) }
-    let!(:other_document) { create(:document) }
+    let!(:user_file) { create(:user_file, user:) }
+    let!(:other_user_file) { create(:user_file) }
 
     let(:query) do
       <<~GQL
@@ -109,7 +109,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
     end
     let(:variables) do
       {
-        id: document.to_gid_param
+        id: user_file.to_gid_param
       }
     end
 
@@ -121,7 +121,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
     it_behaves_like 'authorized graphql endpoint' do
       let(:query) { super() }
       let(:user) { super() }
-      let(:variables) { { id: other_document.to_gid_param } }
+      let(:variables) { { id: other_user_file.to_gid_param } }
     end
 
     it_behaves_like 'graphql endpoint validating ID format' do
@@ -134,16 +134,16 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
       execute_graphql(query, user, variables)
 
       expect(success?).to be(true)
-      expect(data['node']['id']).to eq(document.to_gid_param)
+      expect(data['node']['id']).to eq(user_file.to_gid_param)
     end
 
-    context 'with Document type' do
+    context 'with File type' do
       let(:query) do
         <<~GQL
           query($id: ID!) {
             node(id: $id) {
               id
-              ... on Document {
+              ... on File {
                 id
                 userId
               }
@@ -153,7 +153,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
       end
       let(:variables) do
         {
-          id: document.to_gid_param
+          id: user_file.to_gid_param
         }
       end
 
@@ -162,8 +162,8 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
 
         expect(success?).to be(true)
 
-        expected_document = { 'id' => document.to_gid_param, 'userId' => document.user_id }
-        expect(data['node']).to eq(expected_document)
+        expected_user_file = { 'id' => user_file.to_gid_param, 'userId' => user_file.user_id }
+        expect(data['node']).to eq(expected_user_file)
       end
     end
 
@@ -196,13 +196,13 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
 
         expect(success?).to be(true)
 
-        expected_document = {
+        expected_user_file = {
           'id'        => current_version.to_gid_param,
           'version'   => current_version.version,
           'createdAt' => current_version.created_at.iso8601,
           'updatedAt' => current_version.updated_at.iso8601
         }
-        expect(data['node']).to eq(expected_document)
+        expect(data['node']).to eq(expected_user_file)
       end
     end
   end

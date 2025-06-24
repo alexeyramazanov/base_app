@@ -2,8 +2,8 @@
 
 module PublicGraphqlApi
   module Types
-    class DocumentTypeType < BaseEnum
-      description 'The type of a document.'
+    class FileTypeType < BaseEnum
+      description 'The type of a file.'
 
       value 'IMAGE', 'Image', description: 'Image.'
     end

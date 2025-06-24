@@ -35,8 +35,8 @@ module PublicGraphqlApi
     # Union and Interface Resolution
     def self.resolve_type(_abstract_type, application_object, _context)
       case application_object
-      when Document
-        Types::DocumentType
+      when UserFile
+        Types::FileType
       when PublicGraphqlApi::Version
         Types::VersionType
       else

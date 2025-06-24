@@ -3,17 +3,17 @@
 require 'rails_helper'
 require 'shared/graphql'
 
-RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
+RSpec.describe PublicGraphqlApi::Queries::FilesQueries do
   let(:user) { create(:user) }
 
-  describe 'documents query' do
-    let!(:documents) { create_list(:document, 3, user:) }
-    let!(:other_documents) { create_list(:document, 2) } # rubocop:disable RSpec/LetSetup
+  describe 'files query' do
+    let!(:user_files) { create_list(:user_file, 3, user:) }
+    let!(:other_user_files) { create_list(:user_file, 2) } # rubocop:disable RSpec/LetSetup
 
     let(:query) do
       <<~GQL
         query {
-          documents {
+          files {
             nodes {
               id
             }
@@ -25,7 +25,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
     let(:paginated_query) do
       <<~GQL
         query {
-          documents(first: 2) {
+          files(first: 2) {
             nodes {
               id
             }
@@ -40,7 +40,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
     let(:edges_query) do
       <<~GQL
         query {
-          documents {
+          files {
             edges {
               cursor
               node {
@@ -56,22 +56,22 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
       let(:query) { super() }
     end
 
-    it 'returns an ordered list of documents' do
+    it 'returns an ordered list of user files' do
       execute_graphql(query, user)
 
       expect(success?).to be(true)
 
-      expected_document_ids = user.documents.order(id: :desc).map(&:to_gid_param)
-      received_document_ids = data['documents']['nodes'].map { |d| d['id'] }
-      expect(received_document_ids).to eq(expected_document_ids)
+      expected_user_file_ids = user.user_files.order(id: :desc).map(&:to_gid_param)
+      received_user_file_ids = data['files']['nodes'].map { |d| d['id'] }
+      expect(received_user_file_ids).to eq(expected_user_file_ids)
     end
 
     it 'supports pagination' do
       execute_graphql(paginated_query, user)
 
       expect(success?).to be(true)
-      expect(data['documents']['nodes'].length).to eq(2)
-      expect(data['documents']['pageInfo']['hasNextPage']).to be(true)
+      expect(data['files']['nodes'].length).to eq(2)
+      expect(data['files']['pageInfo']['hasNextPage']).to be(true)
     end
 
     it 'supports edges' do
@@ -79,24 +79,24 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
 
       expect(success?).to be(true)
 
-      expected_document_ids = documents.map(&:to_gid_param)
-      received_document_ids = data['documents']['edges'].map { |d| d['node']['id'] }
-      expect(received_document_ids).to match_array(expected_document_ids)
+      expected_user_file_ids = user_files.map(&:to_gid_param)
+      received_user_file_ids = data['files']['edges'].map { |d| d['node']['id'] }
+      expect(received_user_file_ids).to match_array(expected_user_file_ids)
 
       expected_cursors = %w[1 2 3]
-      received_cursors = data['documents']['edges'].map { |d| Base64.decode64(d['cursor']) }
+      received_cursors = data['files']['edges'].map { |d| Base64.decode64(d['cursor']) }
       expect(received_cursors).to match_array(expected_cursors)
     end
   end
 
-  describe 'document query' do
-    let!(:document) { create(:document, user:) }
-    let!(:other_document) { create(:document) }
+  describe 'file query' do
+    let!(:user_file) { create(:user_file, user:) }
+    let!(:other_user_file) { create(:user_file) }
 
     let(:query) do
       <<~GQL
         query($id: ID!) {
-          document(id: $id) {
+          file(id: $id) {
             id
             type
             userId
@@ -107,7 +107,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
     end
     let(:variables) do
       {
-        id: document.to_gid_param
+        id: user_file.to_gid_param
       }
     end
 
@@ -119,7 +119,7 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
     it_behaves_like 'authorized graphql endpoint' do
       let(:query) { super() }
       let(:user) { super() }
-      let(:variables) { { id: other_document.to_gid_param } }
+      let(:variables) { { id: other_user_file.to_gid_param } }
     end
 
     it_behaves_like 'graphql endpoint validating ID format' do
@@ -128,18 +128,18 @@ RSpec.describe PublicGraphqlApi::Queries::DocumentsQueries do
       let(:variables) { { id: 'invalid' } }
     end
 
-    it 'returns a specific document' do
+    it 'returns a specific user file' do
       execute_graphql(query, user, variables)
 
       expect(success?).to be(true)
 
       expected_data = {
-        'id'     => document.to_gid_param,
-        'type'   => PublicGraphqlApi::Types::DocumentTypeType.image,
+        'id'     => user_file.to_gid_param,
+        'type'   => PublicGraphqlApi::Types::FileTypeType.image,
         'userId' => user.id,
-        'url'    => document.file.url
+        'url'    => user_file.attachment.url
       }
-      expect(data['document']).to eq(expected_data)
+      expect(data['file']).to eq(expected_data)
     end
   end
 end
