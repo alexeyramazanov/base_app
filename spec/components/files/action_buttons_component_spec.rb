@@ -71,7 +71,7 @@ RSpec.describe Files::ActionButtonsComponent do
       context 'when file is unknown' do
         let(:user_file) do
           uf = create(:user_file)
-          uf.update_column(:type, 'unknown') # rubocop:disable Rails/SkipsModelValidations
+          uf.update_column(:type, 'unknown')
           uf
         end
 

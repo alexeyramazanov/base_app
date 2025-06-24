@@ -58,6 +58,10 @@ RSpec/NestedGroups:
 RSpec/IndexedLet:
   Enabled: false
 
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'spec/**/*'
+
 GraphQL/ObjectDescription:
   Exclude:
     - 'spec/**/*'

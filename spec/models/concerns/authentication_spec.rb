@@ -112,7 +112,7 @@ RSpec.describe Authentication, type: :module do
 
     context 'when user is present but account is not activated' do
       before do
-        user.update_column(:activation_state, 'pending') # rubocop:disable Rails/SkipsModelValidations
+        user.update_column(:activation_state, 'pending')
       end
 
       it 'returns :activation_required' do
