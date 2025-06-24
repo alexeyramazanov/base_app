@@ -2,30 +2,30 @@
 
 module PublicRestApi
   module V2
-    class Documents < Grape::API
-      resources :documents do # rubocop:disable Metrics/BlockLength
+    class Files < Grape::API
+      resources :files do # rubocop:disable Metrics/BlockLength
         helpers Helpers::PaginationHelpers
 
-        # GET /documents
-        desc 'List documents',
+        # GET /files
+        desc 'List files',
              success: {
-               message: 'Documents list',
-               model:   Entities::V2::PaginatedDocuments
+               message: 'Files list',
+               model:   Entities::V2::PaginatedFiles
              },
              failure: Helpers::ErrorHelpers.failures(401, 500)
         params do
           use :pagination
         end
         get do
-          paginated_data = paginate(policy_scope(Document).order(id: :desc))
+          paginated_data = paginate(policy_scope(UserFile).order(id: :desc))
 
-          present paginated_data, with: Entities::V2::PaginatedDocuments
+          present paginated_data, with: Entities::V2::PaginatedFiles
         end
 
-        desc 'Create a document',
+        desc 'Create a file',
              success: {
-               message: 'Document',
-               model:   Entities::V2::Document
+               message: 'File',
+               model:   Entities::V2::File
              },
              failure: Helpers::ErrorHelpers.failures(401, 422, 500)
         params do
@@ -36,13 +36,13 @@ module PublicRestApi
         end
         post do
           file = Shrine.data_uri(params[:data], filename: params[:file_name])
-          document = current_user.documents.new(file:)
-          authorize document, :create?
+          user_file = current_user.user_files.new(attachment: file)
+          authorize user_file, :create?
 
-          if document.save
-            present document, with: Entities::V2::Document
+          if user_file.save
+            present user_file, with: Entities::V2::File
           else
-            error_unprocessable_entity!(*document.errors.full_messages)
+            error_unprocessable_entity!(*user_file.errors.full_messages)
           end
         rescue Shrine::Plugins::DataUri::ParseError
           error_unprocessable_entity!('Invalid file')

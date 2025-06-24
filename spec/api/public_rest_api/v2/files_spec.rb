@@ -3,19 +3,19 @@
 require 'rails_helper'
 require 'shared/public_api'
 
-RSpec.describe PublicRestApi::V2::Documents do
+RSpec.describe PublicRestApi::V2::Files do
   let(:user) { create(:user) }
   let(:api_token) { create(:api_token, user:) }
 
-  let!(:document1) { create(:document, user:) }
-  let!(:document2) { create(:document, user:) }
+  let!(:user_file1) { create(:user_file, user:) }
+  let!(:user_file2) { create(:user_file, user:) }
 
   before do
-    create_list(:document, 3)
+    create_list(:user_file, 3)
   end
 
-  describe 'GET /public_api/v2/documents' do
-    let(:path) { '/public_api/v2/documents' }
+  describe 'GET /public_api/v2/files' do
+    let(:path) { '/public_api/v2/files' }
 
     it_behaves_like 'authenticated_endpoint' do
       let(:path) { super() }
@@ -25,19 +25,19 @@ RSpec.describe PublicRestApi::V2::Documents do
       let(:token) { api_token.token }
     end
 
-    it 'returns list of documents for current user' do
+    it 'returns list of files for current user' do
       make_api_request :get, path, api_token.token
 
       expect(response).to have_http_status(:ok)
 
       data = JSON.parse(response.body)
       expect(data['records'].count).to eq(2)
-      expect(data['records'].map { |record| record['id'] }).to contain_exactly(document1.id, document2.id)
+      expect(data['records'].map { |record| record['id'] }).to contain_exactly(user_file1.id, user_file2.id)
     end
   end
 
-  describe 'POST /public_api/v2/documents' do
-    let(:path) { '/public_api/v2/documents' }
+  describe 'POST /public_api/v2/files' do
+    let(:path) { '/public_api/v2/files' }
 
     let(:base64_data) { File.read(Rails.root.join('spec/fixtures/logo_base64.txt')).strip }
 
@@ -53,17 +53,18 @@ RSpec.describe PublicRestApi::V2::Documents do
       let(:path) { super() }
     end
 
-    it 'creates a document for user' do
+    it 'creates a file for user' do
       expect { make_api_request :post, path, api_token.token, params: valid_params }
-        .to change(user.documents, :count).by(1)
+        .to change(user.user_files, :count).by(1)
 
       expect(response).to have_http_status(:created)
 
-      document = user.documents.last
-      expect(document.file.metadata).to eq({ 'size' => 30_487, 'filename' => 'logo.png', 'mime_type' => 'image/png' })
+      user_file = user.user_files.last
+      expect(user_file.attachment.metadata)
+        .to eq({ 'size' => 30_487, 'filename' => 'logo.png', 'mime_type' => 'image/png' })
     end
 
-    it 'returns new document record' do
+    it 'returns new user file record' do
       make_api_request :post, path, api_token.token, params: valid_params
 
       expect(response).to have_http_status(:created)
@@ -111,7 +112,7 @@ RSpec.describe PublicRestApi::V2::Documents do
       end
     end
 
-    context 'when document failed to be saved' do
+    context 'when user file failed to be saved' do
       let(:invalid_params) do
         {
           file_name: 'logo.png',
@@ -125,29 +126,34 @@ RSpec.describe PublicRestApi::V2::Documents do
         expect(response).to have_http_status(:unprocessable_content)
 
         data = JSON.parse(response.body)
-        expect(data).to eq({ 'code' => 422, 'message' => 'Unprocessable Content',
-                             'errors' => ['File type must be one of: image/jpeg, image/png'] })
+        expect(data).to eq(
+          {
+            'code'    => 422,
+            'message' => 'Unprocessable Content',
+            'errors'  => ['Attachment type must be one of: image/jpg, image/jpeg, image/png, application/pdf']
+          }
+        )
       end
     end
   end
 
-  describe 'GET /public_api/v2/documents/{id}/download' do
-    let(:path) { "/public_api/v2/documents/#{id}/download" }
-    let(:id) { document1.id }
+  describe 'GET /public_api/v2/files/{id}/download' do
+    let(:path) { "/public_api/v2/files/#{id}/download" }
+    let(:id) { user_file1.id }
 
     it_behaves_like 'authenticated_endpoint' do
       let(:path) { super() }
     end
 
-    it 'returns download url for the document' do
+    it 'returns download url for the user file' do
       make_api_request :get, path, api_token.token
 
       expect(response).to have_http_status(:ok)
 
       data = JSON.parse(response.body)
-      expect(data['id']).to eq(document1.id)
+      expect(data['id']).to eq(user_file1.id)
       expect(data['url']).to be_present
-      expect(data['url']).to include(document1.file.id)
+      expect(data['url']).to include(user_file1.attachment.id)
     end
   end
 end

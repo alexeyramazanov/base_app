@@ -22,6 +22,7 @@ FactoryBot.define do
       Sidekiq::Queues.delete_for(job['jid'], job['queue'], job_class.to_s)
       job_class.process_job(job)
 
+      # get updated state
       user_file.reload
     end
   end
