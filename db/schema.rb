@@ -49,13 +49,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_15_082335) do
     t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
-  create_table "documents", force: :cascade do |t|
+  create_table "user_files", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.jsonb "file_data"
+    t.string "type", null: false
+    t.string "status", null: false
+    t.jsonb "attachment_data", default: {}, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["file_data"], name: "index_documents_on_file_data", using: :gin
-    t.index ["user_id"], name: "index_documents_on_user_id"
+    t.index ["attachment_data"], name: "index_user_files_on_attachment_data", using: :gin
+    t.index ["user_id"], name: "index_user_files_on_user_id"
   end
 
   create_table "user_sessions", force: :cascade do |t|

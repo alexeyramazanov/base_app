@@ -1,0 +1,39 @@
+<%= turbo_stream_from Current.user, 'user_files' %>
+
+<h1 class="font-semibold text-xl text-gray-700 pb-4">Files</h1>
+
+<div class="flex items-start gap-4">
+  <div class="card w-3/4">
+    <table id="user_files" class="w-full text-left table-auto">
+      <thead>
+      <tr class="border-b border-slate-300 bg-slate-50 text-slate-500">
+        <th class="w-auto whitespace-nowrap p-2 pr-6 text-sm font-normal leading-none">ID</th>
+        <th class="w-full p-2 pr-6 text-sm font-normal leading-none">Name</th>
+        <th class="w-auto whitespace-nowrap p-2 text-sm font-normal leading-none text-center">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+        <%= render collection: @user_files, partial: 'user_files/user_file_row', as: :user_file %>
+      </tbody>
+    </table>
+
+    <div class="flex justify-center pt-4">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  </div>
+
+  <div class="card w-1/4">
+    <!-- `files_path` is correct here, as Uppy always adds hard-coded `s3/params` to the specified url -->
+    <div data-controller="user-files"
+         data-user-files-presign-url-value="<%= files_path %>"
+         data-user-files-max-file-size-value="<%= UserFile::MAX_FILE_SIZE %>"
+         data-user-files-allowed-mime-types-value="<%= JSON.generate(UserFile::SUPPORTED_MIME_TYPES) %>">
+      <%= form_with url: files_path, data: {user_files_target: 'submitForm'} do |form| %>
+        <%= form.hidden_field :file, data: {user_files_target: 'submitFormInput'} %>
+      <% end %>
+
+      <div id="upload_dropzone"></div>
+      <div id="status_bar"></div>
+    </div>
+  </div>
+</div>

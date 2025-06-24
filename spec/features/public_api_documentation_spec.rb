@@ -7,9 +7,9 @@ RSpec.describe 'Public API Documentation' do
     visit public_api_swagger_path
 
     expect(page).to have_title('Public API Documentation')
-    expect(page).to have_text('Operations about documents')
+    expect(page).to have_text('Operations about files')
 
-    find('#operations-documents-getV2Documents').click
-    expect(page).to have_text('List documents')
+    find('#operations-files-getV2Files').click
+    expect(page).to have_text('List files')
   end
 end

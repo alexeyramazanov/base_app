@@ -1,0 +1,9 @@
+<i class="fa-regular fa-lg <%= type_icon %> pr-1"></i>
+
+<%= @user_file.attachment.original_filename %>
+
+<% if @user_file.processing? %>
+  <span data-controller="shared--tooltip" data-shared--tooltip-content-value="Processing...">
+    <i class="fa-solid fa-spinner animate-spin fa-sm"></i>
+  </span>
+<% end %>

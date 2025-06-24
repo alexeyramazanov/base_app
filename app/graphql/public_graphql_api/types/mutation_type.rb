@@ -3,7 +3,7 @@
 module PublicGraphqlApi
   module Types
     class MutationType < Types::BaseObject
-      include Mutations::DocumentsMutations
+      include Mutations::FilesMutations
     end
   end
 end

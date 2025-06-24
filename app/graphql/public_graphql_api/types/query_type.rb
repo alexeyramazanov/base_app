@@ -9,7 +9,7 @@ module PublicGraphqlApi
       include Queries::NodesQueries
       include Queries::VersionQueries
 
-      include Queries::DocumentsQueries
+      include Queries::FilesQueries
     end
   end
 end

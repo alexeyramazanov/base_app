@@ -15,7 +15,7 @@ RSpec.describe PublicRestApi::Root do
         end
 
         get :auth_scope do
-          policy_scope(Document)
+          policy_scope(UserFile)
 
           { success: true }
         end

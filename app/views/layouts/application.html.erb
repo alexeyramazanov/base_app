@@ -20,7 +20,7 @@
   <%= render LayoutHeaderComponent.new(logo_url: dashboard_path) do |layout_component| %>
     <%= navigation_link 'Dashboard', dashboard_path %>
     <%= navigation_link 'Chat', chat_path, options: { simple: true }, link_options: { data: { turbo_prefetch: false } } %>
-    <%= navigation_link 'Documents', documents_path %>
+    <%= navigation_link 'Files', files_path %>
 
     <% layout_component.with_dropdown do %>
       <%= render DropdownComponent.new(align: :right) do |dd_component| %>

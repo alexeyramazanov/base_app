@@ -12,6 +12,8 @@ Capybara.register_driver :selenium_chrome_headless do |app|
   options.add_argument('--disable-gpu')
   options.add_argument('--window-size=1920,1080')
   options.add_argument('--force-device-scale-factor=1')
+  options.add_preference(:download, prompt_for_download: false,
+                                    default_directory:   CapybaraHelpers::DOWNLOAD_PATH)
   options.logging_prefs = { 'browser' => 'ALL' }
   options.profile = profile
 
@@ -24,7 +26,11 @@ Capybara.register_driver :selenium_chrome do |app|
 
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('--window-size=1600,900')
-  options.add_argument('--auto-open-devtools-for-tabs')
+  # enabling this option on certain versions of chrome/OS
+  # can trigger weird 'no such window: target window already closed' errors
+  # options.add_argument('--auto-open-devtools-for-tabs')
+  options.add_preference(:download, prompt_for_download: false,
+                                    default_directory:   CapybaraHelpers::DOWNLOAD_PATH)
   options.logging_prefs = { 'browser' => 'ALL' }
   options.profile = profile
 

@@ -5,7 +5,7 @@ module PublicRestApi
     class Root < Grape::API
       version 'v2', using: :path
 
-      mount Documents
+      mount Files
     end
   end
 end
