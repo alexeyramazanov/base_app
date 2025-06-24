@@ -127,7 +127,7 @@ RSpec.describe UserFile do
   describe '#refresh_type!' do
     let(:user_file) do
       uf = create(:user_file)
-      uf.update_column(:type, 'unknown') # rubocop:disable Rails/SkipsModelValidations
+      uf.update_column(:type, 'unknown')
       uf
     end
 

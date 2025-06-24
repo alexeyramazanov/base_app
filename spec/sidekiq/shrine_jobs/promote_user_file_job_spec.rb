@@ -17,7 +17,7 @@ RSpec.describe ShrineJobs::PromoteUserFileJob do
   it 'refreshes metadata' do
     file_data = record.attachment_data
     file_data['metadata'] = { 'filename' => 'sample.jpg' }
-    record.update_column(:attachment_data, file_data) # rubocop:disable Rails/SkipsModelValidations
+    record.update_column(:attachment_data, file_data)
 
     record.reload
     expect(record.attachment.metadata).to eq({ 'filename' => 'sample.jpg' })
