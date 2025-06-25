@@ -36,9 +36,12 @@ RSpec.describe User do
     let(:user) { build(:user) }
 
     it 'broadcasts to admin_new_users after create' do
-      expect { user.save! }.to have_broadcasted_to('admin_new_users')
-        .with(a_string_including('<turbo-stream action=\"prepend\" target=\"admin_new_users\">'))
-        .with(a_string_including(user.email))
+      Sidekiq::Testing.inline! do
+        expect { user.save! }
+          .to have_broadcasted_to('admin_new_users')
+          .with(a_string_including('<turbo-stream action=\"prepend\" target=\"admin_new_users\">'))
+          .with(a_string_including(user.email))
+      end
     end
   end
 
