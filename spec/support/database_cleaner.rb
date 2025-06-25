@@ -15,9 +15,12 @@ RSpec.configure do |config|
       MSG
     end
 
+    # DB configuration should go before specifying the strategy.
+    # We assume that in test environment, all redis consumers (cache, sidekiq) use the same database
+    DatabaseCleaner[:redis].db = ENV.fetch('REDIS_CACHE_URL')
+
     DatabaseCleaner[:active_record].clean_with(:truncation)
     DatabaseCleaner[:redis].clean_with(:deletion)
-    DatabaseCleaner[:redis].db = ENV.fetch('REDIS_CACHE_URL')
   end
 
   config.before do

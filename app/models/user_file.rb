@@ -57,7 +57,7 @@ class UserFile < ApplicationRecord
   end
 
   def broadcast_status_change
-    broadcast_replace_to([user, 'user_files'], target: self,
-                         partial: 'user_files/user_file_row', locals: { user_file: self })
+    broadcast_replace_later_to([user, 'user_files'], target: self,
+                               partial: 'user_files/user_file_row', locals: { user_file: self })
   end
 end

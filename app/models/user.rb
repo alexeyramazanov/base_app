@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :api_tokens, dependent: :delete_all
 
   after_create_commit lambda {
-    broadcast_prepend_to 'admin_new_users', partial: 'admin/users/new_user_row',
-                         locals: { user: User.last }, target: 'admin_new_users'
+    broadcast_prepend_later_to 'admin_new_users', partial: 'admin/users/new_user_row',
+                               locals: { user: User.last }, target: 'admin_new_users'
   }
 end

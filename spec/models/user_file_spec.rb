@@ -12,9 +12,11 @@ RSpec.describe UserFile do
     it 'broadcasts to user user_files stream' do
       target_id = ActionView::RecordIdentifier.dom_id(user_file)
 
-      expect { action.call }
-        .to have_broadcasted_to([user_file.user.to_gid_param, 'user_files'].join(':'))
-        .with(a_string_including("<turbo-stream action=\"replace\" target=\"#{target_id}\">"))
+      Sidekiq::Testing.inline! do
+        expect { action.call }
+          .to have_broadcasted_to([user_file.user.to_gid_param, 'user_files'].join(':'))
+          .with(a_string_including("<turbo-stream action=\"replace\" target=\"#{target_id}\">"))
+      end
     end
   end
 
