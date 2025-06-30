@@ -74,7 +74,7 @@ gem 'shrine', '~> 3.6.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.190.0'
+gem 'aws-sdk-s3', '~> 1.191.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -139,7 +139,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.33.0'
+  gem 'selenium-webdriver', '~> 4.34.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
