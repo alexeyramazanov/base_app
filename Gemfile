@@ -2,15 +2,15 @@ source 'https://rubygems.org'
 
 # Ruby on Rails
 # https://github.com/rails/rails/
-gem 'rails', '~> 8.0.2'
+gem 'rails', '~> 8.0.3'
 
 # A PostgreSQL client library for Ruby
 # https://github.com/ged/ruby-pg
-gem 'pg', '~> 1.5.9'
+gem 'pg', '~> 1.6.2'
 
 # A Ruby client library for Redis
 # https://github.com/redis/redis-rb
-gem 'redis', '~> 5.4.0'
+gem 'redis', '~> 5.4.1'
 
 # bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm
 # https://github.com/bcrypt-ruby/bcrypt-ruby
@@ -18,7 +18,7 @@ gem 'bcrypt', '~> 3.1.13'
 
 # A Ruby/Rack web server built for parallelism
 # https://github.com/puma/puma
-gem 'puma', '~> 6.6.0'
+gem 'puma', '~> 7.0.4'
 
 # Vite.js in Ruby, bringing joy to your JavaScript experience
 # https://github.com/ElMassimo/vite_ruby
@@ -26,7 +26,7 @@ gem 'vite_rails', '~> 3.0.19'
 
 # Minimal authorization through OO design and pure Ruby classes
 # https://github.com/varvet/pundit
-gem 'pundit', '~> 2.5.0'
+gem 'pundit', '~> 2.5.2'
 
 # AASM - State machines for Ruby classes (plain Ruby, ActiveRecord, Mongoid, NoBrainer, Dynamoid)
 # https://github.com/aasm/aasm
@@ -38,15 +38,15 @@ gem 'after_commit_everywhere', '~> 1.6.0'
 
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
-gem 'view_component', '~> 3.23.2'
+gem 'view_component', '~> 4.0.2'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
-gem 'pagy', '~> 9.3.4'
+gem 'pagy', '~> 9.4.0'
 
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
-gem 'turbo-rails', '~> 2.0.16'
+gem 'turbo-rails', '~> 2.0.17'
 
 # Use Stimulus in your Ruby on Rails app
 # https://github.com/hotwired/stimulus-rails
@@ -54,7 +54,7 @@ gem 'stimulus-rails', '~> 1.3.4'
 
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
-gem 'solid_cable', '~> 3.0.11'
+gem 'solid_cable', '~> 3.0.12'
 
 # AnyCable for Ruby on Rails applications
 # https://github.com/anycable/anycable-rails
@@ -62,11 +62,11 @@ gem 'anycable-rails', '~> 1.6.0'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
-gem 'sidekiq', '~> 8.0.4'
+gem 'sidekiq', '~> 8.0.8'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
-gem 'sidekiq-cron', '~> 2.3.0'
+gem 'sidekiq-cron', '~> 2.3.1'
 
 # File Attachment toolkit for Ruby applications
 # https://github.com/shrinerb/shrine
@@ -74,7 +74,7 @@ gem 'shrine', '~> 3.6.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.190.0'
+gem 'aws-sdk-s3', '~> 1.199.1'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -82,7 +82,7 @@ gem 'image_processing', '~> 1.14.0'
 
 # Find the mime type of files, examining file, filename and declared type
 # https://github.com/rails/marcel
-gem 'marcel', '~> 1.0.4'
+gem 'marcel', '~> 1.1.0'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
@@ -90,7 +90,7 @@ gem 'bootsnap', '~> 1.18.6', require: false
 
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
-gem 'thruster', '~> 0.1.14', require: false
+gem 'thruster', '~> 0.1.15', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
@@ -106,11 +106,11 @@ gem 'grape-swagger', '~> 2.1.2'
 
 # A simple grape-swagger adapter to allow parse representers as response model
 # https://github.com/ruby-grape/grape-swagger-entity
-gem 'grape-swagger-entity', '~> 0.6.2'
+gem 'grape-swagger-entity', '~> 0.7.0'
 
 # Ruby implementation of GraphQL
 # https://github.com/rmosolgo/graphql-ruby
-gem 'graphql', '~> 2.5.9'
+gem 'graphql', '~> 2.5.14'
 
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
@@ -119,15 +119,15 @@ group :development, :test do
 
   # Pretty print your Ruby objects with style -- in full color and with proper indentation
   # https://github.com/amazing-print/amazing_print
-  gem 'amazing_print', '~> 1.8.1'
+  gem 'amazing_print', '~> 2.0.0'
 
   # RSpec for Rails 7+
   # https://github.com/rspec/rspec-rails
-  gem 'rspec-rails', '~> 8.0.1'
+  gem 'rspec-rails', '~> 8.0.2'
 
   # A library for setting up Ruby objects as test data
   # https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails', '~> 6.5.0'
+  gem 'factory_bot_rails', '~> 6.5.1'
 
   # Acceptance test framework for web applications
   # https://github.com/teamcapybara/capybara
@@ -139,7 +139,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.33.0'
+  gem 'selenium-webdriver', '~> 4.35.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
@@ -147,19 +147,19 @@ group :development, :test do
 
   # A static analysis security vulnerability scanner for Ruby on Rails applications
   # https://github.com/presidentbeef/brakeman
-  gem 'brakeman', '~> 7.0.0', require: false
+  gem 'brakeman', '~> 7.1.0', require: false
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
-  gem 'rubocop-rails', '~> 2.32.0', require: false
+  gem 'rubocop-rails', '~> 2.33.4', require: false
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
-  gem 'rubocop-performance', '~> 1.25.0', require: false
+  gem 'rubocop-performance', '~> 1.26.0', require: false
 
   # Code style checking for RSpec files
   # https://github.com/rubocop/rubocop-rspec
-  gem 'rubocop-rspec', '~> 3.6.0', require: false
+  gem 'rubocop-rspec', '~> 3.7.0', require: false
 
   # Code style checking for Rails-related RSpec files
   # https://github.com/rubocop/rubocop-rspec_rails
@@ -189,7 +189,7 @@ group :development do
 
   # next generation CRuby profiler
   # https://github.com/jhawthorn/vernier
-  gem 'vernier', '~> 1.8.0'
+  gem 'vernier', '~> 1.8.1'
 
   # Firefox Profiler for Ruby
   # https://github.com/tenderlove/profiler
@@ -199,11 +199,11 @@ end
 group :test do
   # RSpec for Sidekiq
   # https://github.com/wspurgin/rspec-sidekiq
-  gem 'rspec-sidekiq', '~> 5.1.0'
+  gem 'rspec-sidekiq', '~> 5.2.0'
 
   # Strategies for cleaning databases in Ruby
   # https://github.com/DatabaseCleaner/database_cleaner
-  gem 'database_cleaner-active_record', '~> 2.2.1'
+  gem 'database_cleaner-active_record', '~> 2.2.2'
   gem 'database_cleaner-redis', '~> 2.0.0'
 
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
