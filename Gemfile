@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 ruby '4.0.3'
 
+# TODO: remove
+# Rails 8.0.2 is incompatible with connection_pool 3.x API
+gem 'connection_pool', '< 3.0'
+
 # Ruby on Rails
 # https://github.com/rails/rails/
 gem 'rails', '~> 8.0.2'
