@@ -20,7 +20,7 @@ gem 'redis', '~> 5.4.1'
 
 # bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm
 # https://github.com/bcrypt-ruby/bcrypt-ruby
-gem 'bcrypt', '~> 3.1.13'
+gem 'bcrypt', '~> 3.1.22'
 
 # A Ruby/Rack web server built for parallelism
 # https://github.com/puma/puma
