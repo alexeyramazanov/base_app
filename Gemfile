@@ -48,7 +48,7 @@ gem 'view_component', '~> 3.23.2'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
-gem 'pagy', '~> 9.3.4'
+gem 'pagy', '~> 43.5.3'
 
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails

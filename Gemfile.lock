@@ -341,7 +341,10 @@ GEM
     nokogiri (1.19.3-x86_64-linux-musl)
       racc (~> 1.4)
     optparse (0.6.0)
-    pagy (9.3.4)
+    pagy (43.5.3)
+      json
+      uri
+      yaml
     parallel (2.1.0)
     parser (3.3.11.1)
       ast (~> 2.4.1)
@@ -571,6 +574,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    yaml (0.4.0)
     zeitwerk (2.7.3)
 
 PLATFORMS
@@ -609,7 +613,7 @@ DEPENDENCIES
   image_processing (~> 1.14.0)
   letter_opener (~> 1.10.0)
   marcel (~> 1.1.0)
-  pagy (~> 9.3.4)
+  pagy (~> 43.5.3)
   pg (~> 1.6.3)
   profile-viewer (~> 0.0.7)
   puma (~> 6.6.0)
