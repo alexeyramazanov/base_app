@@ -100,19 +100,19 @@ gem 'thruster', '~> 0.1.20', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
-gem 'grape', '~> 2.4.0'
+gem 'grape', '~> 3.2.1'
 
 # An API focused facade that sits on top of an object model.
 # https://github.com/ruby-grape/grape-entity
-gem 'grape-entity', '~> 1.0.1'
+gem 'grape-entity', '~> 1.0.4'
 
 # Add OAPI/swagger v2.0 compliant documentation to your grape API
 # https://github.com/ruby-grape/grape-swagger
-gem 'grape-swagger', '~> 2.1.2'
+gem 'grape-swagger', '~> 2.1.4'
 
 # A simple grape-swagger adapter to allow parse representers as response model
 # https://github.com/ruby-grape/grape-swagger-entity
-gem 'grape-swagger-entity', '~> 0.6.2'
+gem 'grape-swagger-entity', '~> 0.7.1'
 
 # Ruby implementation of GraphQL
 # https://github.com/rmosolgo/graphql-ruby
