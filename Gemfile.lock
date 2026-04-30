@@ -246,7 +246,7 @@ GEM
     grape-swagger-entity (0.7.1)
       grape-entity (~> 1)
       grape-swagger (~> 2)
-    graphql (2.5.9)
+    graphql (2.6.1)
       base64
       fiber-storage
       logger
@@ -612,7 +612,7 @@ DEPENDENCIES
   grape-entity (~> 1.0.4)
   grape-swagger (~> 2.1.4)
   grape-swagger-entity (~> 0.7.1)
-  graphql (~> 2.5.9)
+  graphql (~> 2.6.1)
   image_processing (~> 1.14.0)
   letter_opener (~> 1.10.0)
   marcel (~> 1.1.0)
