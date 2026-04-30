@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
-  pool: <%= Integer(ENV.fetch('DATABASE_POOL', 5)) %>
+  max_connections: <%= Integer(ENV.fetch('DATABASE_POOL', 5)) %>
   reaping_frequency: <%= Integer(ENV.fetch('DATABASE_REAPING_FREQUENCY', 60)) %>
   timeout: <%= Integer(ENV.fetch('DATABASE_TIMEOUT', 5000)) %>
 
