@@ -17,7 +17,7 @@
     "@uppy/core": "^5.2.0",
     "@uppy/drag-drop": "^5.1.0",
     "@uppy/status-bar": "^5.1.0",
-    "swagger-ui": "^5.32.5",
+    "swagger-ui-dist": "^5.32.5",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
