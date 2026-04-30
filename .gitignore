@@ -33,7 +33,7 @@ node_modules
 /public/assets
 
 # Config files
-/config/master.key
+/config/*.key
 /config/credentials.*
 
 # Ignore dotenv files, but keep example

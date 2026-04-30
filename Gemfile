@@ -2,13 +2,9 @@ source 'https://rubygems.org'
 
 ruby '4.0.3'
 
-# TODO: remove
-# Rails 8.0.2 is incompatible with connection_pool 3.x API
-gem 'connection_pool', '< 3.0'
-
 # Ruby on Rails
 # https://github.com/rails/rails/
-gem 'rails', '~> 8.0.2'
+gem 'rails', '~> 8.1.3'
 
 # A PostgreSQL client library for Ruby
 # https://github.com/ged/ruby-pg
@@ -68,11 +64,11 @@ gem 'anycable-rails', '~> 1.6.2'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
-gem 'sidekiq', '~> 8.0.4'
+gem 'sidekiq', '~> 8.1.3'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
-gem 'sidekiq-cron', '~> 2.3.0'
+gem 'sidekiq-cron', '~> 2.3.1'
 
 # File Attachment toolkit for Ruby applications
 # https://github.com/shrinerb/shrine
@@ -154,6 +150,10 @@ group :development, :test do
   # A static analysis security vulnerability scanner for Ruby on Rails applications
   # https://github.com/presidentbeef/brakeman
   gem 'brakeman', '~> 8.0.4', require: false
+
+  # Patch-level verification for Bundler
+  # https://github.com/rubysec/bundler-audit
+  gem 'bundler-audit', '~> 0.9.3', require: false
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails

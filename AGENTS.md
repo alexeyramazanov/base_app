@@ -12,11 +12,11 @@ See `README.md` for user-facing setup/usage instructions, including the `rake re
 
 ### Core
 
-- **Ruby 3.4** (see `.ruby-version`)
-- **Rails 8.0**
-- **Node >= 22** - JS/CSS bundling
-- **PostgreSQL 17** - primary database
-- **Redis 8** - cache, Sidekiq, AnyCable pub/sub
+- **Ruby 4.0** (see `.ruby-version`)
+- **Rails 8.1**
+- **Node 24** - JS/CSS bundling
+- **PostgreSQL 18** - primary database
+- **Valkey 9 (redis)** - cache, Sidekiq, AnyCable pub/sub
 
 ### Components
 
@@ -36,6 +36,8 @@ See `README.md` for user-facing setup/usage instructions, including the `rake re
 - **Rspec** + **Factory bot** + **Capybara** - testing framework
 - **CI/CD** - GitHub Actions
 - **Deployment** - Docker + docker-compose
+
+Actual versions of gems and libraries are specified in `Gemfile` and `package.json`.
 
 ## Repository Layout
 
