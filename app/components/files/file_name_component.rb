@@ -3,7 +3,7 @@
 module Files
   class FileNameComponent < ViewComponent::Base
     def initialize(user_file:)
-      super
+      super()
 
       @user_file = user_file
     end

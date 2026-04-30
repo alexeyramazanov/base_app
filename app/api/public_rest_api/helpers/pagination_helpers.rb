@@ -3,7 +3,7 @@
 module PublicRestApi
   module Helpers
     module PaginationHelpers
-      include Pagy::Backend
+      include Pagy::Method
 
       extend Grape::API::Helpers
 

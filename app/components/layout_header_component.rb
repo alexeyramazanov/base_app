@@ -4,7 +4,7 @@ class LayoutHeaderComponent < ApplicationComponent
   renders_one :dropdown
 
   def initialize(logo_url:)
-    super
+    super()
 
     @logo_url = logo_url
   end

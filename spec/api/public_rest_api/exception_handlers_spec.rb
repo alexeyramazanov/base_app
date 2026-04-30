@@ -18,7 +18,7 @@ RSpec.describe PublicRestApi::ExceptionHandlers do
         end
 
         get :pagination_error do
-          Pagy.new # without params will trigger an exception
+          Pagy::Offset.new(limit: 0) # invalid limit
         end
 
         get :error do
@@ -60,7 +60,7 @@ RSpec.describe PublicRestApi::ExceptionHandlers do
 
       data = JSON.parse(response.body)
       expect(data).to eq({ 'code' => 422, 'message' => 'Unprocessable Content',
-                           'errors' => ['expected :count >= 0; got nil'] })
+                           'errors' => ['expected :limit >= 1; got 0'] })
     end
   end
 

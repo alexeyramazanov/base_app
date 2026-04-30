@@ -2,7 +2,7 @@
 
 class DropdownElementComponent < ApplicationComponent
   def initialize(url:, title: '', icon: '', data: {})
-    super
+    super()
 
     @title = title
     @url = url

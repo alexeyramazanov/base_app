@@ -2,7 +2,7 @@
 
 class FlashMessagesComponent < ApplicationComponent
   def initialize(flash:)
-    super
+    super()
 
     @flash = flash
   end

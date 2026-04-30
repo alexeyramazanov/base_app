@@ -15,7 +15,7 @@ module PublicRestApi
         error_not_found!
       end
 
-      rescue_from Pagy::VariableError do |e|
+      rescue_from Pagy::OptionError do |e|
         error_unprocessable_entity!(e.message)
       end
 

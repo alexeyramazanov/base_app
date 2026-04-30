@@ -6,7 +6,7 @@ class DropdownComponent < ApplicationComponent
   renders_one :title
 
   def initialize(align: :left)
-    super
+    super()
 
     @align = align
   end
