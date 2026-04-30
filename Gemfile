@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.22'
 
 # A Ruby/Rack web server built for parallelism
 # https://github.com/puma/puma
-gem 'puma', '~> 6.6.0'
+gem 'puma', '~> 8.0.1'
 
 # Vite.js in Ruby, bringing joy to your JavaScript experience
 # https://github.com/ElMassimo/vite_ruby
