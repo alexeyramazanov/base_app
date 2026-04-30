@@ -2,7 +2,7 @@
 
 class PublicAccountActionComponent < ApplicationComponent
   def initialize(title:)
-    super
+    super()
 
     @title = title
   end

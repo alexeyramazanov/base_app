@@ -44,7 +44,7 @@ gem 'after_commit_everywhere', '~> 1.6.0'
 
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
-gem 'view_component', '~> 3.23.2'
+gem 'view_component', '~> 4.8.0'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy

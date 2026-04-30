@@ -302,7 +302,6 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
-    method_source (1.1.0)
     mini_magick (5.2.0)
       benchmark
       logger
@@ -552,10 +551,10 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     vernier (1.10.0)
-    view_component (3.23.2)
-      activesupport (>= 5.2.0, < 8.1)
+    view_component (4.8.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
-      method_source (~> 1.0)
     vite_rails (3.0.19)
       railties (>= 5.1, < 9)
       vite_ruby (~> 3.0, >= 3.2.2)
@@ -642,7 +641,7 @@ DEPENDENCIES
   thruster (~> 0.1.20)
   turbo-rails (~> 2.0.23)
   vernier (~> 1.10.0)
-  view_component (~> 3.23.2)
+  view_component (~> 4.8.0)
   vite_rails (~> 3.0.19)
   web-console (~> 4.3.0)
 

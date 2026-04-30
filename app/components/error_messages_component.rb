@@ -2,7 +2,7 @@
 
 class ErrorMessagesComponent < ApplicationComponent
   def initialize(model:)
-    super
+    super()
 
     @model = model
   end

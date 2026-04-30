@@ -6,7 +6,7 @@ class ModalComponent < ApplicationComponent
   renders_one :footer
 
   def initialize(title:, width_class: 'max-w-lg')
-    super
+    super()
 
     @title = title
     @width_class = width_class
