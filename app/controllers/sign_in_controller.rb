@@ -21,7 +21,7 @@ class SignInController < ApplicationController
       redirect_to after_authentication_url
     else
       flash.now[:alert] = helpers.authentication_status_error_message(status)
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
     end
   end
 

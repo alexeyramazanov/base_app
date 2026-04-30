@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 4.0
+  NewCops: enable
   Exclude:
     - 'bin/*'
     - 'db/schema.rb'
@@ -58,9 +59,15 @@ RSpec/NestedGroups:
 RSpec/IndexedLet:
   Enabled: false
 
+RSpec/Output:
+  Enabled: false
+
 Rails/SkipsModelValidations:
   Exclude:
     - 'spec/**/*'
+
+Rails/I18nLocaleTexts:
+  Enabled: false
 
 GraphQL/ObjectDescription:
   Exclude:

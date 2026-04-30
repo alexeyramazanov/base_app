@@ -18,15 +18,15 @@ RSpec.describe ChatController do
       fill_in 'Type a message...', with: 'Hello'
       click_button 'Send'
 
-      expect(find(messages_div)).to have_content("#{user.email}: Hello")
+      expect(find(messages_div)).to have_text("#{user.email}: Hello")
 
       click_link 'Support'
 
-      expect(find(messages_div)).not_to have_content("#{user.email}: Hello")
+      expect(find(messages_div)).to have_no_text("#{user.email}: Hello")
 
       click_link 'General'
 
-      expect(find(messages_div)).to have_content("#{user.email}: Hello")
+      expect(find(messages_div)).to have_text("#{user.email}: Hello")
     end
   end
 end

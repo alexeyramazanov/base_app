@@ -13,7 +13,7 @@ module ApiTokenAuthentication
 
   def authenticate
     # Bearer <token>
-    token = request.headers['Authorization'].to_s.split(' ').last
+    token = request.headers['Authorization'].to_s.split.last
     api_token = token.present? ? ApiToken.find_by(token:) : nil
     return unless api_token
 

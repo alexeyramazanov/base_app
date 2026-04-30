@@ -11,14 +11,14 @@ class ProfileController < ApplicationController
 
     unless user.authenticate_password(params[:current_password])
       flash.now[:alert] = 'Incorrect current password'
-      render 'show', status: :unprocessable_entity and return
+      render 'show', status: :unprocessable_content and return
     end
 
     if user.update_password(password_update_params)
       redirect_to profile_url, notice: 'Password successfully updated'
     else
       flash.now[:alert] = user.errors.full_messages.join('<br>').html_safe # rubocop:disable Rails/OutputSafety
-      render 'show', status: :unprocessable_entity
+      render 'show', status: :unprocessable_content
     end
   end
 

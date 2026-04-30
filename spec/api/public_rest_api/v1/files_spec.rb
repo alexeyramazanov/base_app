@@ -28,7 +28,7 @@ RSpec.describe PublicRestApi::V1::Files do
 
       data = JSON.parse(response.body)
       expect(data.count).to eq(2)
-      expect(data.map { |record| record['id'] }).to contain_exactly(user_file1.id, user_file2.id)
+      expect(data.pluck('id')).to contain_exactly(user_file1.id, user_file2.id)
     end
   end
 

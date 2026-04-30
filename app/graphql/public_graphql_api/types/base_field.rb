@@ -7,10 +7,10 @@ module PublicGraphqlApi
 
       argument_class Types::BaseArgument
 
-      def initialize(*args, authorize: nil, **kwargs, &block)
+      def initialize(*, authorize: nil, **, &)
         @authorize = authorize
 
-        super(*args, **kwargs, &block)
+        super(*, **, &)
       end
 
       # queries/mutations/individual fields authorization (authorization is skipped by default)

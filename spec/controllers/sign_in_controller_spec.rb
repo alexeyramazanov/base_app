@@ -64,7 +64,7 @@ RSpec.describe SignInController do
       it 'renders template with unprocessable entity status and flash message' do
         post :create, params: invalid_params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(flash.now[:alert]).to eq('Invalid email or password.')
       end
     end
@@ -72,7 +72,7 @@ RSpec.describe SignInController do
     context 'with inactive user' do
       before do
         user.update!(activation_state: 'pending', activation_token: 'abc123',
-                     activation_token_expires_at: Time.current + 1.day)
+                     activation_token_expires_at: 1.day.from_now)
       end
 
       it 'does not authenticate the user' do
@@ -84,7 +84,7 @@ RSpec.describe SignInController do
       it 'renders template with unprocessable entity status and flash message' do
         post :create, params: valid_params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(flash.now[:alert]).to include('You need to activate your account')
       end
     end

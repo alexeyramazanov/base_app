@@ -6,7 +6,7 @@ require 'shared/graphql'
 RSpec.describe PublicGraphqlApi::Mutations::FilesMutations::CreateFile do
   let(:user) { create(:user) }
 
-  let(:base64_data) { File.read(Rails.root.join('spec/fixtures/logo_base64.txt')).strip }
+  let(:base64_data) { Rails.root.join('spec/fixtures/logo_base64.txt').read.strip }
 
   let(:mutation) do
     <<~GQL

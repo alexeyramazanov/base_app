@@ -34,7 +34,7 @@ RSpec.describe Files::FileNameComponent do
     it 'does not render spinner' do
       render_inline(component)
 
-      expect(page).not_to have_css('.fa-spinner')
+      expect(page).to have_no_css('.fa-spinner')
     end
   end
 
@@ -46,7 +46,7 @@ RSpec.describe Files::FileNameComponent do
     it 'does not render spinner' do
       render_inline(component)
 
-      expect(page).not_to have_css('.fa-spinner')
+      expect(page).to have_no_css('.fa-spinner')
     end
   end
 

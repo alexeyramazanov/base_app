@@ -21,7 +21,7 @@ class SignupController < ApplicationController
 
       redirect_to success_signup_url
     else
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
     end
   end
 
@@ -46,6 +46,6 @@ class SignupController < ApplicationController
   private
 
   def create_user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.expect(user: %i[email password password_confirmation])
   end
 end

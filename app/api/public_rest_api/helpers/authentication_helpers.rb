@@ -7,7 +7,7 @@ module PublicRestApi
         return if public_route?
 
         # Bearer <token>
-        token = headers['Authorization'].to_s.split(' ').last
+        token = headers['Authorization'].to_s.split.last
         api_token = token.present? ? ApiToken.find_by(token:) : nil
 
         error_unauthorized! unless api_token

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-# rubocop:disable RSpec/RepeatedExample, RSpec/RepeatedDescription, Rails/SkipsModelValidations
+# rubocop:disable RSpec/RepeatedExample, RSpec/RepeatedDescription
 RSpec.describe UserFilePolicy do
   subject(:policy) { described_class }
 
@@ -69,4 +69,4 @@ RSpec.describe UserFilePolicy do
     end
   end
 end
-# rubocop:enable RSpec/RepeatedExample, RSpec/RepeatedDescription, Rails/SkipsModelValidations
+# rubocop:enable RSpec/RepeatedExample, RSpec/RepeatedDescription

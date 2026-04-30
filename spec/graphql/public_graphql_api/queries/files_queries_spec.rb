@@ -62,7 +62,7 @@ RSpec.describe PublicGraphqlApi::Queries::FilesQueries do
       expect(success?).to be(true)
 
       expected_user_file_ids = user.user_files.order(id: :desc).map(&:to_gid_param)
-      received_user_file_ids = data['files']['nodes'].map { |d| d['id'] }
+      received_user_file_ids = data['files']['nodes'].pluck('id')
       expect(received_user_file_ids).to eq(expected_user_file_ids)
     end
 

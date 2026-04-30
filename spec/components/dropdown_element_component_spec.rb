@@ -24,7 +24,7 @@ RSpec.describe DropdownElementComponent do
     let(:url) { :separator }
 
     it 'renders a separator div instead of a link' do
-      expect(page).not_to have_css('a')
+      expect(page).to have_no_css('a')
       expect(page).to have_css('div.h-px.bg-gray-200.my-1')
     end
   end
