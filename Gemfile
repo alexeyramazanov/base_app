@@ -177,7 +177,7 @@ group :development, :test do
 
   # Code style checking for Capybara files
   # https://github.com/rubocop/rubocop-capybara
-  gem 'rubocop-capybara', '~> 2.22.1', require: false
+  gem 'rubocop-capybara', '~> 2.23.0', require: false
 
   # Rubocop extension for enforcing graphql-ruby best practices
   # https://github.com/DmitryTsepelev/rubocop-graphql
