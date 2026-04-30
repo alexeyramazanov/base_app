@@ -24,7 +24,7 @@ gem 'puma', '~> 8.0.1'
 
 # Vite.js in Ruby, bringing joy to your JavaScript experience
 # https://github.com/ElMassimo/vite_ruby
-gem 'vite_rails', '~> 3.0.19'
+gem 'vite_rails', '~> 3.10.0'
 
 # Minimal authorization through OO design and pure Ruby classes
 # https://github.com/varvet/pundit

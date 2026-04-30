@@ -4,7 +4,7 @@ import DragDrop from '@uppy/drag-drop';
 import StatusBar from '@uppy/status-bar';
 import AwsS3 from '@uppy/aws-s3';
 
-import '@uppy/core/dist/style.css';
+import '@uppy/core/css/style.css';
 import '~/styles/user_files/uppy_drag_drop.css';
 import '~/styles/user_files/uppy_status_bar.css';
 

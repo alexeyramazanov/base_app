@@ -4,34 +4,25 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.15.0"
+    "node": ">=24.15.0"
   },
   "dependencies": {
-    "@anycable/web": "^1.1.0",
-    "@floating-ui/dom": "^1.7.1",
-    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@anycable/web": "^1.1.1",
+    "@floating-ui/dom": "^1.7.6",
+    "@fortawesome/fontawesome-free": "^7.2.0",
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.16",
-    "@tailwindcss/vite": "^4.1.10",
-    "@uppy/aws-s3": "^4.2.3",
-    "@uppy/core": "^4.4.6",
-    "@uppy/drag-drop": "^4.1.2",
-    "@uppy/status-bar": "^4.1.3",
-    "swagger-ui": "^5.24.1",
-    "tailwindcss": "^4.1.10"
+    "@hotwired/turbo-rails": "^8.0.23",
+    "@tailwindcss/vite": "^4.2.4",
+    "@uppy/aws-s3": "^5.1.0",
+    "@uppy/core": "^5.2.0",
+    "@uppy/drag-drop": "^5.1.0",
+    "@uppy/status-bar": "^5.1.0",
+    "swagger-ui": "^5.32.5",
+    "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
     "stimulus-vite-helpers": "^3.1.0",
-    "vite": "^6.3.5",
-    "vite-plugin-rails": "^0.5.0"
-  },
-  "overrides": {
-    "react-syntax-highlighter": {
-      "prismjs": "1.30.0"
-    }
-  },
-  "_comments": [
-    "prismjs override reason - https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/591",
-    "(prismjs is used by react-syntax-highlighter which is used by swagger-ui)"
-  ]
+    "vite": "^8.0.10",
+    "vite-plugin-rails": "^0.6.0"
+  }
 }
