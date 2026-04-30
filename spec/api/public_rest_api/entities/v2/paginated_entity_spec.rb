@@ -13,7 +13,7 @@ RSpec.describe PublicRestApi::Entities::V2::PaginatedEntity do
 
   it 'works and correctly exposes records and metadata' do
     expect(entity[:records].count).to eq(2)
-    expect(entity[:records].map { |r| r[:id] }).to contain_exactly(record1[:id], record2[:id])
+    expect(entity[:records].pluck(:id)).to contain_exactly(record1[:id], record2[:id])
     expect(entity[:metadata][:current_page]).to eq(2)
   end
 end

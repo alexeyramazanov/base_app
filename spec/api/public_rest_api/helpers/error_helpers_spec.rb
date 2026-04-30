@@ -20,7 +20,7 @@ RSpec.describe PublicRestApi::Helpers::ErrorHelpers do
           when 404 then error_not_found!
           when 422 then error_unprocessable_entity!('error')
           when 500 then internal_server_error!
-          else internal_server_error!
+          else internal_server_error! # rubocop:disable Lint/DuplicateBranch
           end
         end
       end

@@ -51,7 +51,7 @@ module GraphqlHelper
   end
 
   def expect_error_messages(expected_messages)
-    messages = errors.map { |error| error['message'] }
+    messages = errors.pluck('message')
     expect(messages).to match_array(expected_messages)
   end
 

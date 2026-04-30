@@ -40,6 +40,7 @@ RSpec.describe DropdownComponent do
       with_rendered_component_path(rendered_component, layout: 'public') do |path|
         visit(path)
 
+        expect(page).to have_button(title_content)
         expect(page).to have_no_text(content)
         click_button title_content
         expect(page).to have_text(content)

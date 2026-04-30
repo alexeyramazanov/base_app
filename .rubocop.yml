@@ -59,6 +59,9 @@ RSpec/NestedGroups:
 RSpec/IndexedLet:
   Enabled: false
 
+RSpec/Output:
+  Enabled: false
+
 Rails/SkipsModelValidations:
   Exclude:
     - 'spec/**/*'

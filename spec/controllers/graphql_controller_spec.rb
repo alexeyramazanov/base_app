@@ -28,7 +28,7 @@ RSpec.describe GraphqlController do
         expect(response).to be_successful
         expect(response.content_type).to include('application/json')
 
-        data = JSON.parse(response.body)
+        data = response.parsed_body
         expect(data['data']['__type']['name']).to eq('ID')
         expect(data['data']['__type']['kind']).to eq('SCALAR')
       end
@@ -43,7 +43,7 @@ RSpec.describe GraphqlController do
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to include('application/json')
 
-        data = JSON.parse(response.body)
+        data = response.parsed_body
         expect(data['errors']).to be_present
       end
     end

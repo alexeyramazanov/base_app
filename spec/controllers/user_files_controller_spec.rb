@@ -103,7 +103,7 @@ RSpec.describe UserFilesController do
 
       expect(UserFileUploader).to have_received(:presign_response).with(:cache, request.env)
 
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(:ok)
       expect(response.headers['Content-Type']).to eq('application/json')
       expect(response.body).to eq(s3_params)
     end

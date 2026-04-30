@@ -64,7 +64,7 @@ RSpec.describe PublicGraphqlApi::Queries::NodesQueries do
 
       expect(success?).to be(true)
 
-      received_ids = data['nodes'].map { |n| n['id'] }
+      received_ids = data['nodes'].pluck('id')
       expect(received_ids).to match_array(variables[:ids])
     end
 

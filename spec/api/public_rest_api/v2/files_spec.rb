@@ -32,14 +32,14 @@ RSpec.describe PublicRestApi::V2::Files do
 
       data = JSON.parse(response.body)
       expect(data['records'].count).to eq(2)
-      expect(data['records'].map { |record| record['id'] }).to contain_exactly(user_file1.id, user_file2.id)
+      expect(data['records'].pluck('id')).to contain_exactly(user_file1.id, user_file2.id)
     end
   end
 
   describe 'POST /public_api/v2/files' do
     let(:path) { '/public_api/v2/files' }
 
-    let(:base64_data) { File.read(Rails.root.join('spec/fixtures/logo_base64.txt')).strip }
+    let(:base64_data) { Rails.root.join('spec/fixtures/logo_base64.txt').read.strip }
 
     let(:valid_params) do
       {
