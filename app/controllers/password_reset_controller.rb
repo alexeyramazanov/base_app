@@ -13,6 +13,9 @@ class PasswordResetController < ApplicationController
   def new
   end
 
+  def edit
+  end
+
   def create
     user = User.find_by(email: params[:email])
     user&.send_password_reset_link
@@ -23,14 +26,11 @@ class PasswordResetController < ApplicationController
   def success
   end
 
-  def edit
-  end
-
   def update
     if @user.update_password(new_password_params)
       redirect_to sign_in_url, notice: 'Password has been reset.'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

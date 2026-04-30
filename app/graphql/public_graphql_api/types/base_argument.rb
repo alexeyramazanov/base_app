@@ -3,10 +3,10 @@
 module PublicGraphqlApi
   module Types
     class BaseArgument < GraphQL::Schema::Argument
-      def initialize(*args, authorize: nil, **kwargs, &block)
+      def initialize(*, authorize: nil, **, &)
         @authorize = authorize
 
-        super(*args, **kwargs, &block)
+        super(*, **, &)
       end
 
       # argument authorization

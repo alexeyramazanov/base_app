@@ -19,7 +19,7 @@ RSpec.describe HomeController do
     it 'renders correctly' do
       visit about_path
 
-      expect(page).to have_selector('img[src="https://dummyimage.com/1000x600"]')
+      expect(page).to have_css('img[src="https://dummyimage.com/1000x600"]')
     end
   end
 end

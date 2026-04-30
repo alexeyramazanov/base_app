@@ -21,7 +21,7 @@ class SignupController < ApplicationController
 
       redirect_to success_signup_url
     else
-      render 'new', status: :unprocessable_entity
+      render 'new', status: :unprocessable_content
     end
   end
 

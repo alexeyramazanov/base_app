@@ -74,7 +74,7 @@ RSpec.describe SignupController do
       it 'renders template with unprocessable entity status' do
         post :create, params: invalid_params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
 
@@ -112,7 +112,7 @@ RSpec.describe SignupController do
     let(:token) { 'abc123' }
     let!(:user) do
       create(:user, activation_state: 'pending', activation_token: token,
-             activation_token_expires_at: Time.current + 1.day)
+             activation_token_expires_at: 1.day.from_now)
     end
 
     context 'with valid token' do
@@ -168,7 +168,7 @@ RSpec.describe SignupController do
   describe 'POST #request_activation_link' do
     let!(:user) do
       create(:user, activation_state: 'pending', activation_token: 'abc123',
-             activation_token_expires_at: Time.current + 1.day)
+             activation_token_expires_at: 1.day.from_now)
     end
 
     context 'when user exists' do

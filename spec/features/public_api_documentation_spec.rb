@@ -9,7 +9,7 @@ RSpec.describe 'Public API Documentation' do
     expect(page).to have_title('Public API Documentation')
     expect(page).to have_text('Operations about files')
 
-    find('#operations-files-getV2Files').click
+    find_by_id('operations-files-getV2Files').click
     expect(page).to have_text('List files')
   end
 end

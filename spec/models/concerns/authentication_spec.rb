@@ -137,7 +137,7 @@ RSpec.describe Authentication, type: :module do
     context 'when token is invalid' do
       before do
         user.update!(activation_state: 'pending', activation_token: 'abc',
-                     activation_token_expires_at: Time.current + 1.day)
+                     activation_token_expires_at: 1.day.from_now)
       end
 
       it 'does nothing' do
@@ -151,7 +151,7 @@ RSpec.describe Authentication, type: :module do
     context 'when user is already activated' do
       before do
         user.update!(activation_state: 'active', activation_token: 'abc',
-                     activation_token_expires_at: Time.current + 1.day)
+                     activation_token_expires_at: 1.day.from_now)
       end
 
       it 'does nothing' do
@@ -166,7 +166,7 @@ RSpec.describe Authentication, type: :module do
     context 'when token has expired' do
       before do
         user.update!(activation_state: 'pending', activation_token: 'abc',
-                     activation_token_expires_at: Time.current - 1.day)
+                     activation_token_expires_at: 1.day.ago)
       end
 
       it 'does nothing' do
@@ -180,7 +180,7 @@ RSpec.describe Authentication, type: :module do
     context 'when token is valid' do
       before do
         user.update!(activation_state: 'pending', activation_token: 'abc',
-                     activation_token_expires_at: Time.current + 1.day)
+                     activation_token_expires_at: 1.day.from_now)
       end
 
       it 'activates account and removes activation data' do
@@ -197,7 +197,7 @@ RSpec.describe Authentication, type: :module do
   describe '.find_by_reset_password_token' do
     context 'when token is invalid' do
       before do
-        user.update!(reset_password_token: 'abc', reset_password_token_expires_at: Time.current + 1.day)
+        user.update!(reset_password_token: 'abc', reset_password_token_expires_at: 1.day.from_now)
       end
 
       it 'returns nil' do
@@ -207,7 +207,7 @@ RSpec.describe Authentication, type: :module do
 
     context 'when token is expired' do
       before do
-        user.update!(reset_password_token: 'abc', reset_password_token_expires_at: Time.current - 1.day)
+        user.update!(reset_password_token: 'abc', reset_password_token_expires_at: 1.day.ago)
       end
 
       it 'returns nil' do
@@ -217,7 +217,7 @@ RSpec.describe Authentication, type: :module do
 
     context 'when token is valid' do
       before do
-        user.update!(reset_password_token: 'abc', reset_password_token_expires_at: Time.current + 1.day)
+        user.update!(reset_password_token: 'abc', reset_password_token_expires_at: 1.day.from_now)
       end
 
       it 'returns user' do
@@ -237,7 +237,7 @@ RSpec.describe Authentication, type: :module do
     let!(:original_digest) { user.password_digest }
 
     before do
-      user.update!(reset_password_token: 'abc', reset_password_token_expires_at: Time.current + 1.day)
+      user.update!(reset_password_token: 'abc', reset_password_token_expires_at: 1.day.from_now)
     end
 
     context 'when validations failed' do

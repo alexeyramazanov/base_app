@@ -15,8 +15,8 @@ module CapybaraHelpers
     expect(page).to have_text('Dashboard')
   end
 
-  def css_id(*args)
-    "##{dom_id(*args)}"
+  def css_id(*)
+    "##{dom_id(*)}"
   end
 
   def downloads

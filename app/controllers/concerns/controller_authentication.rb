@@ -10,9 +10,9 @@ module ControllerAuthentication
   end
 
   class_methods do
-    def allow_only_unauthenticated_access(**options)
-      skip_before_action :require_authentication, **options
-      before_action :redirect_if_authenticated, **options
+    def allow_only_unauthenticated_access(**)
+      skip_before_action(:require_authentication, **)
+      before_action(:redirect_if_authenticated, **)
     end
   end
 

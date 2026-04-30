@@ -21,7 +21,7 @@ RSpec.describe UserFilesController do
   let(:source_file_name) { 'sample.jpg' }
   let(:source_file_path) { Rails.root.join("spec/fixtures/#{source_file_name}").to_s }
   let(:stored_file_relative_path) { "#{storage_path_prefix}/512cc9ea0fa420e8cac234041bba7ea0.jpg" }
-  let(:stored_file_full_path) { Rails.root.join('public', stored_file_relative_path) }
+  let(:stored_file_full_path) { Rails.public_path.join(stored_file_relative_path) }
   let(:presign_object) do
     {
       'fields'  => {
@@ -140,7 +140,7 @@ RSpec.describe UserFilesController do
       attach_file 'files[]', source_file_path, make_visible: true
 
       within '#user_files' do
-        expect(page).to have_content(source_file_name)
+        expect(page).to have_text(source_file_name)
       end
 
       user_file = user.user_files.last
@@ -154,7 +154,7 @@ RSpec.describe UserFilesController do
       Sidekiq::Worker.drain_all
 
       within file_dom_id do
-        expect(page).not_to have_css('i.fa-spinner')
+        expect(page).to have_no_css('i.fa-spinner')
       end
     end
 
@@ -204,10 +204,10 @@ RSpec.describe UserFilesController do
         end
       end
 
-      expect(page).not_to have_css(file_dom_id)
+      expect(page).to have_no_css(file_dom_id)
 
       within '#user_files' do
-        expect(page).not_to have_content(source_file_name)
+        expect(page).to have_no_text(source_file_name)
       end
     end
   end

@@ -24,7 +24,7 @@ RSpec.describe DropdownComponent do
   end
 
   it 'aligns dropdown to the left by default' do
-    expect(page).not_to have_css('div.right-0')
+    expect(page).to have_no_css('div.right-0')
   end
 
   context 'when align is set to :right' do
@@ -40,12 +40,12 @@ RSpec.describe DropdownComponent do
       with_rendered_component_path(rendered_component, layout: 'public') do |path|
         visit(path)
 
-        expect(page).not_to have_text(content)
+        expect(page).to have_no_text(content)
         click_button title_content
         expect(page).to have_text(content)
 
         find('body').click # close dropdown
-        expect(page).not_to have_text(content)
+        expect(page).to have_no_text(content)
       end
     end
   end

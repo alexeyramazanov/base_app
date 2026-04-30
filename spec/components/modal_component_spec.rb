@@ -45,7 +45,7 @@ RSpec.describe ModalComponent do
 
         expect(page).to have_text(content)
         find('i.fa-xmark').click
-        expect(page).not_to have_text(content)
+        expect(page).to have_no_text(content)
       end
     end
   end

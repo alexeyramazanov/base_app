@@ -76,7 +76,7 @@ RSpec.describe ProfileController do
       it 'renders page with flash message' do
         patch :update, params: params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(flash[:alert]).to eq('Incorrect current password')
       end
     end
@@ -102,7 +102,7 @@ RSpec.describe ProfileController do
       it 'shows error message' do
         patch :update, params: params
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
         expect(flash[:alert]).to eq("Password confirmation doesn't match Password")
       end
     end

@@ -91,7 +91,7 @@ RSpec.describe PasswordResetController do
     let(:token) { 'abc123' }
 
     before do
-      create(:user, reset_password_token: token, reset_password_token_expires_at: Time.current + 1.day)
+      create(:user, reset_password_token: token, reset_password_token_expires_at: 1.day.from_now)
     end
 
     context 'with valid token' do
@@ -122,7 +122,7 @@ RSpec.describe PasswordResetController do
 
   describe 'PATCH #update' do
     let(:token) { 'abc123' }
-    let!(:user) { create(:user, reset_password_token: token, reset_password_token_expires_at: Time.current + 1.day) }
+    let!(:user) { create(:user, reset_password_token: token, reset_password_token_expires_at: 1.day.from_now) }
     let(:new_password) { 'new_password' }
 
     let(:valid_params) do
@@ -181,7 +181,7 @@ RSpec.describe PasswordResetController do
         it 'responds with unprocessable entity status' do
           patch :update, params: invalid_user_params
 
-          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response).to have_http_status(:unprocessable_content)
         end
       end
     end
