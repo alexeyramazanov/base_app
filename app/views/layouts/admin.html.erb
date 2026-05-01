@@ -23,13 +23,12 @@
     <%= navigation_link 'API Tokens', admin_api_tokens_path %>
 
     <% layout_component.with_dropdown do %>
-      <%= render DropdownComponent.new(align: :right) do |component| %>
-        <% component.with_title do %>
+      <%= render SharedUI::Dropdown::Component.new(align: :right) do |dd_component| %>
+        <% dd_component.with_title do %>
           <%= Current.admin_user.email %>
         <% end %>
-
-        <%= render DropdownElementComponent.new(url: admin_sign_in_path, title: 'Sign out', icon: 'fa-solid fa-right-from-bracket',
-                                                data: { turbo_method: :delete }) %>
+      <% dd_component.item(url: admin_sign_in_path, title: 'Sign out', icon: 'fa-solid fa-right-from-bracket',
+                           data: { turbo_method: :delete }) %>
       <% end %>
     <% end %>
   <% end %>

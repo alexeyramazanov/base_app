@@ -6,11 +6,13 @@ const application = Application.start()
 application.debug = false
 
 const regularControllers = import.meta.glob('./../controllers/**/*_controller.js', { eager: true })
-let componentControllers = import.meta.glob('./../../components/**/*_controller.js', { eager: true })
+let componentControllers = import.meta.glob('./../../components/**/index.js', { eager: true })
 componentControllers = Object.entries(componentControllers).reduce((acc, [path, module]) => {
-  // remove the full path to the file, leave just the file name
-  const fileName = path.split('/').pop()
-  acc[fileName] = module
+  // get component name, for example "shared_ui--dropdown"
+  let name = path
+    .match(/..\/..\/components\/(.+)\/index\.js$/)[1]
+    .replaceAll("/", "--")
+  acc[`${name}_component_controller.js`] = module
   return acc
 }, {})
 registerControllers(application, { ...regularControllers, ...componentControllers })

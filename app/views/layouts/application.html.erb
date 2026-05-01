@@ -24,15 +24,14 @@
     <%= navigation_link 'Files', files_path %>
 
     <% layout_component.with_dropdown do %>
-      <%= render DropdownComponent.new(align: :right) do |dd_component| %>
+      <%= render SharedUI::Dropdown::Component.new(align: :right) do |dd_component| %>
         <% dd_component.with_title do %>
           <%= Current.user.email %>
         <% end %>
-
-        <%= render DropdownElementComponent.new(url: profile_path, title: 'Profile', icon: 'fa-solid fa-user') %>
-        <%= render DropdownElementComponent.new(url: :separator) %>
-        <%= render DropdownElementComponent.new(url: sign_in_path, title: 'Sign out', icon: 'fa-solid fa-right-from-bracket',
-                                                data: { turbo_method: :delete }) %>
+        <% dd_component.item(url: profile_path, title: 'Profile', icon: 'fa-solid fa-user') %>
+        <% dd_component.separator %>
+        <% dd_component.item(url: sign_in_path, title: 'Sign out', icon: 'fa-solid fa-right-from-bracket',
+                             data: { turbo_method: :delete }) %>
       <% end %>
     <% end %>
   <% end %>
