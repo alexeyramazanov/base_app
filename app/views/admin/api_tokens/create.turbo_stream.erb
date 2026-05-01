@@ -1,7 +1,7 @@
 <%= turbo_stream.update 'modal' do %>
-  <%= render ModalComponent.new(title: 'API Token', width_class: 'max-w-xl') do |component| %>
+  <%= render SharedUI::Modal::Component.new(title: 'API Token', width_class: 'max-w-xl') do |component| %>
     <% component.with_footer do %>
-      <button class="button w-auto text-sm bg-gray-200 hover:bg-gray-300 text-gray-700" data-action="click->modal-component#close">
+      <button class="button w-auto text-sm bg-gray-200 hover:bg-gray-300 text-gray-700" data-action="click->shared-ui--modal-component#close">
         I saved the token
       </button>
     <% end %>

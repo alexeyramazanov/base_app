@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ModalComponent do
+RSpec.describe SharedUI::Modal::Component do
   let(:title) { 'Test Modal' }
   let(:footer_content) { 'Footer Content' }
   let(:content) { 'Modal Content' }
@@ -18,11 +18,11 @@ RSpec.describe ModalComponent do
   end
 
   it 'renders the component' do
-    expect(page).to have_css('div[data-controller="modal-component"]')
+    expect(page).to have_css('div[data-controller="shared-ui--modal-component"]')
     expect(page).to have_text(title)
     expect(page).to have_text(content)
     expect(page).to have_text(footer_content)
-    expect(page).to have_css("[data-action='click->modal-component#close']")
+    expect(page).to have_css("[data-action='click->shared-ui--modal-component#close']")
   end
 
   it 'uses lg width by default' do
