@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe FlashMessagesComponent do
+RSpec.describe SharedUI::FlashMessages::Component do
   let(:flash) { {} }
   let(:component) { described_class.new(flash: flash) }
   let(:rendered_component) { render_inline(component) }
