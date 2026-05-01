@@ -1,6 +1,6 @@
 <%= render PublicAccountActionComponent.new(title: 'Set new password') do %>
   <div class="mb-2">
-    <%= render ErrorMessagesComponent.new(model: @user) %>
+    <%= render SharedUI::ErrorMessages::Component.new(model: @user) %>
   </div>
 
   <%= form_with model: @user, url: set_new_password_password_reset_path(params[:token]), method: :put do |form| %>

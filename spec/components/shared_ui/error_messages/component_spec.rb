@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ErrorMessagesComponent do
+RSpec.describe SharedUI::ErrorMessages::Component do
   let(:model_definition) do
     Class.new do
       include ActiveModel::API
