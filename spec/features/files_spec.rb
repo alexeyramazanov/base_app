@@ -185,9 +185,14 @@ RSpec.describe UserFilesController do
         find('i.fa-download').click
       end
 
-      sleep 0.3 # wait for download
+      downloaded_file = nil
+      10.times do
+        downloaded_file = downloads.find { |path| File.basename(path) == source_file_name }
+        break if downloaded_file
 
-      downloaded_file = downloads.find { |path| File.basename(path) == source_file_name }
+        sleep 0.1
+      end
+
       expect(File.size(downloaded_file)).to eq(491)
     end
 
