@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Files::ActionButtonsComponent do
+RSpec.describe AppUI::Files::ActionButtons::Component do
   include Rails.application.routes.url_helpers
 
   subject(:component) { described_class.new(user_file:) }

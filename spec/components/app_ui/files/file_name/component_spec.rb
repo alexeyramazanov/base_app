@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Files::FileNameComponent do
+RSpec.describe AppUI::Files::FileName::Component do
   subject(:component) { described_class.new(user_file:) }
 
   let(:pdf_file) { Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/sample.pdf')) }
