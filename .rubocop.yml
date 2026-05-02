@@ -32,7 +32,7 @@ Style/TernaryParentheses:
 
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'app/components/**/*.rb'
+    - 'app/view_components/**/*.rb'
 
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table

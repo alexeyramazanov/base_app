@@ -43,24 +43,24 @@ Actual versions of gems and libraries are specified in `Gemfile` and `package.js
 
 ```
 app/
-  api/           # Grape REST APIs (namespaced, e.g. public_rest_api/)
-  channels/      # Action Cable / AnyCable channels
-  components/    # ViewComponent classes
-  controllers/   # Rails controllers, incl. admin/ namespace
-  frontend/      # Vite entrypoint (JS/CSS assets, stimulus controllers)
-  graphql/       # GraphQL schemas (namespaced, e.g. public_graphql_api/)
-  models/        # AR models
-  policies/      # Pundit policies
-  sidekiq/       # Sidekiq jobs
-  uploaders/     # Shrine uploaders
-  mailers/       # Rails mailers
-  views/         # Rails views
-  helpers/       # Rails helpers
-config/          # Rails config incl. AnyCable, Sidekiq, routes
-db/              # migrations, schema.rb, seeds.rb
-lib/tasks/       # rake tasks
-spec/            # RSpec test suite (mirrors app/ structure)
-bin/             # entry scripts
+  api/              # Grape REST APIs (namespaced, e.g. public_rest_api/)
+  channels/         # Action Cable / AnyCable channels
+  controllers/      # Rails controllers, incl. admin/ namespace
+  frontend/         # Vite entrypoint (JS/CSS assets, stimulus controllers)
+  graphql/          # GraphQL schemas (namespaced, e.g. public_graphql_api/)
+  models/           # AR models
+  policies/         # Pundit policies
+  sidekiq/          # Sidekiq jobs
+  uploaders/        # Shrine uploaders
+  mailers/          # Rails mailers
+  view_components/  # ViewComponent classes
+  views/            # Rails views
+  helpers/          # Rails helpers
+config/             # Rails config incl. AnyCable, Sidekiq, routes
+db/                 # migrations, schema.rb, seeds.rb
+lib/tasks/          # rake tasks
+spec/               # RSpec test suite (mirrors app/ structure)
+bin/                # entry scripts
 ```
 
 ## Common Commands
@@ -124,7 +124,7 @@ Never commit real secrets. When adding a new env var, update the relevant `.env.
 - **Namespaced APIs**: REST lives under `app/api/public_rest_api/`, GraphQL under `app/graphql/public_graphql_api/`. Follow the same namespacing pattern when adding new API surfaces.
 - **Authorization**: use Pundit policies in `app/policies/`.
 - **Background jobs**: place in `app/sidekiq/`, schedule recurring jobs via `sidekiq-cron`.
-- **Views**: prefer `ViewComponent`s in `app/components/` over partials only if it's a shared UI component like button or dropdown. Create component if it requires conditional logic, multiple states or is reused across multiple controllers, for example UserAvatar.
+- **Views**: prefer `ViewComponent`s in `app/view_components/` over partials only if it's a shared UI component like button or dropdown. Create component if it requires conditional logic, multiple states or is reused across multiple controllers, for example UserAvatar.
 - **Styling**: Tailwind 4 via `@tailwindcss/vite`; do not re-introduce `tailwind.config.js`-era patterns.
 - **Frozen string literals**: required by RuboCop (except `Gemfile`, `Rakefile`, `config.ru`).
 - **Business logic**: prefer service objects in `app/services/` over models.

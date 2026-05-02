@@ -5,7 +5,7 @@ SimpleCov.start 'rails' do
   add_group 'Jobs', 'app/sidekiq'
   add_group 'Uploaders', 'app/uploaders'
   add_group 'Policies', 'app/policies'
-  add_group 'Components', 'app/components'
+  add_group 'View Components', 'app/view_components'
   add_group 'Public REST Api', 'app/api'
   add_group 'Public GraphQL Api', 'app/graphql'
 end
