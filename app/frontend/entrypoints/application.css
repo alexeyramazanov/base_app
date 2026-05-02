@@ -5,9 +5,9 @@
 @import "@fortawesome/fontawesome-free/css/brands";
 @import "../styles/shared/pagy";
 
-/* trigger tailwind on views, components and helpers change */
+/* trigger tailwind on views, view components and helpers change */
 @source "../../views/**/*";
-@source "../../components/**/*";
+@source "../../view_components/**/*";
 @source "../../helpers/**/*";
 
 @layer components {

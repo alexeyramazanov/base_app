@@ -64,7 +64,7 @@ RSpec.configure do |config|
   # To enable this behaviour uncomment the line below.
   config.infer_spec_type_from_file_location!
 
-  config.define_derived_metadata(file_path: Regexp.new('/spec/components/')) do |metadata|
+  config.define_derived_metadata(file_path: Regexp.new('/spec/view_components/')) do |metadata|
     metadata[:type] = :component if metadata[:type].blank?
   end
 

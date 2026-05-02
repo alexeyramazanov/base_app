@@ -49,3 +49,6 @@ spec/examples.txt
 .idea
 .vscode
 *.DS_Store
+
+# AI stuff
+opencode.json

@@ -1,0 +1,23 @@
+<div data-controller="shared-ui--dropdown-component"
+     data-action="click@window->shared-ui--dropdown-component#close"
+     class="relative inline-block">
+  <button data-action="shared-ui--dropdown-component#toggle" class="flex items-center cursor-pointer">
+    <%= title %>
+    <i class="fa-solid fa-chevron-down fa-sm pl-2"></i>
+  </button>
+
+  <div data-shared-ui--dropdown-component-target="menu"
+       role="menu" aria-orientation="vertical" aria-labelledby="user-menu"
+       class="<%= align_class %> z-10 hidden origin-top-right absolute mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-gray-200 focus:outline-none">
+    <% items.each do |item| %>
+      <% if item[:separator] %>
+        <div class="h-px bg-gray-200 my-1"></div>
+      <% else %>
+        <%= link_to item[:url], data: item[:data], class: 'text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100', role: 'menuitem' do %>
+          <i class="<%= item[:icon] %> pr-2"></i>
+          <%= item[:title] %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
