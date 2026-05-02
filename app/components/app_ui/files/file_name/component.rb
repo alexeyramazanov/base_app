@@ -1,30 +1,24 @@
 # frozen_string_literal: true
 
-module AppUI
-  module Files
-    module FileName
-      class Component < ViewComponent::Base
-        attr_reader :user_file
+class AppUI::Files::FileName::Component < ViewComponent::Base
+  attr_reader :user_file
 
-        def initialize(user_file:)
-          super()
+  def initialize(user_file:)
+    super()
 
-          @user_file = user_file
-        end
+    @user_file = user_file
+  end
 
-        private
+  private
 
-        def type_icon
-          case user_file.type
-          when 'image'
-            'fa-file-image'
-          when 'document'
-            'fa-file-lines'
-          else
-            'fa-file'
-          end
-        end
-      end
+  def type_icon
+    case user_file.type
+    when 'image'
+      'fa-file-image'
+    when 'document'
+      'fa-file-lines'
+    else
+      'fa-file'
     end
   end
 end

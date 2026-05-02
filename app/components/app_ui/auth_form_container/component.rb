@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-module AppUI
-  module AuthFormContainer
-    class Component < ApplicationComponent
-      attr_reader :title
+class AppUI::AuthFormContainer::Component < ApplicationComponent
+  attr_reader :title
 
-      def initialize(title:)
-        super()
+  def initialize(title:)
+    super()
 
-        @title = title
-      end
-    end
+    @title = title
   end
 end

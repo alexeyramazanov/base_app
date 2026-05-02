@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-module SharedUI
-  module FlashMessages
-    class Component < ApplicationComponent
-      attr_reader :flash
+class SharedUI::FlashMessages::Component < ApplicationComponent
+  attr_reader :flash
 
-      def initialize(flash:)
-        super()
+  def initialize(flash:)
+    super()
 
-        @flash = flash
-      end
-    end
+    @flash = flash
   end
 end
