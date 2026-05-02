@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PublicAccountActionComponent do
+RSpec.describe AppUI::AuthFormContainer::Component do
   let(:title) { 'Account Action Title' }
   let(:content) { 'Account Action Content' }
   let(:component) { described_class.new(title:) }

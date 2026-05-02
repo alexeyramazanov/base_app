@@ -1,4 +1,4 @@
-<%= render PublicAccountActionComponent.new(title: 'Request activation link') do %>
+<%= render AppUI::AuthFormContainer::Component.new(title: 'Request activation link') do %>
   <%= form_with url: request_activation_link_signup_path do |form| %>
     <div class="relative mb-4">
       <%= form.label :email, class: 'leading-7 text-sm text-gray-600' %>

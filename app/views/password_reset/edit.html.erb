@@ -1,4 +1,4 @@
-<%= render PublicAccountActionComponent.new(title: 'Set new password') do %>
+<%= render AppUI::AuthFormContainer::Component.new(title: 'Set new password') do %>
   <div class="mb-2">
     <%= render SharedUI::ErrorMessages::Component.new(model: @user) %>
   </div>
