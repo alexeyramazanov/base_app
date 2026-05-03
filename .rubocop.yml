@@ -42,6 +42,9 @@ Layout/HashAlignment:
 Metrics/MethodLength:
   Max: 30
 
+Metrics/BlockLength:
+  Max: 100
+
 Metrics/AbcSize:
   Max: 25
 
