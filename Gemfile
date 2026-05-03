@@ -185,6 +185,10 @@ group :development, :test do
 end
 
 group :development do
+  # A UI development environment for Ruby on Rails apps
+  # https://github.com/lookbook-hq/lookbook
+  gem 'lookbook', '~> 2.3.14'
+
   # Rails Console on the Browser
   # https://github.com/rails/web-console
   gem 'web-console', '~> 4.3.0'

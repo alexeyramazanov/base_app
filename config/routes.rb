@@ -3,7 +3,9 @@
 require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
-Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
+Rails.application.routes.draw do
+  mount Lookbook::Engine, at: '/lookbook' if Rails.env.development?
+
   mount Sidekiq::Web => '/sidekiq'
 
   mount PublicRestApi::Root => '/public_api'

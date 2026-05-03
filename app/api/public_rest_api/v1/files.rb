@@ -3,7 +3,7 @@
 module PublicRestApi
   module V1
     class Files < Grape::API
-      resources :files do # rubocop:disable Metrics/BlockLength
+      resources :files do
         # GET /files
         desc 'List files',
              is_array:   true,

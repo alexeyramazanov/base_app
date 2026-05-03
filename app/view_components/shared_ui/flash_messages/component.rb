@@ -8,4 +8,8 @@ class SharedUI::FlashMessages::Component < ApplicationComponent
 
     @flash = flash
   end
+
+  def render?
+    flash[:notice].present? || flash[:alert].present?
+  end
 end

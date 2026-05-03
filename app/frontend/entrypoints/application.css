@@ -7,8 +7,9 @@
 
 /* trigger tailwind on views, view components and helpers change */
 @source "../../views/**/*";
-@source "../../view_components/**/*";
 @source "../../helpers/**/*";
+@source "../../view_components/**/*";
+@source "../../../spec/view_component_previews/**/*";
 
 @layer components {
     .link {

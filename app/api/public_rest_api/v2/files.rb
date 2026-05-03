@@ -3,7 +3,7 @@
 module PublicRestApi
   module V2
     class Files < Grape::API
-      resources :files do # rubocop:disable Metrics/BlockLength
+      resources :files do
         helpers Helpers::PaginationHelpers
 
         # GET /files
