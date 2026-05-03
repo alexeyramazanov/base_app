@@ -33,7 +33,7 @@ module Authentication
     has_many :sessions, class_name: 'UserSession', dependent: :destroy
   end
 
-  class_methods do # rubocop:disable Metrics/BlockLength
+  class_methods do
     def authenticate(params)
       user = find_by(email: params[:email])
       return [:not_found, nil] unless user
