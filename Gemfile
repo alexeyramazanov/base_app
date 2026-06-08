@@ -20,11 +20,11 @@ gem 'bcrypt', '~> 3.1.22'
 
 # A Ruby/Rack web server built for parallelism
 # https://github.com/puma/puma
-gem 'puma', '~> 8.0.1'
+gem 'puma', '~> 8.0.2'
 
 # Vite.js in Ruby, bringing joy to your JavaScript experience
 # https://github.com/ElMassimo/vite_ruby
-gem 'vite_rails', '~> 3.10.0'
+gem 'vite_rails', '~> 3.11.0'
 
 # Minimal authorization through OO design and pure Ruby classes
 # https://github.com/varvet/pundit
@@ -40,11 +40,11 @@ gem 'after_commit_everywhere', '~> 1.6.0'
 
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
-gem 'view_component', '~> 4.8.0'
+gem 'view_component', '~> 4.12.0'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
-gem 'pagy', '~> 43.5.3'
+gem 'pagy', '~> 43.5.5'
 
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
@@ -56,7 +56,7 @@ gem 'stimulus-rails', '~> 1.3.4'
 
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
-gem 'solid_cable', '~> 3.0.12'
+gem 'solid_cable', '~> 4.0.0'
 
 # AnyCable for Ruby on Rails applications
 # https://github.com/anycable/anycable-rails
@@ -64,35 +64,35 @@ gem 'anycable-rails', '~> 1.6.2'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
-gem 'sidekiq', '~> 8.1.3'
+gem 'sidekiq', '~> 8.1.6'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
-gem 'sidekiq-cron', '~> 2.3.1'
+gem 'sidekiq-cron', '~> 2.4.0'
 
 # File Attachment toolkit for Ruby applications
 # https://github.com/shrinerb/shrine
-gem 'shrine', '~> 3.6.0'
+gem 'shrine', '~> 3.7.1'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.220.0'
+gem 'aws-sdk-s3', '~> 1.225.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
-gem 'image_processing', '~> 1.14.0'
+gem 'image_processing', '~> 2.0.2'
 
 # Find the mime type of files, examining file, filename and declared type
 # https://github.com/rails/marcel
-gem 'marcel', '~> 1.1.0'
+gem 'marcel', '~> 1.2.1'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
-gem 'bootsnap', '~> 1.24.1', require: false
+gem 'bootsnap', '~> 1.24.6', require: false
 
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
-gem 'thruster', '~> 0.1.20', require: false
+gem 'thruster', '~> 0.1.21', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
@@ -100,7 +100,7 @@ gem 'grape', '~> 3.2.1'
 
 # An API focused facade that sits on top of an object model.
 # https://github.com/ruby-grape/grape-entity
-gem 'grape-entity', '~> 1.0.4'
+gem 'grape-entity', '~> 1.1.0'
 
 # Add OAPI/swagger v2.0 compliant documentation to your grape API
 # https://github.com/ruby-grape/grape-swagger
@@ -112,7 +112,7 @@ gem 'grape-swagger-entity', '~> 0.7.1'
 
 # Ruby implementation of GraphQL
 # https://github.com/rmosolgo/graphql-ruby
-gem 'graphql', '~> 2.6.1'
+gem 'graphql', '~> 2.6.3'
 
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
@@ -141,7 +141,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.43.0'
+  gem 'selenium-webdriver', '~> 4.44.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
@@ -157,7 +157,7 @@ group :development, :test do
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
-  gem 'rubocop-rails', '~> 2.34.3', require: false
+  gem 'rubocop-rails', '~> 2.35.4', require: false
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
@@ -165,7 +165,7 @@ group :development, :test do
 
   # Code style checking for RSpec files
   # https://github.com/rubocop/rubocop-rspec
-  gem 'rubocop-rspec', '~> 3.9.0', require: false
+  gem 'rubocop-rspec', '~> 3.10.2', require: false
 
   # Code style checking for Rails-related RSpec files
   # https://github.com/rubocop/rubocop-rspec_rails
@@ -199,7 +199,7 @@ group :development do
 
   # next generation CRuby profiler
   # https://github.com/jhawthorn/vernier
-  gem 'vernier', '~> 1.10.0'
+  gem 'vernier', '~> 1.10.1'
 
   # Firefox Profiler for Ruby
   # https://github.com/tenderlove/profiler
