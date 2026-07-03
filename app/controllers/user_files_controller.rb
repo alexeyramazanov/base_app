@@ -17,7 +17,7 @@ class UserFilesController < ApplicationController
   end
 
   def destroy
-    user_file = Current.user.user_files.find(params[:id])
+    user_file = Current.user.user_files.find(params.expect(:id))
     authorize user_file
 
     user_file.destroy
@@ -36,12 +36,12 @@ class UserFilesController < ApplicationController
   end
 
   def preview
-    @user_file = Current.user.user_files.find(params[:id])
+    @user_file = Current.user.user_files.find(params.expect(:id))
     authorize @user_file
   end
 
   def download
-    user_file = Current.user.user_files.find(params[:id])
+    user_file = Current.user.user_files.find(params.expect(:id))
     authorize user_file
 
     url = user_file.attachment.url(

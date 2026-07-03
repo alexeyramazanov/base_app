@@ -9,20 +9,20 @@
   "dependencies": {
     "@anycable/web": "^1.1.1",
     "@floating-ui/dom": "^1.7.6",
-    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@fortawesome/fontawesome-free": "^7.3.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.23",
-    "@tailwindcss/vite": "^4.2.4",
+    "@tailwindcss/vite": "^4.3.2",
     "@uppy/aws-s3": "^5.1.0",
     "@uppy/core": "^5.2.0",
     "@uppy/drag-drop": "^5.1.0",
     "@uppy/status-bar": "^5.1.0",
-    "swagger-ui-dist": "^5.32.5",
-    "tailwindcss": "^4.2.4"
+    "swagger-ui-dist": "^5.32.8",
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
     "stimulus-vite-helpers": "^3.1.0",
-    "vite": "^8.0.10",
+    "vite": "^8.1.3",
     "vite-plugin-rails": "^0.6.0"
   }
 }

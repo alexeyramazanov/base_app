@@ -29,7 +29,7 @@ See `README.md` for user-facing setup/usage instructions, including the `rake re
 - **Shrine** + **aws-sdk-s3** - file uploads (direct-to-S3 via Uppy)
 - **Pundit** - authorization
 - **AASM** - state machines
-- **ViewComponent** - reusable view components
+- **ViewComponent** + **Lookbook** - reusable view components
 - **Pagy** - pagination
 - **Grape** (+ grape-entity, grape-swagger) - REST API
 - **GraphQL Ruby** - GraphQL API
@@ -124,7 +124,10 @@ Never commit real secrets. When adding a new env var, update the relevant `.env.
 - **Namespaced APIs**: REST lives under `app/api/public_rest_api/`, GraphQL under `app/graphql/public_graphql_api/`. Follow the same namespacing pattern when adding new API surfaces.
 - **Authorization**: use Pundit policies in `app/policies/`.
 - **Background jobs**: place in `app/sidekiq/`, schedule recurring jobs via `sidekiq-cron`.
-- **Views**: prefer `ViewComponent`s in `app/view_components/` over partials only if it's a shared UI component like button or dropdown. Create component if it requires conditional logic, multiple states or is reused across multiple controllers, for example UserAvatar.
+- **Views**:
+  - prefer `ViewComponent`s in `app/view_components/` over partials only if it's a shared UI component like button or dropdown.
+  - Create component if it requires conditional logic, multiple states or is reused across multiple controllers, for example UserAvatar.
+  - When creating new component also create a Lookbook preview.
 - **Styling**: Tailwind 4 via `@tailwindcss/vite`; do not re-introduce `tailwind.config.js`-era patterns.
 - **Frozen string literals**: required by RuboCop (except `Gemfile`, `Rakefile`, `config.ru`).
 - **Business logic**: prefer service objects in `app/services/` over models.

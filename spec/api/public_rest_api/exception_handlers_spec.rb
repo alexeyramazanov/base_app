@@ -8,10 +8,10 @@ RSpec.describe PublicRestApi::ExceptionHandlers do
   before(:all) do # rubocop:disable RSpec/BeforeAfterAll
     test_endpoints = Class.new(Grape::API) do
       namespace :test do
-        get :validation_error do
-          errors = [Grape::Exceptions::Validation.new(params: ['name'], message: 'is missing')]
-          raise Grape::Exceptions::ValidationErrors.new(errors:)
+        params do
+          requires :name, type: String
         end
+        get :validation_error
 
         get :record_not_found do
           raise ActiveRecord::RecordNotFound
