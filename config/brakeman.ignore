@@ -3,20 +3,20 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "2df8e3dedcb183cd9329524d561b9ab88403e0caf7058d8e15f13c84f59e298f",
+      "fingerprint": "91e6e9a050182d3c5d09d6a2f1da87d2bb249d92f498a3a39d3a836c205bea54",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/user_files_controller.rb",
       "line": 51,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Current.user.user_files.find(params[:id]).attachment.url(:response_content_disposition => ContentDisposition.attachment(Current.user.user_files.find(params[:id]).attachment.original_filename)), :allow_other_host => true)",
+      "code": "redirect_to(Current.user.user_files.find(params.expect(:id)).attachment.url(:response_content_disposition => ContentDisposition.attachment(Current.user.user_files.find(params.expect(:id)).attachment.original_filename)), :allow_other_host => true)",
       "render_path": null,
       "location": {
         "type": "method",
         "class": "UserFilesController",
         "method": "download"
       },
-      "user_input": "Current.user.user_files.find(params[:id]).attachment.url(:response_content_disposition => ContentDisposition.attachment(Current.user.user_files.find(params[:id]).attachment.original_filename))",
+      "user_input": "Current.user.user_files.find(params.expect(:id)).attachment.url(:response_content_disposition => ContentDisposition.attachment(Current.user.user_files.find(params.expect(:id)).attachment.original_filename))",
       "confidence": "Weak",
       "cwe_id": [
         601
@@ -24,5 +24,5 @@
       "note": ""
     }
   ],
-  "brakeman_version": "7.0.2"
+  "brakeman_version": "8.0.5"
 }

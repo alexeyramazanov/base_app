@@ -28,7 +28,7 @@ module PublicRestApi
                },
                failure: Helpers::ErrorHelpers.failures(401, 404, 500)
           params do
-            requires :id, type: String, desc: 'File ID', documentation: { type: 'integer' }
+            requires :id, type: Integer, desc: 'File ID', documentation: { type: 'integer' }
           end
           get '/download' do
             file = policy_scope(UserFile).find(params[:id])
