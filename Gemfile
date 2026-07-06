@@ -32,7 +32,7 @@ gem 'pundit', '~> 2.5.2'
 
 # AASM - State machines for Ruby classes (plain Ruby, ActiveRecord, Mongoid, NoBrainer, Dynamoid)
 # https://github.com/aasm/aasm
-gem 'aasm', '~> 5.5.2'
+gem 'aasm', '~> 6.0.0'
 
 # Use ActiveRecord transactional callbacks outside of models, literally everywhere in your application. (used by aasm)
 # https://github.com/Envek/after_commit_everywhere
@@ -100,7 +100,7 @@ gem 'thruster', '~> 0.1.22', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
-gem 'grape', '~> 3.3.1'
+gem 'grape', '~> 3.3.2'
 
 # An API focused facade that sits on top of an object model.
 # https://github.com/ruby-grape/grape-entity
