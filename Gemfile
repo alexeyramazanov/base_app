@@ -32,7 +32,7 @@ gem 'pundit', '~> 2.5.2'
 
 # AASM - State machines for Ruby classes (plain Ruby, ActiveRecord, Mongoid, NoBrainer, Dynamoid)
 # https://github.com/aasm/aasm
-gem 'aasm', '~> 5.5.2'
+gem 'aasm', '~> 6.0.0'
 
 # Use ActiveRecord transactional callbacks outside of models, literally everywhere in your application. (used by aasm)
 # https://github.com/Envek/after_commit_everywhere
@@ -44,7 +44,7 @@ gem 'view_component', '~> 4.12.0'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
-gem 'pagy', '~> 43.5.6'
+gem 'pagy', '~> 43.6.0'
 
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
@@ -76,7 +76,7 @@ gem 'shrine', '~> 3.8.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.226.0'
+gem 'aws-sdk-s3', '~> 1.227.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
@@ -100,7 +100,7 @@ gem 'thruster', '~> 0.1.22', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
-gem 'grape', '~> 3.3.1'
+gem 'grape', '~> 3.3.2'
 
 # An API focused facade that sits on top of an object model.
 # https://github.com/ruby-grape/grape-entity
@@ -117,7 +117,7 @@ gem 'grape-swagger-entity', '~> 0.7.1'
 
 # Ruby implementation of GraphQL
 # https://github.com/rmosolgo/graphql-ruby
-gem 'graphql', '~> 2.6.3'
+gem 'graphql', '~> 2.6.5'
 
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
@@ -146,7 +146,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.45.0'
+  gem 'selenium-webdriver', '~> 4.46.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
@@ -162,7 +162,7 @@ group :development, :test do
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
-  gem 'rubocop-rails', '~> 2.35.5', require: false
+  gem 'rubocop-rails', '~> 2.36.0', require: false
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
@@ -223,5 +223,5 @@ group :test do
 
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
   # https://github.com/simplecov-ruby/simplecov
-  gem 'simplecov', '~> 0.22.0', require: false
+  gem 'simplecov', '~> 1.0.0', require: false
 end
