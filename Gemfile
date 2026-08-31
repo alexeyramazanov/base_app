@@ -12,7 +12,7 @@ gem 'pg', '~> 1.6.3'
 
 # A Ruby client library for Redis
 # https://github.com/redis/redis-rb
-gem 'redis', '~> 5.4.1'
+gem 'redis', '~> 6.0.0'
 
 # bcrypt-ruby is a Ruby binding for the OpenBSD bcrypt() password hashing algorithm
 # https://github.com/bcrypt-ruby/bcrypt-ruby
@@ -32,7 +32,7 @@ gem 'pundit', '~> 2.5.2'
 
 # AASM - State machines for Ruby classes (plain Ruby, ActiveRecord, Mongoid, NoBrainer, Dynamoid)
 # https://github.com/aasm/aasm
-gem 'aasm', '~> 5.5.2'
+gem 'aasm', '~> 6.0.0'
 
 # Use ActiveRecord transactional callbacks outside of models, literally everywhere in your application. (used by aasm)
 # https://github.com/Envek/after_commit_everywhere
@@ -40,11 +40,11 @@ gem 'after_commit_everywhere', '~> 1.6.0'
 
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails
 # https://github.com/viewcomponent/view_component
-gem 'view_component', '~> 4.12.0'
+gem 'view_component', '~> 4.15.0'
 
 # The Best Pagination Ruby Gem
 # https://github.com/ddnexus/pagy
-gem 'pagy', '~> 43.5.6'
+gem 'pagy', '~> 43.6.2'
 
 # Use Turbo in your Ruby on Rails app
 # https://github.com/hotwired/turbo-rails
@@ -56,7 +56,7 @@ gem 'stimulus-rails', '~> 1.3.4'
 
 # A database backed ActionCable adapter
 # https://github.com/rails/solid_cable
-gem 'solid_cable', '~> 4.0.0'
+gem 'solid_cable', '~> 4.0.2'
 
 # AnyCable for Ruby on Rails applications
 # https://github.com/anycable/anycable-rails
@@ -64,7 +64,7 @@ gem 'anycable-rails', '~> 1.6.2'
 
 # Simple, efficient background processing for Ruby
 # https://github.com/sidekiq/sidekiq
-gem 'sidekiq', '~> 8.1.6'
+gem 'sidekiq', '~> 8.1.7'
 
 # Scheduler / Cron for Sidekiq jobs
 # https://github.com/sidekiq-cron/sidekiq-cron
@@ -72,15 +72,15 @@ gem 'sidekiq-cron', '~> 2.4.0'
 
 # File Attachment toolkit for Ruby applications
 # https://github.com/shrinerb/shrine
-gem 'shrine', '~> 3.8.0'
+gem 'shrine', '~> 3.9.0'
 
 # The official AWS SDK for Ruby
 # https://github.com/aws/aws-sdk-ruby
-gem 'aws-sdk-s3', '~> 1.226.0'
+gem 'aws-sdk-s3', '~> 1.229.0'
 
 # High-level image processing wrapper for libvips and ImageMagick/GraphicsMagick
 # https://github.com/janko/image_processing
-gem 'image_processing', '~> 2.0.2'
+gem 'image_processing', '~> 2.0.3'
 
 # Ruby extension for the libvips image processing library.
 # https://github.com/libvips/ruby-vips
@@ -92,15 +92,15 @@ gem 'marcel', '~> 1.2.1'
 
 # Boot large Ruby/Rails apps faster
 # https://github.com/Shopify/bootsnap
-gem 'bootsnap', '~> 1.24.6', require: false
+gem 'bootsnap', '~> 1.25.0', require: false
 
 # HTTP/2 proxy for simple production-ready deployments of Rails applications
 # https://github.com/basecamp/thruster/
-gem 'thruster', '~> 0.1.22', require: false
+gem 'thruster', '~> 0.1.26', require: false
 
 # An opinionated framework for creating REST-like APIs in Ruby.
 # https://github.com/ruby-grape/grape
-gem 'grape', '~> 3.3.1'
+gem 'grape', '~> 3.3.5'
 
 # An API focused facade that sits on top of an object model.
 # https://github.com/ruby-grape/grape-entity
@@ -117,7 +117,7 @@ gem 'grape-swagger-entity', '~> 0.7.1'
 
 # Ruby implementation of GraphQL
 # https://github.com/rmosolgo/graphql-ruby
-gem 'graphql', '~> 2.6.3'
+gem 'graphql', '~> 2.6.10'
 
 group :development, :test do
   # A Ruby gem to load environment variables from `.env`.
@@ -146,7 +146,7 @@ group :development, :test do
 
   # Selenium implements the W3C WebDriver protocol to automate popular browsers
   # https://github.com/SeleniumHQ/selenium/tree/trunk/rb
-  gem 'selenium-webdriver', '~> 4.45.0'
+  gem 'selenium-webdriver', '~> 4.48.0'
 
   # Debugging functionality for Ruby
   # https://github.com/ruby/debug
@@ -154,7 +154,7 @@ group :development, :test do
 
   # A static analysis security vulnerability scanner for Ruby on Rails applications
   # https://github.com/presidentbeef/brakeman
-  gem 'brakeman', '~> 8.0.5', require: false
+  gem 'brakeman', '~> 8.0.6', require: false
 
   # Patch-level verification for Bundler
   # https://github.com/rubysec/bundler-audit
@@ -162,11 +162,11 @@ group :development, :test do
 
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions
   # https://github.com/rubocop/rubocop-rails
-  gem 'rubocop-rails', '~> 2.35.5', require: false
+  gem 'rubocop-rails', '~> 2.37.0', require: false
 
   # An extension of RuboCop focused on code performance checks
   # https://github.com/rubocop/rubocop-performance
-  gem 'rubocop-performance', '~> 1.26.1', require: false
+  gem 'rubocop-performance', '~> 1.27.0', require: false
 
   # Code style checking for RSpec files
   # https://github.com/rubocop/rubocop-rspec
@@ -186,7 +186,7 @@ group :development, :test do
 
   # Rubocop extension for enforcing graphql-ruby best practices
   # https://github.com/DmitryTsepelev/rubocop-graphql
-  gem 'rubocop-graphql', '~> 1.6.0', require: false
+  gem 'rubocop-graphql', '~> 1.8.0', require: false
 end
 
 group :development do
@@ -204,7 +204,7 @@ group :development do
 
   # next generation CRuby profiler
   # https://github.com/jhawthorn/vernier
-  gem 'vernier', '~> 1.10.1'
+  gem 'vernier', '~> 1.11.0'
 
   # Firefox Profiler for Ruby
   # https://github.com/tenderlove/profiler
@@ -223,5 +223,5 @@ group :test do
 
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
   # https://github.com/simplecov-ruby/simplecov
-  gem 'simplecov', '~> 0.22.0', require: false
+  gem 'simplecov', '~> 1.1.1', require: false
 end
